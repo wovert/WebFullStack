@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>React Example</title>
+  <script src="../bower_components/react/react.production.min.js"></script>
+  <script src="../bower_components/react/react-dom.production.min.js"></script>
+  <script src="../bower_components/babel/browser.min.js"></script>
+  <script type="text/babel">
+    // 定义组件继承React.Component 组件
+    class Text extends React.Component {
+      constructor(...args) { // 扩展参数
+        super(...args); // 展开参数
+      }
+      render() {
+        return (
+          <h1>This is React Render Component</h1>
+        )
+      }
+    }
+
+    window.onload = function(){
+      var rootObj = document.getElementById('root');
+      
+      ReactDOM.render(
+        <Text></Text>, 
+        rootObj)
+    }
+  </script>
+</head>
+<body>
+  <div id="root">
+
+  </div>
+</body>
+</html>
