@@ -108,7 +108,73 @@ babel==broswer.js
 - filter 过滤器
 - forEach 迭代
 
-### 对象
+### 字符串
+
+- startsWith()
+- endsWith()
+- `字符串模板${v}`
+
+### promise
+
+> 同步的方式编写异步
+
+``` javascript
+  let p = new Promise(function(resolve, reject){
+    $.ajax({
+      ur: 'arr.txt',
+      dataType: 'json',
+      success(arr) {
+        resolve(arr);
+      },
+      error(err) {
+        reject(err);
+      }
+    })    
+  });
+
+  p.then(
+    function(arr){
+      console.log(arr)
+    }, 
+    function(){
+      console.log('失败')
+    }
+  );
+
+
+  // 多个异步加载， &关系
+  Promise.all([$.ajax({/*...*/}), $.ajax({/*...*/})]).then(results=>{
+    // 对了
+  },
+  err => {
+    // 错了
+  })
+
+  // 竞速关系,谁先得到就直接返回
+  Promise.race([
+    $.ajax({url: 'http://doamin1.com/data/users'}),
+    $.ajax({url: 'http://doamin2.com/data/users'}),
+    $.ajax({url: 'http://doamin3.com/data/users'}),
+    $.ajax({url: 'http://doamin4.com/data/users'})
+  ]);
+```
+
+### generator
+
+> generator:生成器, generate: 生成, generator 函数中间可以停
+
+``` javascript
+function *show() {
+  console.log(1);
+  let i = yield 20; // yield 返回
+  console.log(2);
+  console.log(i);
+}
+let o = show();
+let r = o.next(12); // 1 传参
+o.next(5); // 2, 5
+console.log(r); // 20
+```
 
 ### 面向对象
 

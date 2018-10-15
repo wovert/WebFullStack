@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Promise</title>
+  <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+  <script>
+  let p = new Promise(function(resolve, reject){
+    $.ajax({
+      ur: 'arr.txt',
+      dataType: 'json',
+      success(arr) {
+        resolve(arr);
+      },
+      error(err) {
+        reject(err);
+      }
+    })    
+  });
+
+  p.then(
+    function(arr){
+      console.log(arr)
+    }, 
+    function(){
+      console.log('失败')
+    }
+  );
+
+  // 多个异步加载
+  Promise.all([$.ajax({/*...*/}), $.ajax({/*...*/})]).then(results=>{
+    // 对了
+  },
+  err => {
+    // 错了
+  })
+</script>
+</body>
+</html>
