@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<input type="text" id="value1">
+<input type="text" id="value2">
+<button id="calc">calc</button>
+<script>
+
+document.getElemenById('calc').onclick = function(){
+  let v1 = document.getElementById('value1');
+  let v2 = document.getElementById('value2');
+
+  // 创建子进程
+  let w = new WebWorker('./js/webworker.js');
+
+  // 发送数据
+  w.postMessage({v1,v2});
+
+  // 接受
+  on.message = function(e){
+    console.log(e.data.sum);
+  }
+}
+
+</script>
+</body>
+</html>

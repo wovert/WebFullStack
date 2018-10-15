@@ -217,3 +217,72 @@ decodeURIComponent(JSON.parse('{"a":12,"b":5}')) // 字符串转换json对象
 - JSON简写
   - key和value值一样，可以仅留一个
   - 方法：删除 `:function`
+
+## HTML5
+
+- geolocation
+- video,audio
+- localStorage, sessionStorage
+- webSQL/IndexedDB
+- WebWorker 多线程
+- 文件操作、拖拽
+- manifest
+- canvas
+
+### geolocation - 定位
+
+- PC: 通过IP地址获取定位
+  - 精度比较低
+  - 下载IP地址库
+    - Chrome 浏览器请求 Google IP库
+- mobile: 通过GPS获取定位
+
+### WebWorker
+
+``` javascript
+let v1 = document.getElementById('value1');
+let v2 = document.getElementById('value2');
+
+// 创建子进程
+let w = new WebWorker('1.js');
+
+// 发送数据
+w.postMessage({v1,v2});
+
+// 接受
+on.message = function(e){
+  console.log(e.data.sum);
+}
+
+```
+
+1.js 文件
+
+``` javascript
+// 1.js 接受postMessage参数
+this.onmessage = function(e) {
+  console.log(e.data);//{v1,v2}
+  
+  // 执行任务
+  let sum = e.data.v1 + e.data.v2
+  
+  // 返回
+  this.postMessage(sum);
+
+}
+```
+
+访问必须使用真实服务器地址(不能异步请求数据1.js)
+
+- 主进程：UI进程
+- 子进程（工作进程）：看不见的；只能完成计算，数据请求这些操作
+
+#### 优势
+
+- 多个进程同时工作
+- 防止主进程卡住
+
+#### 缺点
+
+- 不能执行任何 UI 操作；子进程只能执行计算型任务
+- 

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>定位</title>
+</head>
+<body>
+<script>
+  window.onload = function(){
+    
+    let btn = document.getElementById('btn');
+
+    btn.onclick = function(){
+
+      // google 一次拒绝永远都拒绝
+      // 本地测试，始终提示定位
+      // 生产环境，跟踪定位
+      // 必须真实服务器环境访问 http协议访问
+      if(window.navigator.geolocation) {
+        // 单次获取
+        navigator.geolocation.getCurrentPosition(
+          res=>{
+            console.log(res);
+            
+          },
+          err => {
+            console.log(err);
+          },
+          {
+            /*
+            enableHighAccuracy, // 高精度模式，更慢，更费电，PC端没有意义
+            timeout, // 超时时长，超过时间就不显示
+            maximumAge // 缓存时长
+            */
+            timeout: 5*1000, // 5*1000 秒
+          }
+        );
+
+
+        // 监听（位置变化就告诉你）
+        // watchPosition(function(ok), function(){err}, params)
+      } else{
+
+      }
+    } 
+    
+
+  }
+</script>
+<input type="button" value="定位" id="btn">
+</body>
+</html>
