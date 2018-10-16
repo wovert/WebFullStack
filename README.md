@@ -129,7 +129,7 @@ babel==broswer.js
       error(err) {
         reject(err);
       }
-    })    
+    })
   });
 
   p.then(
@@ -176,6 +176,50 @@ o.next(5); // 2, 5
 console.log(r); // 20
 ```
 
+``` javascript
+function *show() {
+  ...
+  let data1 = yield $.ajax('a.txt');
+  ....
+  let data2 = yield $.ajax('b.txt');
+  ....
+}
+```
+
+### runner
+
+``` shell
+安装runner模块
+# cnpm search yield-runner-blue
+# cd project_name
+# cnpm i yield-runner-blue
+```
+
+官方版runner的 **async_await**, ES7版本中新增了 async 和 await
+
+- Promise 本质：等待异步操作结束；
+- generator 本质：无感处理异步操作
+- async本质：官网 runner
+
+``` javascript
+runner(function *(){
+  ...
+  let res1 = yield 异步操作;
+  ...
+  let res2 = yield 异步操作;
+});
+
+(async ()=>{
+  let res1 = await 异步操作;
+  ...
+  let res2 = await 异步操作;
+})()
+
+```
+
+- [runner用法](./es6/runner.html)
+- [async/wait用法](./es6/async_await.html)
+
 ### 面向对象
 
 ``` javascript
@@ -217,6 +261,55 @@ decodeURIComponent(JSON.parse('{"a":12,"b":5}')) // 字符串转换json对象
 - JSON简写
   - key和value值一样，可以仅留一个
   - 方法：删除 `:function`
+
+## 模块化
+
+模块=元件=组件
+
+### 模块化解决方案
+
+- 民间的: Sea.js, Require.js
+  - CMD 规范
+  - AMD 规范
+- NodeJS模块化
+- ES6模块化
+
+### 如何使用 sea.js
+
+``` shell
+安装seajs
+# bower i seajs
+```
+
+SeaJS: 按需引用，解决依赖
+
+``` javascript
+// 定义模块
+define(function(require, exports, module){
+
+  let a = 12;
+  let b = 5;
+  // 导出模块
+  exports.a = a;
+  exports.b = b;
+});
+
+// 引用模块
+seajs.use(['./mod1.js', './mod2.js'], function(mod1,mod2) {
+  console.log(mod1.a);
+  console.log(mod1.b);
+  console.log(mod2.a);
+})
+
+// 按需加载
+if(xxxx) {
+  seajs.use();
+} else {
+  seajs.use();
+}
+```
+
+[seajs示例](./seajs/index.html)
 
 ## HTML5
 
@@ -285,4 +378,3 @@ this.onmessage = function(e) {
 #### 缺点
 
 - 不能执行任何 UI 操作；子进程只能执行计算型任务
-- 
