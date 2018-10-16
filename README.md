@@ -340,16 +340,98 @@ if(xxxx) {
       return a/b;
     }
   }
+```
 
-# cd ..
-# mv mymath node_modules/
+### ES6
 
-发布包
-# npm publish
+- ES6(babel编译)->ES5
+- Webpack(编译ES6模块)
 
-# npm login
-···
+- cli: Common LIne
 
+``` shell
+全局安装babel-cli
+# cnpm i -g babel-cli
+
+# mkdir babel_es6 && cd babel_es6
+# npm init
+# mkdir {src,dist}
+# cd src
+# vim 1.js
+  let a = 1;
+  const b = 5;
+  let arr = [{a, b}, {b, a}];
+  arr.sort((json1, json2)=>{json1.a = json2.a});
+
+  alert(arr[0].a);
+
+# vim index.html
+  <script src="./src/1.js"></script>
+
+浏览器访问 demo-import.html, Chrome能访问，IE10-不能访问
+
+
+解决浏览器不支持ES6问题
+# vim package.json
+  "scripts": {
+    "build": "babel src -d dist"
+  }
+
+1.创建.babelrc 配置文件(presets:预设)
+# vim .babelrc
+  {
+    "presets": ["env"]
+  }
+
+2. 下载babel包
+# cnpm i babel-preset-env --save-dev
+# vim package.json
+  
+  开发模式，项目依赖于babel-preset-env 模块
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0"
+  }
+
+# npm run build
+
+比较src/1.js与dist/1.js文件
+
+ES6文件: src/1.js
+ES5文件: dist/1.js
+
+```
+
+#### babel-preset-env
+
+> A Babel prest for each enviroment. 给各种环境提供 babel 预设
+
+[babel-preset-env 详解](https://npm.taobao.org/package/babel-preset-env)
+
+### 编译import 模块文件
+
+``` shell
+# mkdir src/mod/math.js
+# vim math.js
+  let a = 10;
+  let b = 20;
+  let sum = a + b;
+  export {
+    sum
+  }
+# vim src/1.js
+  import mod from './mod/math';
+  console.log(mod.sum);
+
+# npm run build
+  > babel_es6@1.0.0 build C:\development\WebFullStack\babel_es6
+  > babel src -d dist
+
+  src\1.js -> dist\1.js
+  src\mod\math.js -> dist\mod\math.js
+
+访问地址会提示不支持 require
+
+```
 
 ## HTML5
 
