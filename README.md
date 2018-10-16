@@ -313,6 +313,44 @@ if(xxxx) {
 
 ### [NodeJS 模块化实例](./nodex/index.js)
 
+### 创建 NodeJS 包
+
+``` shell
+创建包名
+# mkdir mymath && cd mymath
+
+创建包信息文件 package.json
+# npm init
+  project name:
+  version:
+  description:
+  entry point: 包入口文件
+  test command:
+  git repository:
+  keyworlds:
+  author:
+  licence:
+
+# vim index.js
+  module.exports = {
+    sum(a,b) {
+      return a + b;
+    },
+    divide(a,b) {
+      return a/b;
+    }
+  }
+
+# cd ..
+# mv mymath node_modules/
+
+发布包
+# npm publish
+
+# npm login
+···
+
+
 ## HTML5
 
 - geolocation
