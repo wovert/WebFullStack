@@ -311,6 +311,8 @@ if(xxxx) {
 
 [seajs示例](./seajs/index.html)
 
+### [NodeJS 模块化实例](./nodex/index.js)
+
 ## HTML5
 
 - geolocation
