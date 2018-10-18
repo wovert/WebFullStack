@@ -1,5 +1,20 @@
 # Web Full-Stack
 
+## http
+
+### http 状态吗
+
+- 301: 永久重定向
+  - 第一次访问 360buy.com 服务器，服务器相应给客户端重定向到 jd.com 域名服务器。客户端再次请求jd.com域名服务器，接受向请求并响应。并把重定向地址缓存到客户端。
+  - 第二次访问 360buy.com 因为是永久重定向且缓存到客户端重定向到 jd.com，所以请求 jd.com 域名服务器。
+- 302：临时重定向
+
+### base64
+
+> http请求页面请求下载 html和base64图片一起下载，在客户端浏览器直接从内存中读取图片。
+> 推荐使用小图片使用 base64，雪碧图不推荐使用 base64
+> 地址都可以使用 base4
+
 ## 常用软件
 
 - 编辑器：atom(插件)、Visual Studio Code、Sublime
@@ -11,7 +26,6 @@
       - linter
       - script
       - ternimal-plush 命令行工具
-      - 
 
 - 服务器：CentOS、Ubuntu
   - wamp、xampp、lnmp
@@ -40,7 +54,6 @@
 ``` shell
 升级NodeJS到最新版本
 # npm i -g n
-
 ```
 
 ### npm
@@ -65,7 +78,6 @@
 
 ``` shell
 # cnpm i -g phonegap@6.5.2
-
 ```
 
 ## ES6兼容性和新特性
@@ -117,7 +129,7 @@ babel==broswer.js
 
 > 同步的方式编写异步
 
-``` javascript
+``` js
   let p = new Promise(function(resolve, reject){
     $.ajax({
       ur: 'arr.txt',
@@ -162,7 +174,7 @@ babel==broswer.js
 
 > generator:生成器, generate: 生成, generator 函数中间可以停
 
-``` javascript
+``` js
 function *show() {
   console.log(1);
   let i = yield 20; // yield 返回
@@ -376,7 +388,7 @@ if(xxxx) {
     "build": "babel src -d dist"
   }
 
-1.创建.babelrc 配置文件(presets:预设)
+1.创建.babelrc 配置文件(presets:预设, env指的是浏览器环境，可以指定特定的浏览器，默认是ES5浏览器)
 # vim .babelrc
   {
     "presets": ["env"]
@@ -561,7 +573,5 @@ function show() {
 2. then执行的时候调用其参数
 
 - [promiss语法糖](./es6/custom-promise.html)
-
-- 自定义开发 Promiss.all()
 
 ## websocket
