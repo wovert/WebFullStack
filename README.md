@@ -43,7 +43,7 @@
 
 ```
 
-### npm 
+### npm
 
 > 后台包管理器
 
@@ -67,7 +67,6 @@
 # cnpm i -g phonegap@6.5.2
 
 ```
-
 
 ## ES6兼容性和新特性
 
@@ -135,7 +134,7 @@ babel==broswer.js
   p.then(
     function(arr){
       console.log(arr)
-    }, 
+    },
     function(){
       console.log('失败')
     }
@@ -407,7 +406,7 @@ ES5文件: dist/1.js
 
 [babel-preset-env 详解](https://npm.taobao.org/package/babel-preset-env)
 
-### 编译import 模块文件
+#### babel 不能编译 import 模块
 
 ``` shell
 # mkdir src/mod/math.js
@@ -432,6 +431,8 @@ ES5文件: dist/1.js
 访问地址会提示不支持 require
 
 ```
+
+**Webpack 可以解决 babel 不能编译 import 模块文件**
 
 ## HTML5
 
@@ -500,3 +501,67 @@ this.onmessage = function(e) {
 #### 缺点
 
 - 不能执行任何 UI 操作；子进程只能执行计算型任务
+
+## 数据交互
+
+- [http 协议](https://tools.ietf.org/rfc/rfc2616.txt)
+  - 无状态
+  - 连接过程
+    - 1.客户端请求连接
+    - 2.服务器端接受连接并响应给客户端
+    - 3.客户端请求资源
+  - 消息头
+    - header
+    - body
+- form 表单
+- ajax
+  - 官方提供的，且默认不能跨域
+  - 单向
+- jsonp 民间提供的，可以跨域；不推荐使用
+- websocket
+  - 双向通信
+
+## 语法糖
+
+- C++运算符重载
+  - arr1+arr2 编译成 arr1.concat(arr2)
+  - arr1+arr2+arr3 编译成 arr1.concat(arr2).concat(arr3)
+
+### generator的本质
+
+``` js
+function *show() {
+  let a = 12;
+  let data = yield $.ajax('data/1.txt');
+  let b = 5;
+  let data2 = yield $.ajax('data/1.txt')
+  return a + b;
+}
+
+/***************** 编译成一下代码 ********************/
+
+function show() {
+  let a = 12;
+  $.ajax('data/1.txt').then(res=>{
+    let data1 = res;
+    let b = 5;
+
+    $.ajax('data/2.txt').then(res=>{
+      let data2 = res;
+      return a + b;
+    })
+  })
+}
+
+```
+
+### Promise 本质
+
+1. 当状态改变的时候-调用之前挂起的 then 队列
+2. then执行的时候调用其参数
+
+- [promiss语法糖](./es6/custom-promise.html)
+
+- 自定义开发 Promiss.all()
+
+## websocket

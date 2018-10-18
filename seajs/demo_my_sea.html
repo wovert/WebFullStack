@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="./my_sea.js"></script>
+  <script>
+    sea.use('./mod_my_sea.js', function(mod){
+      alert(mod.a);
+      alert(mod.b);
+    });
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

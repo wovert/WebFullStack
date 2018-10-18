@@ -7,6 +7,7 @@ define(function(require, exports, module){
   
   // 导出模块
   exports.a = a;
+  exrpots.b = 1000;
 
 });
 
