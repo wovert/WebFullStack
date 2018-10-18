@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>WebSocket</title>
+  <!-- 自动引入 node_modules/socket.io/lib/client.js-->
+  <script src="http://localhost:8080/socket.io/socket.io.js"></script>
+  <script>
+    const SOCK_URL = 'ws://localhost:8080/';
+    let sock = io.connect(SOCK_URL);
+    // 向服务器端发送数据
+    sock.emit('a', 12, 5);
+    // 接受服务器端发送的数据
+    sock.on('ttt', function(num){
+      console.log(`接受到了服务其发送的数据：${num}`);
+    });   
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

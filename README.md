@@ -550,7 +550,7 @@ function *show() {
   return a + b;
 }
 
-/***************** 编译成一下代码 ********************/
+/***************** 编译成以下代码 ********************/
 
 function show() {
   let a = 12;
@@ -575,3 +575,70 @@ function show() {
 - [promiss语法糖](./es6/custom-promise.html)
 
 ## websocket
+
+1. HTML5
+2. socket.io
+
+### socket.io
+
+> 用于前台和后台模块
+
+- 服务端必须基于http服务，然后创建ws服务
+- 客户端连接服务
+
+``` shell
+# cnpm install socket.io
+```
+
+- browser < - http -> server
+  - 缺陷：无状态协议
+
+- websocket 协议基于 http协议
+
+- sock.emit(name, param1, param2) 用于发送
+- sock.on(name, function(param){}) 用于接收
+
+#### 客户端代码
+
+``` html
+<!-- 自动引入 node_modules/socket.io/lib/client.js-->
+<script src="http://localhost:8080/socket.io/socket.io.js"></script>
+<script>
+  const SOCK_URL = 'ws://localhost:8080/';
+  let sock = io.connect(SOCK_URL);
+  // 向服务器端发送数据
+  sock.emit('a', 12, 5);
+  // 接受服务器端发送的数据
+  sock.on('ttt', function(num){
+    console.log(`接受到了服务其发送的数据：${num}`);
+  });
+</script>
+```
+
+#### 服务端代码
+
+``` js
+const http = require('http')
+const io = require('socket.io')
+const PORT = 8080;
+
+// 1. 创建http服务
+let httpServer = http.createServer();
+
+// 监听服务端口
+httpServer.listen(PORT);
+
+// 2. 创建websocket服务
+let socketServer = io.listen(httpServer);
+
+// 监听 websocket 连接
+socketServer.on('connection', function(sock){
+  sock.on('a', function(num1, num2){
+    console.log(`接受到了浏览器发送的数据：${num1}, ${num2}`);
+  });  
+
+  setInterval(function(){
+    sock.emit('ttt', Math.random());
+  }, 500)
+})
+```
