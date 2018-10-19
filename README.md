@@ -576,15 +576,29 @@ function show() {
 
 ## websocket
 
-1. HTML5
-2. socket.io
+> 数据交互
+
+- 性能高
+- 双向-数据实时性
+- HTML5(IE9)
+- socket.io
+- 可以跨域
 
 ### socket.io
 
 > 用于前台和后台模块
 
+- 传输二进制数据
+  - http传输文本
+
 - 服务端必须基于http服务，然后创建ws服务
 - 客户端连接服务
+
+#### socket 用途
+
+- 聊天室
+- 视频直播(视频采集问题，兼容浏览器)
+- 视频点播
 
 ``` shell
 # cnpm install socket.io
@@ -642,3 +656,21 @@ socketServer.on('connection', function(sock){
   }, 500)
 })
 ```
+
+## Node
+
+### Node features
+
+- 性能高(比Java高86倍)
+- 跨端编程(前段-后端)
+- 适合适合前段入门
+
+- Node(小型项目，工具，中间层语言[前台与后台的中间])
+- Java(服务区安全/可伸缩性)，大型项目
+- PHP(简单易用)
+- .NET(老程序员)
+
+### fs 模块
+
+- fs.readFile()
+- 
