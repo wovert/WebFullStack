@@ -716,3 +716,10 @@ socketServer.on('connection', function(sock){
 - 请求接口
   - /reg?xx
   - /login?xx
+
+## 多语言
+
+> 后台路由切换
+
+- 中文: domain.com/cn
+- 中文: domain.com/cn

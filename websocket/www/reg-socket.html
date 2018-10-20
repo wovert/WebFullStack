@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>注册用户</title>
+  <script src="./js/jquery.min.js"></script>
+  <script src="http://localhost:8080/socket.io/socket.io.js"></script>
+  <script>
+    const URL = 'ws://localhost:8080/';
+    let sock = io.connect(URL);
+
+    window.onload = function(){
+      let cur_username = '';
+      let userObj = $('#user');
+      let passObj = $('#pass');
+      let regObj = $('#reg-btn');
+      let loginObj = $('#login-btn');
+      let sendObj = $('#send-btn');
+      let msgObj = $('#msg');
+      let msgListObj = $('#msg-list');
+
+      // 注册
+      sock.on('reg_res', (code, msg) => {
+        if(code) {
+          alert('注册失败：' + msg);
+        } else {
+          alert('注册成功');
+        }
+      });
+
+      // 登录
+      sock.on('login_res', (code, msg) => {
+        if(code) {
+          alert('登录失败：' + msg);
+        } else {
+          alert('登录成功');
+          cur_username = userObj.val();
+        }
+      });
+
+      // 注册操作
+      regObj.click(function(){
+        sock.emit('reg', userObj.val(), passObj.val());
+        // sock.once('reg_res', (code, msg) => {
+        // if(code) {
+        //   alert('注册失败，' + msg);
+        // } else {
+        //   alert('注册成功');
+        // }
+      
+        return false;
+      });
+
+      // 登录操作
+      loginObj.click(function(){
+        sock.emit('login', userObj.val(), passObj.val());
+        return false;
+      });
+
+      // 自己发消息
+      sock.on('msg_res', (code, msg)=>{
+        if (code) {
+          alert('消息发送失败：' + msg);
+        } else {
+          let msg = msgObj.val();
+          let contentObj = $(`<li class="mine"><h4>${cur_username}</h4><p>${msg}</p></li>`);
+          msgListObj.append(contentObj);
+
+          // 输入留言内容为空
+          msgObj.val('');
+        }
+      });
+
+      // 广播的消息
+      sock.on('msg', (username, msg) => {
+        let contentObj = $(`<li><h4>${username}</h4><p>${msg}</p></li>`);
+        msgListObj.append(contentObj);
+      });
+
+      // 发送消息事件处理函数
+      sendObj.click(function(){
+        console.log(msgObj.val());
+        sock.emit('msg', msgObj.val());
+      });
+
+    }
+  </script>
+  <style>
+    .mine {
+      background: green;
+
+    }  
+  </style>
+</head>
+<body>
+  <form action="/reg" method="get" id="reg-form">
+    <p><label>用户名：</label><input type="text" name="user" id="user"></p>
+    <p><label>密  码：</label><input type="password" name="pass" id="pass"></p>
+    <p>
+      <input type="submit" value="注册" id="reg-btn" />
+      <input type="submit" value="登录" id="login-btn" />
+    </p> 
+    <p>
+      <textarea id="msg"></textarea>  
+      <input type="button" value="发送" id="send-btn">
+    </p>
+    <ul id="msg-list">
+    </ul>
+  </form>
+</body>
+</html>
