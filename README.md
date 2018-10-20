@@ -670,7 +670,49 @@ socketServer.on('connection', function(sock){
 - PHP(简单易用)
 - .NET(老程序员)
 
-### fs 模块
+## 聊天室
 
-- fs.readFile()
-- 
+1. 用户注册、登录 
+2. 发言->其他人
+3. 离线消息
+
+- 数据
+  - 用户数据
+  - 消息
+
+- 数据库
+  - 关系型数据库：MysQL, Oracle
+    - 优点：强大(9)
+    - 缺点: 性能低(7.5)
+  - 文件型数据库：SQLite
+    - 优点：简单
+    - 缺点：支持不了庞大的应用，没法存储特别多数据
+  - 文档型数据库在： MongoDB
+    - 优点：直接存储对象本身
+    - 缺点：不够严谨，性能偏低
+  - 空间型数据库：坐标、位置
+  
+  - NoSQL：Redis、Memcached、Bigtable(Google)、hypertable
+    - 性能(9)
+  - hive(比NoSQL强大)
+
+### npm 的 mysql 模块
+
+安装 mysql 模块
+
+`$ cnpm install mysql -D`
+
+### 接口
+
+- 用户注册：/reg?user=xx&pass=xx
+  - {"code":0,"msg":"信息"}
+- 用户登录：/login?user=xx&pass=xx
+  - {"code":0,"msg":"信息"}
+
+- 请求文件
+  - /1.html
+  - /1.js
+
+- 请求接口
+  - /reg?xx
+  - /login?xx

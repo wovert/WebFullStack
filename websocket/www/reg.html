@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>注册用户</title>
+  <script src="./js/jquery.min.js"></script>
+  <script>
+    $(function(){
+
+      $('#reg-btn').click(function(event){
+
+        $.ajax({
+          url: '/reg',
+          data: {user:$('#user').val(), pass:$('#pass').val()},
+          dataType: 'json',
+          success(res) {
+            if(res.code) {
+              alert('注册失败:' + res.msg);
+            } else {
+              alert('注册成功');
+            }
+          },
+          error(err) {
+            alert('注册失败，通络不通');
+          }
+        });
+        return false;
+
+      });
+    });
+  </script>
+</head>
+<body>
+  <form action="/reg" method="get" id="reg-form">
+    <p><label>用户名：</label><input type="text" name="user" id="user"></p>
+    <p><label>密  码：</label><input type="password" name="pass" id="pass"></p>
+    <p><input type="submit" value="注册" id="reg-btn" /></p> 
+  </form>
+</body>
+</html>
