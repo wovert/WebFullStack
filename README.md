@@ -2,6 +2,9 @@
 
 ## http
 
+- GET 方式：有缓存
+- POST方式：没缓存
+
 ### http 状态吗
 
 - 301: 永久重定向
@@ -14,6 +17,12 @@
 > http请求页面请求下载 html和base64图片一起下载，在客户端浏览器直接从内存中读取图片。
 > 推荐使用小图片使用 base64，雪碧图不推荐使用 base64
 > 地址都可以使用 base4
+
+### [http2](https://tools.ietf.org/html/rfc7540)(实验性)
+
+1. 强制 https
+2. 性能更高-面向流(比面向字符更好)、头压缩、多路复用(多个请求走一个连接)
+3. 双向通信-服务器推送(自带websocket)
 
 ## 常用软件
 
@@ -450,12 +459,16 @@ ES5文件: dist/1.js
 
 - geolocation
 - video,audio
+  - WebSocket 推送 + video
+  - canvas + video
 - localStorage, sessionStorage
 - webSQL/IndexedDB
 - WebWorker 多线程
 - 文件操作、拖拽
-- manifest
+- manifest 离线应用
+  - 被APP取代了
 - canvas
+- File - 拖拽、读取
 
 ### geolocation - 定位
 
@@ -578,6 +591,8 @@ function show() {
 
 > 数据交互
 
+- webSocket 原生
+
 - 性能高
 - 双向-数据实时性
 - HTML5(IE9)
@@ -587,6 +602,8 @@ function show() {
 ### socket.io
 
 > 用于前台和后台模块
+
+- socket.io 原理
 
 - 传输二进制数据
   - http传输文本
@@ -723,3 +740,64 @@ socketServer.on('connection', function(sock){
 
 - 中文: domain.com/cn
 - 中文: domain.com/cn
+
+## ajax2.0 支持 IE0+
+
+1. FormData(容器)
+2. 文件上传、上传进度劲啊空（依赖FormData的set方法）
+3. CORS 跨域
+4. ajax 长连接
+
+``` js
+// 上传文件完成
+xhr.upload.onload = function(){
+  console.log('上传完成');
+}
+
+// 进度变化
+xhr.upload.onprogress = function(ev){
+  console.log(ev.loaded + '/' + ev.total);
+}
+```
+
+### CORS跨域
+
+- 初衷：乱用别人的服务器
+- 问题：浏览器怎么知道跨域认可
+- 解决：浏览器+服务器配置
+
+#### ajax1.0 方式
+
+``` js
+// 服务器配置
+res.setHeader('Access-Control-Allow-Origin', '*');
+```
+
+- xhr.send('字符串')
+
+#### ajax2.0 方式
+
+- 请求头信息比 ajax1.0 多了 origin 头信息参数
+- origin 是浏览器自动带过来的
+
+``` js
+let allowHosts = ['baidu.com','taobao.com', 'google.com'];
+if(allowHosts.indexOf(req.headers['origin']) != -1) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+}
+```
+
+- xhr.send(formData)
+- xhr.send(Blob) 二进制数据
+- xhr.send(Buffer) 二进制数据
+
+### chrome浏览器同步提示语
+
+[Deprecation] Synchronous XMLHttpRequest on the main thread is deprecated because of its detrimental effects to the end user's experience.
+不赞成在主线程上的同步使用 XMLHttpRequest，因为它会对最终用户的体验造成不利影响
+
+Failed to load http://localhost:8080/: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'null' is therefore not allowed access.
+服务器返回Access-Control-Allow-Origin头信息就可以进行跨域
+
+### jsonp 跨域
+

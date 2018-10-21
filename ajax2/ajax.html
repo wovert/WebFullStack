@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ajax2.0</title>
+  <script>
+    window.onload = function(){
+      var btnObj = document.getElementById('btn-1');
+      var photoObj = document.getElementById('photo');
+      var photoBtnObj = document.getElementById('photo-btn');
+      
+      photoBtnObj.onclick = function(){
+        photoObj.click();
+      }
+      
+      photoObj.onchange = function(){
+        btnObj.click();
+      }
+
+      btnObj.onclick = function() {
+        var formData = new FormData();
+        
+        // formData.set('a', 16);
+        // formData.set('b', 2);
+
+        // 发送数组数组
+        formData.append('arr[]', 5);
+        formData.append('arr[]', 10);
+
+        // 给formData对象添加<input>标签,注意与input标签的ID一致
+        console.log(photoObj);
+        formData.set('photo',  photoObj.files[0]);
+
+        var xhr = new XMLHttpRequest();
+        // false: 同步
+        // xhr.open('get', '1.php?a=12&b=6', true);
+
+
+        // 上传文件完成
+        xhr.upload.onload = function(){
+          console.log('上传完成');
+        }
+
+        // 进度变化
+        xhr.upload.onprogress = function(ev){
+          console.log(ev.loaded + '/' + ev.total);
+        }
+
+        // 请求接口抛弃 GET
+        // GET问题：会有缓存，数据量少
+        xhr.open('post', '1.php', true);
+        xhr.send(formData);
+
+
+        xhr.onreadystatechange = function() {
+          if(xhr.readyState == 4) {
+            console.log(xhr.status);
+            if((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+              alert(xhr.responseText);
+            } else {
+              alert('Error');
+            }
+
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <input type="file" name="photo" id="photo" style="display:none">
+  <button id="photo-btn">上传图像</button>
+  <input type="button" value="ajax请求" id="btn-1">
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CORS</title>
+  <script>
+      window.onload = function(){
+        var btnObj = document.getElementById('btn-1');
+  
+        btnObj.onclick = function() {
+          var formData = new FormData();
+          
+          // formData.set('a', 16);
+          // formData.set('b', 2);
+  
+          // 发送数组数组
+          formData.append('arr[]', 5);
+          formData.append('arr[]', 10);
+  
+  
+          var xhr = new XMLHttpRequest();
+  
+          if(xhr.upload) {
+            console.log('ajax2.0');
+          } else {
+            console.log('ajax1.0');
+          }
+    
+          // 请求接口抛弃 GET
+          // GET问题：会有缓存，数据量少
+          xhr.open('post', 'http://localhost:8080/', true);
+          xhr.send(formData);
+  
+  
+          xhr.onreadystatechange = function() {
+            if(xhr.readyState == 4) {
+              if((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+                alert(xhr.responseText);
+              } else {
+                alert('Error');
+              }
+  
+            }
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <input type="button" value="ajax请求" id="btn-1">
+  </body>
+  </html>
