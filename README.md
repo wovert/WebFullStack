@@ -470,6 +470,13 @@ ES5文件: dist/1.js
 - canvas
 - File - 拖拽、读取
 
+### drop
+
+- FileReader
+- reader.onload = function(){}
+- reader.onerror = function(){}
+- reader.readAs[Text/DataURL/ArrayBuffer/BinarySTring]
+
 ### geolocation - 定位
 
 - PC: 通过IP地址获取定位
@@ -526,6 +533,30 @@ this.onmessage = function(e) {
 #### 缺点
 
 - 不能执行任何 UI 操作；子进程只能执行计算型任务
+
+### canvas
+
+1. 性能高-大型动画或游戏
+2. 画图
+
+- getContext('2d'); 图像上下文接口
+- beginPath()
+- closePath()
+- moveTo()
+- lineTo()
+- stroke()
+- strokeStyle
+- lineWidth
+- fill
+- fillStyle
+
+- shape
+  - rectangle 矩形
+    - 路径画法：rect(x,y,w,h)
+    - 直接出图：storkRect(), fillRect()
+    - ????
+  -  arc 弧形
+    -
 
 ## 数据交互
 

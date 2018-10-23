@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body{background:#000;text-align:center;}
+    #cv{background:#fff;style="border:2px solid #eee;}
+  </style>
+  <script>
+    window.onload = function(){
+      let o = document.getElementById('cv');
+      let gd = o.getContext('2d');
+
+      // 路径操作，与 PS 选取相似
+      gd.moveTo(100, 100); // 起点
+      gd.lineTo(300, 200); // 画线到坐标300，200
+      gd.lineTo(130, 350);
+      //gd.lineTo(100, 100); 
+      
+      gd.closePath(); // 闭合路径
+
+      gd.lineWidth =  20; // 描边大小
+      gd.strokeStyle = "red";    //设定描边颜色为红色，只要写在.stroke()方法前面即可
+      gd.stroke();
+
+      gd.fillStyle = "rgba(255,255,0,0.5)"; // 填充颜色
+      gd.fill();
+      
+      gd.beginPath(); // 清除之前的所有路径
+
+      gd.moveTo(400,400);
+      gd.lineTo(500, 500);
+      gd.strokeStyle = 'green';
+      gd.stroke();
+
+    }
+  </script>
+</head>
+<body>
+  <canvas id="cv" width="800" height="600">
+    您的浏览器不持支canvas, 请<a href="http://chrome.google.com">下载最新版本浏览器</a>
+  </canvas>
+</body>
+</html>

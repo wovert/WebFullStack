@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div{width:400px;height:300px;background:#ccc;border:1px solid #000;text-align:center;line-height:300px}
+  </style>
+</head>
+<body>
+  <div id="t">拖到这里上传</div>
+  <div>
+    <ul id="data-list">
+      <li><img src="" id="target" /></li>
+    </ul>
+  </div>
+  <script>
+    window.onload = function(){
+      var oDiv = document.getElementById('t');
+
+      // dropenter 目标区域被拖拽文件触碰时触发
+      oDiv.addEventListener('dragenter', function(){
+        console.log('test');
+        oDiv.innerHTML = '请松手';
+      }, false)
+
+      // dropleave 目标区域被拖拽文件触碰后离开时触发
+      oDiv.addEventListener('dragleave', function(){
+        oDiv.innerHTML = '拖到这里上传';
+      }, false)
+
+
+      oDiv.addEventListener('dragover', function(e){
+        e.preventDefault();
+      }, false)
+
+      oDiv.addEventListener('drop', function(e){
+        // 取消拖拽文件打开
+        e.preventDefault();
+
+        alert(e.dataTransfer.files.length);
+
+        let f = e.dataTransfer.files[0];
+
+        console.log(f);
+
+        
+        // 松手以后操作
+        let reader = new FileReader();
+        
+        // 读取完毕之后
+        reader.onload = function(){
+          alert('读取成功');
+
+          // 显示文件内容
+
+          //document.getElementById('target').setAttribute('src', this.result);
+          console.log(this.result); // ajax2.0 send(this.result)
+        }
+        reader.onerror = function(){
+          alert('读取失败了');
+        }
+
+        reader.readAsBinaryString(f); // 二进制文本(用于网络传输)
+
+
+
+      }, false)
+    }
+
+    </script>
+</body>
+</html>
