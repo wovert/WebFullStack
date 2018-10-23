@@ -559,6 +559,14 @@ this.onmessage = function(e) {
 - font
   - baseline 极限(ac/d底部对齐，但g不对齐)
 
+- canvas 属性设置决定图像大小；CSS样式决定图像显示大小（图像会拉伸）
+- canvas 图像画完了之后会固定，不能修改（canvas不会保存任何图形信息）
+  - 动画：插了重画
+  - canvas 没有事件
+- gd.clearRect(0, 0, o.width, o.height); // 删除整个画布，删除一个像素与删除几万像素一样
+
+
+
 ## 数据交互
 
 - [http 协议](https://tools.ietf.org/rfc/rfc2616.txt)

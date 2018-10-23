@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {background:black;text-align:center;}
+    #c1{background:#fff}
+  </style>
+  <script>
+    window.onload = function(){
+      let o = document.getElementById('c1');
+      let gd = o.getContext('2d');
+
+      let cx=400, cy=300, r=200;
+
+      o.onmousemove = function(e){
+
+        let a = e.offsetX - cx;
+        let b = e.offsetY - cy;
+        let dis = Math.sqrt(a*a + b*b);
+        
+        //gd.clearRect(0, 0, o.width, o.height); 
+
+        gd.beginPath();
+        gd.arc(cx, cy, r, 0, 2*Math.PI, true);
+
+        //console.log(dis <= r);
+
+        if(dis <= r) {
+          gd.fillStyle = '#ff0';
+        } else {
+          gd.fillStyle = '#ccc';
+        }
+        gd.fill();
+
+      }
+    }
+  </script>
+</head>
+<body>
+  <canvas id="c1" width="800" height="600"></canvas>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {background:white;text-align:center;}
+    #c1{background:#fff}
+  </style>
+  <script>
+    window.onload = function(){
+      let o = document.getElementById('c1');
+      let gd = o.getContext('2d');
+
+      let l = 50;
+      setInterval(function(){
+        // gd.clearRect(l-1,50-1,100+2,70+2); // 考虑边框
+        gd.clearRect(0, 0, o.width, o.height); // 删除整个画布，删除一个像素与删除几万像素一样
+        l+=5;
+        gd.strokeRect(l,50,100,70);
+
+      }, 16);
+    }
+  </script>
+</head>
+<body>
+  <canvas id="c1" width="800" height="600"></canvas>
+</body>
+</html>
