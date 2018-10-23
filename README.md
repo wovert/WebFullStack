@@ -554,9 +554,10 @@ this.onmessage = function(e) {
   - rectangle 矩形
     - 路径画法：rect(x,y,w,h)
     - 直接出图：storkRect(), fillRect()
-    - ????
-  -  arc 弧形
-    -
+  - arc 弧形
+    - arc(x,y,r,startAg,endAg,是否为逆时针)
+- font
+  - baseline 极限(ac/d底部对齐，但g不对齐)
 
 ## 数据交互
 

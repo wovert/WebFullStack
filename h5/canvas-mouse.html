@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body{background:#000;text-align:center;}
+    #cv{background:#fff;style="border:2px solid #eee;}
+  </style>
+  <script>
+    window.onload = function(){
+      let o = document.getElementById('cv');
+      let gd = o.getContext('2d');
+
+      let lastX, lastY;
+      o.onmousedown = function(e){
+        //gd.moveTo(e.pageX, e.pageY); // 鼠标相对于浏览器
+        //gd.moveTo(e.offsetX, e.offsetY); // 鼠标相对于当前元素
+        lastX = e.offsetX;
+        lastY = e.offsetY;
+
+        o.onmousemove = function(e){
+          gd.moveTo(lastX, lastY);
+          // gd.lineTo(e.pageX, e.pageY);
+          gd.lineTo(e.offsetX, e.offsetY);
+          lastX = o.offsetX;
+          lastY = o.offsetY;
+          gd.stroke();
+        }
+
+        o.onmouseup = function(){
+          o.onmouseout = null;
+          o.onmousemove = null;
+        }
+
+      }
+
+
+    }
+  </script>
+</head>
+<body>
+  <canvas id="cv" width="800" height="600">
+    您的浏览器不持支canvas, 请<a href="http://chrome.google.com">下载最新版本浏览器</a>
+  </canvas>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>canvas-shape</title>
+  <style>
+    body{background:#000;text-align:center;}
+    #cv{background:#fff;style="border:2px solid #eee;}
+  </style>
+  <script>
+    window.onload = function(){
+      let o = document.getElementById('cv');
+      let gd = o.getContext('2d');
+
+      // 路径操作：画矩形 x,y,w,h
+      gd.rect(100,100, 400, 400);
+      gd.stroke();
+      
+      gd.strokeStyle = 'red';
+      gd.strokeRect(100,100,100,100);
+      
+      gd.fillStyle = 'green';
+      gd.fillRect(300,300,200,200);
+
+      // 弧 arc(x,y,r,starAg,endAg,是否为逆时针)
+      gd.strokeStyle = 'pink';
+      gd.closePath();
+      // 角度 0-360角度
+      // 弧度 2PI弧度
+      // 公式：360读=2PI弧度
+      // 公式：1读=PI/180, 1弧度=180/PI度
+      gd.arc(200,200,100, 0*Math.PI/180, 90*Math.PI/180, false);
+      gd.stroke();
+
+      gd.font = '100px 宋体';
+      gd.strokeText('ABC', 0, 130);
+      gd.fillText('DEF', 0, 200);
+
+      
+    }
+  </script>
+</head>
+<body>
+  <canvas id="cv" width="800" height="600">
+    您的浏览器不持支canvas, 请<a href="http://chrome.google.com">下载最新版本浏览器</a>
+  </canvas>
+</body>
+</html>
