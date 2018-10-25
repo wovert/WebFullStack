@@ -470,6 +470,23 @@ ES5文件: dist/1.js
 - canvas
 - File - 拖拽、读取
 
+### 结构标签
+
+- header
+- nav
+- section
+- main
+- aside
+- article
+- footer
+- figure
+  - figcaption
+- hgroup
+- dialog
+- samp(定义范例计算机代码)， 样品
+
+- ul>li>img(轮播图，涉及到版权问题，所以放到li 标签。li 标签对于引擎不易于搜索)
+
 ### drop
 
 - FileReader
@@ -564,6 +581,19 @@ this.onmessage = function(e) {
   - 动画：插了重画
   - canvas 没有事件
 - gd.clearRect(0, 0, o.width, o.height); // 删除整个画布，删除一个像素与删除几万像素一样
+
+- 修改-交互-事件
+  - svg
+  - 库
+
+- canvas 变换
+  - rotate (画布的左上角位中心旋转)
+    - 技巧：图像画在画布的左上角为中心
+  - translate
+  - scale
+
+- 图片
+- 图形对象
 
 
 
