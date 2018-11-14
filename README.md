@@ -1,5 +1,39 @@
 # Web Full-Stack
 
+## 常用软件
+
+- 编辑器：atom(插件)、Visual Studio Code、Sublime
+  - atom
+    - Ctrl+Shift+p -> install Packages
+      - language-vue
+      - markdown-preview-plush
+        - Ctrl+Shift+m 打开预览
+      - linter
+      - script
+      - ternimal-plush 命令行工具
+
+- 服务器：CentOS、Ubuntu
+  - wamp、xampp、lnmp
+  - putty、xshell
+  - winSCP(Mac:yummy FtP, Linux:ssh)
+- 设计：PS、SkecpUP、AI
+- 手机虚拟机：夜深模拟器
+- 数据库GUI：Navicat for mysql
+- 虚拟机：VMware、VirtualBox
+- 浏览器：Chrome/Firefox
+- Windows: TortoiseSVN(Mac: SnailSVN, Linux:yum/apt)
+- git for windows(Mac:git-scm, Linux:yum/apt)
+- NodeJS v8.*
+- phonegap-cli(npm安装phonegap-v6.5.2) 不要安装最新版本
+- APIClound Studio 2
+- MongoDB
+
+## markdown
+
+|name|age|gender|
+|---|---|--|
+|Alice|20|male|
+
 ## http
 
 - GET 方式：有缓存
@@ -23,40 +57,6 @@
 1. 强制 https
 2. 性能更高-面向流(比面向字符更好)、头压缩、多路复用(多个请求走一个连接)
 3. 双向通信-服务器推送(自带websocket)
-
-## 常用软件
-
-- 编辑器：atom(插件)、Visual Studio Code、Sublime
-  - atom
-    - Ctrl+Shift+p -> install Packages
-      - language-vue
-      - markdown-preview-plush
-        - Ctrl+Shift+m 打开预览
-      - linter
-      - script
-      - ternimal-plush 命令行工具
-
-- 服务器：CentOS、Ubuntu
-  - wamp、xampp、lnmp
-  - putty、xshell
-  - winSCP(Mac:yummy FtP, Linux:ssh)
-- 设计：PS、SkecpUP、AI
-- 手机虚拟机：夜深模拟器
-- 数据库GUI：Navicat for mysql
-- 虚拟机：VMware、VirtualBox
-- 浏览器：Chrome/Firefox
-- TortoiseSVN(Mac: SnailSVN, Linux:yum/apt)
-- git(Mac:git-scm, Linux:yum/apt)
-- NodeJS
-- phonegap-cli(npm安装phonegap-v6.5.2) 不要安装最新版本
-- APIClound Studio 2
-- MongoDB
-
-## markdown
-
-|name|age|gender|
-|---|---|--|
-|Alice|20|male|
 
 ## node
 
