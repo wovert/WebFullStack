@@ -1,5 +1,30 @@
 # Web Full-Stack
 
+## 全栈
+
+- Front-end
+- 移动端(App)
+- 混合(Hybrid App)
+- 后台(API)
+- 数据库
+- 工具(Webpack)
+- 部署
+- Linux
+- 版本
+- 英文文档
+- ...
+
+1. 基础知识：ES6/ES7、HTML5/CSS3、数据交互 ...
+2. 移动端：布局、touch、库
+3. 图形：canvas、SVG/VML、Raphael、d3、echarts、WebGL ...
+4. 游戏
+5. 工具：版本控制、编译、打包、脚手架 ...
+6. 后台：Node、express、KOA、爬虫 ...
+7. 混合开课
+8. 微信：公号、小程序
+9. 三大框架：angular、vue、react
+10. 数据结构、算法、设计模式
+
 ## 常用软件
 
 - 编辑器：atom(插件)、Visual Studio Code、Sublime
@@ -30,9 +55,42 @@
 
 ## markdown
 
+``` markdown
+# 一级标题
+## 二级标题
+- 列表1
+- 列表2
+
+1. 有序1
+2. 有序2
+
+> 引用
+
+**加粗**
+
 |name|age|gender|
 |---|---|--|
 |Alice|20|male|
+
+```
+
+## 版本管理
+
+- svn：中心服务器
+  - SVN Checkout: 拉去远程项目
+  - SVN Commit: 推送到中心服务器
+  - SVN Update: 拉去中心服务器最新版本
+- git: 去中心化
+  - clone
+  - add/commit/push
+  - pull
+
+## 编译和打包
+
+- 编译：ES6 -> ES5 (babel工具)
+- 打包：grunt, gulp (万能) => webpack(流行)
+  - 编译：babel, browserify (模块打包)
+  - 同步：browser-sync
 
 ## http
 
