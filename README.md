@@ -147,125 +147,6 @@
 # cnpm i -g phonegap@6.5.2
 ```
 
-### promise
-
-> 同步的方式编写异步
-
-``` js
-  let p = new Promise(function(resolve, reject){
-    $.ajax({
-      ur: 'arr.txt',
-      dataType: 'json',
-      success(arr) {
-        resolve(arr);
-      },
-      error(err) {
-        reject(err);
-      }
-    })
-  });
-
-  p.then(
-    function(arr){
-      console.log(arr)
-    },
-    function(){
-      console.log('失败')
-    }
-  );
-
-
-  // 多个异步加载， &关系
-  Promise.all([$.ajax({/*...*/}), $.ajax({/*...*/})]).then(results=>{
-    // 对了
-  },
-  err => {
-    // 错了
-  })
-
-  // 竞速关系,谁先得到就直接返回
-  Promise.race([
-    $.ajax({url: 'http://doamin1.com/data/users'}),
-    $.ajax({url: 'http://doamin2.com/data/users'}),
-    $.ajax({url: 'http://doamin3.com/data/users'}),
-    $.ajax({url: 'http://doamin4.com/data/users'})
-  ]);
-```
-
-### generator
-
-> generator:生成器, generate: 生成, generator 函数中间可以停
-
-``` js
-function *show() {
-  console.log(1);
-  let i = yield 20; // yield 返回
-  console.log(2);
-  console.log(i);
-}
-let o = show();
-let r = o.next(12); // 1 传参
-o.next(5); // 2, 5
-console.log(r); // 20
-```
-
-``` javascript
-function *show() {
-  ...
-  let data1 = yield $.ajax('a.txt');
-  ....
-  let data2 = yield $.ajax('b.txt');
-  ....
-}
-```
-
-### runner
-
-``` shell
-安装runner模块
-# cnpm search yield-runner-blue
-# cd project_name
-# cnpm i yield-runner-blue
-```
-
-官方版runner的 **async_await**, ES7版本中新增了 async 和 await
-
-- Promise 本质：等待异步操作结束；
-- generator 本质：无感处理异步操作
-- async本质：官网 runner
-
-``` javascript
-runner(function *(){
-  ...
-  let res1 = yield 异步操作;
-  ...
-  let res2 = yield 异步操作;
-});
-
-(async ()=>{
-  let res1 = await 异步操作;
-  ...
-  let res2 = await 异步操作;
-})()
-
-```
-
-- [runner用法](./es6/runner.html)
-- [async/wait用法](./es6/async_await.html)
-
-### json
-
-> 必须使用双引号
-
-``` javascript
-encodeURIComponent(JSON.stringify({a:12,b:5})) // json对象转换字符串
-decodeURIComponent(JSON.parse('{"a":12,"b":5}')) // 字符串转换json对象
-```
-
-- JSON简写
-  - key和value值一样，可以仅留一个
-  - 方法：删除 `:function`
-
 ## 模块化
 
 模块=元件=组件
@@ -278,9 +159,14 @@ decodeURIComponent(JSON.parse('{"a":12,"b":5}')) // 字符串转换json对象
 - NodeJS模块化
 - ES6模块化
 
+- 打包、编译
+  - ES6 => ES5 编译, babel
+  - 打包 => browserify, 1.js/2.js/3.js => bundle.js
+  - 压缩 => 163k => 32k
+
 ### 如何使用 sea.js
 
-``` shell
+``` sh
 安装seajs
 # bower i seajs
 ```
