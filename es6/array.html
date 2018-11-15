@@ -36,7 +36,27 @@
     })
     console.log(avg) // 54.6375
 
+    // from
+    let divObjs = document.getElementsByTagName('div')
+    console.log(divObjs) // divObjs 是 HTMLCollection 集合对象
+
+    // Array.from(HTMLCollection)
+    Array.from(divObjs).forEach(div=>{
+      div.style.background = 'yellow';
+    })
+
   } 
 </script>    
+<style>
+div {
+  width: 100px;
+  height: 100px;
+}
+</style>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
 </body>
 </html>

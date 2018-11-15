@@ -139,7 +139,65 @@ let avg = arr.reduce((tmp, item, index) => {
   return (tmp + item)/arr.length
 })
 console.log(avg) // 54.6375
+```
 
+## JSON
+
+``` js
+let a = 12
+let b = 5
+let json = {a,b}
+
+// ES6
+let json = {
+  a,
+  b,
+  show() {}  
+}
+json.show()
+```
+
+## 字符串
+
+- `字符串模板${v}`
+  - 植入变量，任意折行
+- startsWith()
+- endsWith()
+
+## 面向对象
+
+``` js
+class Animal {
+  constructor(name,age) {
+    this.name = name;
+    this.age = age;
+  }
+}
+class Person extends Animal {
+  constructor(name,age,level) {
+    super(name,age);
+    this.level = level;
+  }
+  showName() {
+    return this.name;
+  }
+}
+let p = new Persion('Alice',20);
 
 ```
+
+面向对象实例
+
+``` sh
+# bower install react
+# bower install babel
+```
+
+- 普通函数：根据调用所在环境(this变化)
+- 箭头函数：根据所在的环境(this恒定)
+
+- class/contructor/super/extends
+- bind(对象) 绑定对象
+
+- [OOP对象示例](./oop.html)
 

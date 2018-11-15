@@ -147,37 +147,6 @@
 # cnpm i -g phonegap@6.5.2
 ```
 
-## ES6兼容性和新特性
-
-### ES6兼容性
-
-- [ES5兼容性](http://kangax.github.io/compat-table/es5/)
-- [ES6兼容性](http://kangax.github.io/compat-table/es6/)
-
-- ES6(ES2015) - IE10+ | Chrome | Firefox | 移动端 | NodeJS
-
-### 编译、转换
-
-1. 在线转换
-2. 提前编译
-
-babel==broswer.js
-
-
-
-### 数组
-
-- map 映射
-- reduce 汇总
-- filter 过滤器
-- forEach 迭代
-
-### 字符串
-
-- startsWith()
-- endsWith()
-- `字符串模板${v}`
-
 ### promise
 
 > 同步的方式编写异步
@@ -283,35 +252,6 @@ runner(function *(){
 
 - [runner用法](./es6/runner.html)
 - [async/wait用法](./es6/async_await.html)
-
-### 面向对象
-
-``` javascript
-class Animal {
-  constructor(name,age) {
-    this.name = name;
-    this.age = age;
-  }
-}
-class Person extends Animal {
-  constructor(name,age,level) {
-    super(name,age);
-    this.level = level;
-  }
-  showName() {
-    return this.name;
-  }
-}
-let p = new Persion('Alice',20);
-
-```
-
-面向对象实例
-
-``` shell
-# bower install react
-# bower install babel
-```
 
 ### json
 
