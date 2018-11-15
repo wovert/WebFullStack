@@ -163,21 +163,7 @@
 
 babel==broswer.js
 
-## let/const
 
-### 箭头函数
-
-- 只有一个函数参数可以省略()
-- 只有一个return语句可以省略{}
-
-### 函数参数
-
-- 参数扩展/展开，必须放在最后一个参数位置上
-  - 参数扩展：func(1,2,3);function func(..args){} 剩余参数数组
-  - 参数展开：let arr=[1,2,3];func(...arr);
-- 默认参数
-  - `function f(a=1,b=2,c=3){...}`
-  - `$('#div').animate({width:'200px}, 1000)`
 
 ### 数组
 
