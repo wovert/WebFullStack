@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script>
+    function *show(){
+      alert('aaa');
+
+      let a=yield;
+
+      alert('bbb'+a);
+    }
+
+    let gen=show();
+
+    gen.next();
+
+    gen.next(12);
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>
