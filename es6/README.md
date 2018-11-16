@@ -243,8 +243,9 @@ let p = new Persion('Alice',20);
 
 
   // 多个异步加载， &关系
-  Promise.all([$.ajax({/*...*/}), $.ajax({/*...*/})]).then(results=>{
+  Promise.all([$.ajax({/*...*/}), $.ajax({/*...*/})]).then(arr=>{
     // 对了
+    let [res1, res2] = ar
   },
   err => {
     // 错了

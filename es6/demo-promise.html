@@ -32,8 +32,10 @@
   );
 
   // 多个异步加载
-  Promise.all([$.ajax({/*...*/}), $.ajax({/*...*/})]).then(results=>{
+  Promise.all([$.ajax({/*...*/}), $.ajax({/*...*/})]).then(arr=>{
     // 对了
+    let [res1, res2] = arr
+    
   },
   err => {
     // 错了
