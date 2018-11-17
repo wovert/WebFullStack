@@ -129,6 +129,8 @@
 
 - node_moudles/下载的包
 
+`$ npm install -g cnpm --registry=https://registry.npm.taobao.org`
+
 ### bower
 
 > 前台包管理器
@@ -260,7 +262,6 @@ if(xxxx) {
 
 浏览器访问 demo-import.html, Chrome能访问，IE10-不能访问
 
-
 解决浏览器不支持ES6问题
 # vim package.json
   "scripts": {
@@ -277,7 +278,7 @@ if(xxxx) {
 # cnpm i babel-preset-env --save-dev
 # vim package.json
   
-  开发模式，项目依赖于babel-preset-env 模块
+  开发依赖(工程项目依赖于某模块)，项目依赖于babel-preset-env 模块
   "devDependencies": {
     "babel-preset-env": "^1.7.0"
   }
@@ -288,7 +289,6 @@ if(xxxx) {
 
 ES6文件: src/1.js
 ES5文件: dist/1.js
-
 ```
 
 #### babel-preset-env
@@ -323,7 +323,78 @@ ES5文件: dist/1.js
 
 ```
 
+- polyfill 底片工具
+
 **Webpack 可以解决 babel 不能编译 import 模块文件**
+
+## 数据交互
+
+- 对于服务器来说，区分不出来from还是ajax还是jsonp
+
+- 表单：提交给心情求
+  - GET: 容量小、看得见、有缓存、利于分享和收藏
+  - POST：空量大、看不见、不缓存
+- ajax：不用刷新（节约带宽）
+  - 默认不能跨域
+  - 跨域设置限制
+  - 单向通信
+    - 只能客户端向服务端请求
+- jsonp
+  - 跨域；安全性太差
+- WebSocket
+  - 性能高
+  - 直接跨域
+  - 双向通信
+    - 客户端与服务端互相通信
+
+- http 1.0: 一次性链接
+- http 1.1 保持链接，性能提升
+- http 2.0
+  - 强制 https
+  - 自带双向通信
+  - 多路复用
+
+- TCP：传输控制协议（文件下载、聊天）
+  - 1.保证到达
+  - 2.保证质量
+  - 3.保证顺序
+
+- UDP： 用户数据包协议（对质量没有绝对要求，对延迟有很高的要求，IP电话，视频直播）
+  - 1.不保证到达
+  - 2.不保证质量
+  - 3.不不保证顺序
+
+``` js
+const $ = document.querySelectorAll.bind(document)
+window.onlaod = function() {
+  let f = $('#form')[0] 
+}
+
+// onreadystatechange => on ready state change 当通信状态变化
+// 0： 初始化-刚刚创建
+// 1: 已连接
+// 2: 已发送
+// 3: 已接受-头
+// 4: 已接受-body
+
+/*
+ http 状态码
+
+1xx 消息
+2xx 成功
+3xx 重定向
+  301 永久重定向 - 浏览器永远不会再次请求老的地址
+  302 临时重定向 - 浏览器还会请求老的地址
+  304 缓存（请求资源在客户端进行缓存）
+4xx 请求错误（客户端）
+  404 Not Found
+5xx 服务端错误
+6xx
+
+重定向：给浏览器下命令，让浏览器的请求另一个地池-地址是变的
+转发：在服务器内部，把请求转交给另一个模块处理；对客户端不可见；地址不变，在服务器内部完成的
+*/
+```
 
 ## HTML5
 
@@ -434,8 +505,6 @@ this.onmessage = function(e) {
   - 动画：插了重画
   - canvas 没有事件
 - gd.clearRect(0, 0, o.width, o.height); // 删除整个画布，删除一个像素与删除几万像素一样
-
-
 
 ## 数据交互
 
