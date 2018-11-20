@@ -56,3 +56,39 @@ nodeJS作为中间层服务器，我想问为啥传统前端直接可以直接�
 怎么代理跨域啊——反向代理
 
 Node 只能用单cpu 是不是也是缺点——多进程
+
+- 浅拷贝-复制一层
+- 深拷贝-复制所有层
+
+## Node模块
+
+1. http模块
+2. 断言——assert
+3. 二进制——Buffer; File System
+4. C++ Addons - N-API
+5. 多进程: Child Processes/Cluster/Process
+6. Crypto——签名: md5、sha
+7. http: HTTP/HTTPS, HTTP/2
+8. OS
+9. Path
+10. Events事件队列; async
+11. Query Strings; URL
+12. 网络: TCP-稳定  Net, UDP-快, UDP/Datagram
+13. 域名解析: DNS, Domain
+14. 流操作——Stream; 连续数据都是流——视频流、网络流、文件流、语音流
+15. TLS/SSL; 加密、安全
+16. ZLIB——gz; 压缩
+
+## 如何理解进程和线程
+
+1. 进程
+2. 线程
+
+- 进程拥有独立的执行空间、存储
+- 同一个进程内的所有线程共享一套空间、代码
+
+- 多进程   成本高(慢)；安全(进程间隔离)；进程间通信麻烦；写代码简单
+- 多线程   成本低(快)；不安全(线程要死一块死)；线程间通信容易；写代码复杂
+
+- 多进程   慢、简单、安全     PHP、Node
+- 多线程   快、复杂、脆弱     Java、C
