@@ -1,9 +1,7 @@
 <?php
-  // echo $_REQUEST['a'] + $_REQUEST['b'];
- 
-  // print_r($_REQUEST['arr']);
 
-  print_r($_FILES['photo']);
+$result=$_GET['a']+$_GET['b'];
 
+echo "{\"result\":".$result."}";
 
 ?>
