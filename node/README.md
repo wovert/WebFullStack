@@ -189,9 +189,7 @@ p2=Null;  //还剩0个
 ### 重新发布程序后，浏览器每次需要ctrl+r来强制刷新，如何做到F5刷新就可以获取最新资源呢？
 
 1. 后台配置
-2. <script src="a.js?t=2018012323"></script>
-
-a.php?user=xxx&pass=123456
+2. `<script src="a.js?t=2018012323"></script>`
 
 ### 服务器的缓冲池怎么理解
 
@@ -222,3 +220,9 @@ a.php?user=xxx&pass=123456
   - 容灾特别强
 - NoSQL   没有复杂的关系、对性能有极高的要求
 - redis、memcached、hypertable、bigtable
+
+### 表单的 POST
+
+1. `text/plain` 纯文本
+2. `application/x-www-form-urlencoded` 默认, name=value&xxx=xxx
+3. `multipart/form-data`  上传文件内容
