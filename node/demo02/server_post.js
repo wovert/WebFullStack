@@ -1,7 +1,7 @@
 const http = require('http');
 const common = require('./libs/common');
 const fs = require('fs');
-// const uuid = require('uuid/v4');
+const uuid = require('uuid/v4');
 
 let server = http.createServer((req, res) => {
   let arr = [];
@@ -11,12 +11,12 @@ let server = http.createServer((req, res) => {
   });
 
   req.on('end', () => {
+
+    // data 二进制数据
     let data = Buffer.concat(arr);
-
-    console.log(data.toString());return;
-
-    //data
-    //解析二进制文件上传数据
+    
+    // data
+    // 解析二进制文件上传数据
     let post = {};
     let files = {};
     if(req.headers['content-type']) {
@@ -68,6 +68,7 @@ let server = http.createServer((req, res) => {
             filename = filename.split('=')[1];
             filename = filename.substring(1,filename.length-1);
 
+            // 不重复的文件名
             let path = `upload/${uuid().replace(/\-/g, '')}`;
 
             fs.writeFile(path, content, err => {

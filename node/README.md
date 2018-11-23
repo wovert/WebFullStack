@@ -226,3 +226,10 @@ p2=Null;  //还剩0个
 1. `text/plain` 纯文本
 2. `application/x-www-form-urlencoded` 默认, name=value&xxx=xxx
 3. `multipart/form-data`  上传文件内容
+
+### uuid
+
+`cnpm install uuid -S -D`
+
+- devDependencies: 开发环境模块 -D --save-dev
+- dependencies: 生产环境模块 -S --save

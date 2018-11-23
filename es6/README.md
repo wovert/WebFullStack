@@ -298,9 +298,9 @@ function *show() {
 
 官方版runner的 **async_await**, ES7版本中新增了 async 和 await
 
-- Promise 本质：等待异步操作结束；
+- Promise 本质：等待异步操作结束
 - generator 本质：无感处理异步操作
-- async本质：官网 runner
+- async 本质：官网 runner
 
 ``` javascript
 runner(function *(){
