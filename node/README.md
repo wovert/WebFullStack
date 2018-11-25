@@ -233,3 +233,57 @@ p2=Null;  //还剩0个
 
 - devDependencies: 开发环境模块 -D --save-dev
 - dependencies: 生产环境模块 -S --save
+
+## http 传输内容类型
+
+- content-type: application/json
+  - {"a": 1, "b": {"c": 2}}
+- content-type: urlencode
+  - encodeURIComponent('{"a":1, "b":{"c":2}}')
+- http content-range 断点续传
+
+## 服务端怎么判断文件类型
+
+1. 为什么要判断-没必要
+2. 简单版：扩展名；较真版：分析文件结构
+
+## 缓存
+
+- 节省带宽费
+- JS不支持多线程
+
+### 第一重要、缓存策略
+
+- Cache-Control： 服务器告诉浏览器是否缓存
+  - no-cacahe： 服务器告诉浏览器不要缓存此页面
+- expires： 缓存可以，但缓存时效是多长时间
+
+### 第二重要、缓存实现过程：
+
+1. 第一次S->C："Last-Modified: Sat, 02 Dec 2017 04:03:14 GMT"
+2. 第二次C->S："If-Modified-Since: Sat, 02 Dec 2017 04:03:14 GMT"
+3. 第二次S->C：200 || 304
+
+- 服务端擅长使用秒
+- 客户端JS使用毫秒
+  - 可能出现误差，所以服务端毫秒转换为秒计算
+
+19.5K * 1024 = 19968
+90
+
+- writeHeader 直接输出，setHeader 还没有输出，先设置信息
+- writeHeader 之后再设置 SetHeader 会报错
+
+## 多进程
+
+- 多线程：性能高；复杂，考验程序员
+- 多进程：性能略低，简单、对程序员要求低
+
+- Node.js 默认：单进程、单线程
+  - 实现多进程
+
+- 主进程：负责派生子进程（cluster模块）
+- 子进程：干活(process模块)
+
+## 数据库
+
