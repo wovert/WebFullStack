@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="jquery.js" charset="utf-8"></script>
+    <script src="runner.js" charset="utf-8"></script>
+    <script>
+    function *show(){
+      let data1=yield $.ajax({url: '1.txt', dataType: 'json'});
+
+      if(data1.a+data1.b<10){
+        let date2=yield $.ajax({url: '2.txt', dataType: 'json'});
+
+        alert('a');  //12
+      }else{
+        let data3=yield $.ajax({url: '3.txt', dataType: 'json'});
+
+        alert('b');  //blue
+      }
+    }
+
+    runner(show);
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

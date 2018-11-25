@@ -1,0 +1,17 @@
+{
+  "name": "2018-1-25",
+  "version": "0.0.1",
+  "description": "the first time use npm service, just a test",
+  "main": "server_post.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "blue",
+  "license": "ISC",
+  "devDependencies": {
+    "uuid": "^3.2.1"
+  },
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}

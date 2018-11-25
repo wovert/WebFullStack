@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+  window.onload = function(){
+    let [a,b,c] = [1,[2,3]]
+    let {x, yz} = {x:10,yz: {y:11,z:12}}
+
+    console.log(a,b,c)
+    console.log(x,yz)
+
+    // let {a,b } // 非法操作
+    // {a, b} = {a:1, b:2}
+  } 
+</script>
+  <input type="button" value="3">    
+</body>
+</html>

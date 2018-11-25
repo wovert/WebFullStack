@@ -1,5 +1,97 @@
 # Web Full-Stack
 
+## 全栈
+
+- Front-end
+- 移动端(App)
+- 混合(Hybrid App)
+- 后台(API)
+- 数据库
+- 工具(Webpack)
+- 部署
+- Linux
+- 版本
+- 英文文档
+- ...
+
+1. 基础知识：ES6/ES7、HTML5/CSS3、数据交互 ...
+2. 移动端：布局、touch、库
+3. 图形：canvas、SVG/VML、Raphael、d3、echarts、WebGL ...
+4. 游戏
+5. 工具：版本控制、编译、打包、脚手架 ...
+6. 后台：Node、express、KOA、爬虫 ...
+7. 混合开课
+8. 微信：公号、小程序
+9. 三大框架：angular、vue、react
+10. 数据结构、算法、设计模式
+
+## 常用软件
+
+- 编辑器：atom(插件)、Visual Studio Code、Sublime
+  - atom
+    - Ctrl+Shift+p -> install Packages
+      - language-vue
+      - markdown-preview-plush
+        - Ctrl+Shift+m 打开预览
+      - linter
+      - script
+      - ternimal-plush 命令行工具
+
+- 服务器：CentOS、Ubuntu
+  - wamp、xampp、lnmp
+  - putty、xshell
+  - winSCP(Mac:yummy FtP, Linux:ssh)
+- 设计：PS、SkecpUP、AI
+- 手机虚拟机：夜深模拟器
+- 数据库GUI：Navicat for mysql
+- 虚拟机：VMware、VirtualBox
+- 浏览器：Chrome/Firefox
+- Windows: TortoiseSVN(Mac: SnailSVN, Linux:yum/apt)
+- git for windows(Mac:git-scm, Linux:yum/apt)
+- NodeJS v8.*
+- phonegap-cli(npm安装phonegap-v6.5.2) 不要安装最新版本
+- APIClound Studio 2
+- MongoDB
+
+## markdown
+
+``` markdown
+# 一级标题
+## 二级标题
+- 列表1
+- 列表2
+
+1. 有序1
+2. 有序2
+
+> 引用
+
+**加粗**
+
+|name|age|gender|
+|---|---|--|
+|Alice|20|male|
+
+```
+
+## 版本管理
+
+- svn：中心服务器
+  - SVN Checkout: 拉去远程项目
+  - SVN Commit: 推送到中心服务器
+  - SVN Update: 拉去中心服务器最新版本
+- git: 去中心化
+  - clone
+  - add/commit/push
+  - pull
+
+## 编译和打包
+
+- 编译：ES6 -> ES5 (babel工具)
+- 打包：grunt, gulp (万能) => webpack(流行)
+  - 编译：babel, browserify (模块打包)
+  - 同步：browser-sync
+
 ## http
 
 - GET 方式：有缓存
@@ -24,40 +116,6 @@
 2. 性能更高-面向流(比面向字符更好)、头压缩、多路复用(多个请求走一个连接)
 3. 双向通信-服务器推送(自带websocket)
 
-## 常用软件
-
-- 编辑器：atom(插件)、Visual Studio Code、Sublime
-  - atom
-    - Ctrl+Shift+p -> install Packages
-      - language-vue
-      - markdown-preview-plush
-        - Ctrl+Shift+m 打开预览
-      - linter
-      - script
-      - ternimal-plush 命令行工具
-
-- 服务器：CentOS、Ubuntu
-  - wamp、xampp、lnmp
-  - putty、xshell
-  - winSCP(Mac:yummy FtP, Linux:ssh)
-- 设计：PS、SkecpUP、AI
-- 手机虚拟机：夜深模拟器
-- 数据库GUI：Navicat for mysql
-- 虚拟机：VMware、VirtualBox
-- 浏览器：Chrome/Firefox
-- TortoiseSVN(Mac: SnailSVN, Linux:yum/apt)
-- git(Mac:git-scm, Linux:yum/apt)
-- NodeJS
-- phonegap-cli(npm安装phonegap-v6.5.2) 不要安装最新版本
-- APIClound Studio 2
-- MongoDB
-
-## markdown
-
-|name|age|gender|
-|---|---|--|
-|Alice|20|male|
-
 ## node
 
 ``` shell
@@ -70,6 +128,8 @@
 > 后台包管理器
 
 - node_moudles/下载的包
+
+`$ npm install -g cnpm --registry=https://registry.npm.taobao.org`
 
 ### bower
 
@@ -89,199 +149,6 @@
 # cnpm i -g phonegap@6.5.2
 ```
 
-## ES6兼容性和新特性
-
-### ES6兼容性
-
-- [ES5兼容性](http://kangax.github.io/compat-table/es5/)
-- [ES6兼容性](http://kangax.github.io/compat-table/es6/)
-
-- ES6(ES2015) - IE10+ | Chrome | Firefox | 移动端 | NodeJS
-
-### 编译、转换
-
-1. 在线转换
-2. 提前编译
-
-babel==broswer.js
-
-## let/const
-
-### 箭头函数
-
-- 只有一个函数参数可以省略()
-- 只有一个return语句可以省略{}
-
-### 函数参数
-
-- 参数扩展/展开，必须放在最后一个参数位置上
-  - 参数扩展：func(1,2,3);function func(..args){} 剩余参数数组
-  - 参数展开：let arr=[1,2,3];func(...arr);
-- 默认参数
-  - `function f(a=1,b=2,c=3){...}`
-  - `$('#div').animate({width:'200px}, 1000)`
-
-### 数组
-
-- map 映射
-- reduce 汇总
-- filter 过滤器
-- forEach 迭代
-
-### 字符串
-
-- startsWith()
-- endsWith()
-- `字符串模板${v}`
-
-### promise
-
-> 同步的方式编写异步
-
-``` js
-  let p = new Promise(function(resolve, reject){
-    $.ajax({
-      ur: 'arr.txt',
-      dataType: 'json',
-      success(arr) {
-        resolve(arr);
-      },
-      error(err) {
-        reject(err);
-      }
-    })
-  });
-
-  p.then(
-    function(arr){
-      console.log(arr)
-    },
-    function(){
-      console.log('失败')
-    }
-  );
-
-
-  // 多个异步加载， &关系
-  Promise.all([$.ajax({/*...*/}), $.ajax({/*...*/})]).then(results=>{
-    // 对了
-  },
-  err => {
-    // 错了
-  })
-
-  // 竞速关系,谁先得到就直接返回
-  Promise.race([
-    $.ajax({url: 'http://doamin1.com/data/users'}),
-    $.ajax({url: 'http://doamin2.com/data/users'}),
-    $.ajax({url: 'http://doamin3.com/data/users'}),
-    $.ajax({url: 'http://doamin4.com/data/users'})
-  ]);
-```
-
-### generator
-
-> generator:生成器, generate: 生成, generator 函数中间可以停
-
-``` js
-function *show() {
-  console.log(1);
-  let i = yield 20; // yield 返回
-  console.log(2);
-  console.log(i);
-}
-let o = show();
-let r = o.next(12); // 1 传参
-o.next(5); // 2, 5
-console.log(r); // 20
-```
-
-``` javascript
-function *show() {
-  ...
-  let data1 = yield $.ajax('a.txt');
-  ....
-  let data2 = yield $.ajax('b.txt');
-  ....
-}
-```
-
-### runner
-
-``` shell
-安装runner模块
-# cnpm search yield-runner-blue
-# cd project_name
-# cnpm i yield-runner-blue
-```
-
-官方版runner的 **async_await**, ES7版本中新增了 async 和 await
-
-- Promise 本质：等待异步操作结束；
-- generator 本质：无感处理异步操作
-- async本质：官网 runner
-
-``` javascript
-runner(function *(){
-  ...
-  let res1 = yield 异步操作;
-  ...
-  let res2 = yield 异步操作;
-});
-
-(async ()=>{
-  let res1 = await 异步操作;
-  ...
-  let res2 = await 异步操作;
-})()
-
-```
-
-- [runner用法](./es6/runner.html)
-- [async/wait用法](./es6/async_await.html)
-
-### 面向对象
-
-``` javascript
-class Animal {
-  constructor(name,age) {
-    this.name = name;
-    this.age = age;
-  }
-}
-class Person extends Animal {
-  constructor(name,age,level) {
-    super(name,age);
-    this.level = level;
-  }
-  showName() {
-    return this.name;
-  }
-}
-let p = new Persion('Alice',20);
-
-```
-
-面向对象实例
-
-``` shell
-# bower install react
-# bower install babel
-```
-
-### json
-
-> 必须使用双引号
-
-``` javascript
-encodeURIComponent(JSON.stringify({a:12,b:5})) // json对象转换字符串
-decodeURIComponent(JSON.parse('{"a":12,"b":5}')) // 字符串转换json对象
-```
-
-- JSON简写
-  - key和value值一样，可以仅留一个
-  - 方法：删除 `:function`
-
 ## 模块化
 
 模块=元件=组件
@@ -294,9 +161,14 @@ decodeURIComponent(JSON.parse('{"a":12,"b":5}')) // 字符串转换json对象
 - NodeJS模块化
 - ES6模块化
 
+- 打包、编译
+  - ES6 => ES5 编译, babel
+  - 打包 => browserify, 1.js/2.js/3.js => bundle.js
+  - 压缩 => 163k => 32k
+
 ### 如何使用 sea.js
 
-``` shell
+``` sh
 安装seajs
 # bower i seajs
 ```
@@ -390,7 +262,6 @@ if(xxxx) {
 
 浏览器访问 demo-import.html, Chrome能访问，IE10-不能访问
 
-
 解决浏览器不支持ES6问题
 # vim package.json
   "scripts": {
@@ -407,7 +278,7 @@ if(xxxx) {
 # cnpm i babel-preset-env --save-dev
 # vim package.json
   
-  开发模式，项目依赖于babel-preset-env 模块
+  开发依赖(工程项目依赖于某模块)，项目依赖于babel-preset-env 模块
   "devDependencies": {
     "babel-preset-env": "^1.7.0"
   }
@@ -418,7 +289,6 @@ if(xxxx) {
 
 ES6文件: src/1.js
 ES5文件: dist/1.js
-
 ```
 
 #### babel-preset-env
@@ -453,7 +323,78 @@ ES5文件: dist/1.js
 
 ```
 
+- polyfill 底片工具
+
 **Webpack 可以解决 babel 不能编译 import 模块文件**
+
+## 数据交互
+
+- 对于服务器来说，区分不出来from还是ajax还是jsonp
+
+- 表单：提交给心情求
+  - GET: 容量小、看得见、有缓存、利于分享和收藏
+  - POST：空量大、看不见、不缓存
+- ajax：不用刷新（节约带宽）
+  - 默认不能跨域
+  - 跨域设置限制
+  - 单向通信
+    - 只能客户端向服务端请求
+- jsonp
+  - 跨域；安全性太差
+- WebSocket
+  - 性能高
+  - 直接跨域
+  - 双向通信
+    - 客户端与服务端互相通信
+
+- http 1.0: 一次性链接
+- http 1.1 保持链接，性能提升
+- http 2.0
+  - 强制 https
+  - 自带双向通信
+  - 多路复用
+
+- TCP：传输控制协议（文件下载、聊天）
+  - 1.保证到达
+  - 2.保证质量
+  - 3.保证顺序
+
+- UDP： 用户数据包协议（对质量没有绝对要求，对延迟有很高的要求，IP电话，视频直播）
+  - 1.不保证到达
+  - 2.不保证质量
+  - 3.不不保证顺序
+
+``` js
+const $ = document.querySelectorAll.bind(document)
+window.onlaod = function() {
+  let f = $('#form')[0] 
+}
+
+// onreadystatechange => on ready state change 当通信状态变化
+// 0： 初始化-刚刚创建
+// 1: 已连接
+// 2: 已发送
+// 3: 已接受-头
+// 4: 已接受-body
+
+/*
+ http 状态码
+
+1xx 消息
+2xx 成功
+3xx 重定向
+  301 永久重定向 - 浏览器永远不会再次请求老的地址
+  302 临时重定向 - 浏览器还会请求老的地址
+  304 缓存（请求资源在客户端进行缓存）
+4xx 请求错误（客户端）
+  404 Not Found
+5xx 服务端错误
+6xx
+
+重定向：给浏览器下命令，让浏览器的请求另一个地池-地址是变的
+转发：在服务器内部，把请求转交给另一个模块处理；对客户端不可见；地址不变，在服务器内部完成的
+*/
+```
 
 ## HTML5
 
@@ -582,6 +523,7 @@ this.onmessage = function(e) {
   - canvas 没有事件
 - gd.clearRect(0, 0, o.width, o.height); // 删除整个画布，删除一个像素与删除几万像素一样
 
+<<<<<<< HEAD
 - 修改-交互-事件
   - svg
   - 库
@@ -597,6 +539,8 @@ this.onmessage = function(e) {
 
 
 
+=======
+>>>>>>> cc731d7669162449d9f5b4f634c6d0b6dc645abc
 ## 数据交互
 
 - [http 协议](https://tools.ietf.org/rfc/rfc2616.txt)

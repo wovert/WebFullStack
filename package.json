@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "mysql": "^2.16.0"
+  },
+  "dependencies": {
+    "bower": "^1.8.4"
   }
 }
