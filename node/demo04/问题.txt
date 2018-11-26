@@ -1,0 +1,75 @@
+能讲下页面的渲染吗？下载，解析，渲染和绘制等等，今天看了下，不是胎动？
+1.下载——数据加载过来
+2.渲染==绘制——把页面的东西显示出来
+
+渲染——慢：
+1.页面东西多
+2.图片
+3.DOM操作
+
+
+cluster多进程那个示例程序在没有创建服务器之前只是输出一个打印语句时 为什么执行体都执行完了 程序挂起没结束
+主进程等待子进程
+
+link的样式表和外部js文件，感觉是读的本地缓存，但是状态码显示200，不显示304呢
+
+2. 老师介绍一下用户操作行为对浏览器缓存行为的影响，如果第二次请求不是通过F5，而是通过打开一个新的标签页发起，浏览器并没有发起一个协商请求，而是直接从缓存中拉取的数据
+
+缓存策略：
+1.url变了，不缓存
+2.标准——每次都要请求服务器
+3.服务器配置
+
+
+使用zlib压缩，如果页面中有引用到音视频类文件，是不是还需要别的处理？因为我尝试在引用了一个mp4的页面中 开启zlib压缩，会报错。
+
+
+我发现 谷歌浏览器已经缓存了 提示 from memery cache，但还显示200，
+Chrome——dev-tools
+
+
+老师，如何下载点播blog:http//…视频
+
+
+我看下面有个connection.connect(function(err) { if (err) {　 console.error('error connecting: ' + err.stack);　 return; } console.log('connected as id ' + connection.threadId);});
+
+
+
+老师 删完再加一条数据 为什么id就是4 而不是刚才删的3呢
+不会重用已删除的ID
+
+
+老师，物理删除和逻辑删除在项目中该怎么选择？有时候在项目中为了保证数据的之间的正确性，选择逻辑删除，后期感觉维护很困难。
+b_delete    1
+
+DELETE
+
+
+
+老师，那些网上能把系统删除的文件找回来的软件，那些人是不是好牛
+
+
+
+
+设计数据库有什么需要注意的点
+
+
+ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to usenear 'delete from users where id = 3'哪里错了，没看出来
+
+
+
+
+lastpass插件号称他们自己都不知道用户存的密码是如何实现的.
+
+
+
+
+
+老师憋好久了一直没问 能普及下区块链不
+
+
+
+我们公司后台经常说的接口协议 sip2 是个牛逼东西吗
+
+
+老师，websocket服务器每次都会给浏览器发一次请求，建立一次新链接，能怎么避免这个问题吗

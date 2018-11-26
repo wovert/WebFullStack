@@ -207,7 +207,7 @@ p2=Null;  //还剩0个
 - 前台校验：用户体验
 - 后台校验：安全性
 
-### 数据库
+### 数据库介绍
 
 1. 关系型数据库——MySQL、Oracle（最常见、最常用; 数据之间是有关系的）
 2. 文件型数据库——sqlite; 手机通讯录等简单小的数据量(Android设备通信录)
@@ -285,5 +285,24 @@ p2=Null;  //还剩0个
 - 主进程：负责派生子进程（cluster模块）
 - 子进程：干活(process模块)
 
-## 数据库
+## Node 中使用数据库
 
+``` sh
+$ cnpm search mysql
+$ cnpm install mysql
+```
+
+``` js
+// 连接
+let db=mysql.createConnection({host, port, user, password, database})
+
+// 或者连接池 默认开启10个pool maxConnection: 10 最大连接池
+let db = mysql.createPool({host, port, user, password, database, maxConnection: 10)
+
+// 查询
+db.query(sql, (err, data)=>{})
+
+
+
+
+```
