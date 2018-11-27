@@ -13,21 +13,23 @@
       sock.send(JSON.stringify({name, data: [...args]}));
     };
 
-    //连上了
+    // 连上了
     sock.onopen = function (){
       alert('连接上了');
       sock.emit('msg', 12, 5);
-    };
-
-    // 有数据
-    sock.onmessage = function (){
-      alert('有消息过来');
-    };
+    }
 
     // 断开了
     sock.onclose = function (){
-      alert('断了');
-    };
+      alert('断了')
+    }
+
+    // 有数据
+    sock.onmessage = function (){
+      alert('有消息过来')
+    }
+
+
     </script>
   </head>
   <body>

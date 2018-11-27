@@ -24,7 +24,7 @@ FIN               1bit 是否最后一帧
 RSV               3bit 预留
 Opcode            4bit 帧类型
 Mask              1bit 掩码，是否加密数据，默认必须置为1
-Payload           7bit 长度
+Payload           7bit 长度 (传送数据长度)
 Masking-key       1 or 4 bit 掩码
 Payload data      (x + y) bytes 数据
 Extension data    x bytes  扩展数据
