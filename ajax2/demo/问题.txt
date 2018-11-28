@@ -1,0 +1,91 @@
+https的协议，客户端connect什么地址呢
+$.ajax({
+  url: 'https://localhost:8080/'
+})
+
+
+const https=require('https');
+
+https.createServer(()=>{});
+
+
+
+老师运行node 报这个错_http_outgoing.js:409　 throw new Error('Can\'t render headers after they are sent to the client');　 ^
+
+res.write(data);
+res.writeHeader
+res.setHeader
+
+
+老师，为什么 once('data', data=>{ on('data',data=>{})}),第一次进了once, 不进on,后续send，on钱在once里边，怎么跳过外层的once，直接on了
+once('data', ()=>{});
+on('data', ()=>{});
+
+once('data', ()=>{
+  on('data', ()=>{});
+});
+
+
+老师 ，tapable是什么呀，可以做什么
+
+
+$ node server.js
+_http_outgoing.js:409
+　 throw new Error('Can\'t render headers after they are sent to the client');
+　 ^Error: Can't render headers after they are sent to the client
+　 at ServerResponse.OutgoingMessage._renderHeaders (_http_outgoing.js:409:11)
+　 at ServerResponse.writeHead (_http_server.js:184:20)
+　 at ServerResponse.writeHeader (_http_server.js:225:18)
+　 at ReadStream.rs.on.err (D:\学习\2018.01.30\2018-1-30\server.js:108:13)
+　 at emitOne (events.js:96:13)
+　 at ReadStream.emit (events.j
+
+
+老师，能讲讲nodejs怎么调试吗
+
+
+程序调试：
+1.debugger(浏览器)
+2.打日志
+  alert/console.log
+
+这个on监听的机制是啥？如何监听到这个变化的？
+
+
+问题一：我有一个类似新浪微博私信的单人对单人聊天功能需要开发，请问可否使用websocket实现
+可以
+
+问题二：麻烦老师推荐一些市面上Node常用的rom框架，网上搜的都是很多年年前的帖子，很乱
+
+问题三：请问会有Node的实战项目讲解吗，如果有是基于koa2的吗
+KOA3
+
+问题四：会讲服务端渲染ssr吗，比如vue的Nuxt.js
+ejs
+pug
+
+
+老师能给讲一下预编译吗
+1.前台：系统-chrome、polyfill-编译
+2.后台：WebPack-编译
+
+--------------------------------------------------------------------------------
+
+咦，那这个在服务器上加头，那配前台的ajax1.0能跨域吗
+
+ajax1.0区别在于不会发送origin
+
+不用origin，用其他校验手段
+
+--------------------------------------------------------------------------------
+
+大文件也是这么传吗？
+1.协议是否允许      http——1G
+2.用户体验好不好
+
+超过一定大小的程序——50M；走插件
+
+--------------------------------------------------------------------------------
+
+1.上传进度监控——process对象
+2.HTML5
