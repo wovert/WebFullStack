@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+    .parent {width:500px; height:20px; border:1px solid black;}
+    .child {width:0; height:100%; background:green;}
+    </style>
+    <script>
+    window.onload=function (){
+      var oBtn=document.getElementById('btn1');
+
+      oBtn.onclick=function (){
+        var oAjax=new XMLHttpRequest();
+
+        if(oAjax.upload){
+          alert('2.0');
+        }else{
+          alert('1.0');
+        }
+      };
+    };
+    </script>
+  </head>
+  <body>
+    <input type="button" value="提交" id="btn1">
+  </body>
+</html>

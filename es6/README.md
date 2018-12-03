@@ -210,6 +210,14 @@ let p = new Persion('Alice',20);
 - class/contructor/super/extends
 - bind(对象) 绑定对象
 
+``` js
+function show(){
+  // this => document
+}
+let fn = show.bind(document)
+fn()
+```
+
 - 箭头优先级高于bind优先级
 
 - [OOP对象示例](./oop.html)

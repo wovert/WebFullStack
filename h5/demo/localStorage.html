@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script>
+    //localStorage.a=12;        //存
+    //alert(localStorage.a);    //取
+
+    console.log(localStorage);
+
+    //localStorage.b=5;
+    //localStorage.c=99;
+    //遍历
+    /*for(let name in localStorage){
+      alert(`${name}: ${localStorage[name]}`);
+    }*/
+
+    for(let i=0;i<localStorage.length;i++){
+      let key=localStorage.key(i);
+
+      alert(`${key}: ${localStorage[key]}`);
+    }
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

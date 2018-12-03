@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+    * {margin:0; padding:0}
+    .box {width:400px; height:200px; background:#CCC; border:1px solid black; line-height:200px; position:absolute; left:50%; top:50%; margin-left:-200px; margin-top:-100px; text-align:center; display:none;}
+    </style>
+    <script>
+    window.onload=function (){
+      let oBox=document.querySelector('.box');
+      let timer;
+
+      document.addEventListener('dragover', (ev)=>{
+        clearTimeout(timer);
+
+        oBox.style.display='block';
+
+        timer=setTimeout(function (){
+          oBox.style.display='none';
+        }, 300);
+
+        ev.preventDefault();
+      }, false);
+
+      oBox.addEventListener('dragenter', ()=>{
+        oBox.innerHTML='请松手';
+      }, false);
+      oBox.addEventListener('dragleave', ()=>{
+        oBox.innerHTML='请把文件拖到这儿';
+      }, false);
+
+      oBox.addEventListener('drop', (ev)=>{
+        let file=ev.dataTransfer.files[0];
+
+        //读取文件
+        let reader=new FileReader();
+
+        reader.onload=function (){
+          document.write(reader.result);
+        };
+
+        //base64
+        reader.readAsDataURL(file);
+
+
+        ev.preventDefault();
+      }, false);
+    };
+    </script>
+  </head>
+  <body>
+    <div class="box">
+      请把文件拖到这儿
+    </div>
+  </body>
+</html>

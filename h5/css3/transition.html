@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+    .box {width:200px; height:200px; background:#CCC; margin:100px auto 0; transition:1s all ease}
+    /*.box:active {width:400px; height:400px; background:yellow; font-size:30px;}*/
+    </style>
+    <script>
+    window.onload=function (){
+      let oBox=document.getElementsByClassName('box')[0];
+
+      oBox.onclick=function (){
+        this.style.width='400px';
+      };
+    };
+    </script>
+  </head>
+  <body>
+    <div class="box">
+      sdfasdf
+    </div>
+  </body>
+</html>

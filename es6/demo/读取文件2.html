@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+    * {margin:0; padding:0; list-style: none}
+    .box {width:400px; height:200px; background:#CCC; border:1px solid black; line-height:200px; position:absolute; left:50%; top:50%; margin-left:-200px; margin-top:-100px; text-align:center; display:none;}
+
+    .img_list {overflow:hidden;}
+    .img_list li {float:left; width:200px; height:200px; border:3px solid #666; margin:10px; position:relative;}
+    .img_list li img {width:100%; height:100%;}
+    .img_list li .del_btn {position:absolute; right:0; top:0;}
+    </style>
+    <script>
+    window.onload=function (){
+      let oUl=document.querySelector('.img_list');
+      let oBox=document.querySelector('.box');
+      let timer;
+
+      document.addEventListener('dragover', (ev)=>{
+        clearTimeout(timer);
+
+        oBox.style.display='block';
+
+        timer=setTimeout(function (){
+          oBox.style.display='none';
+        }, 300);
+
+        ev.preventDefault();
+      }, false);
+
+      oBox.addEventListener('dragenter', ()=>{
+        oBox.innerHTML='请松手';
+      }, false);
+      oBox.addEventListener('dragleave', ()=>{
+        oBox.innerHTML='请把文件拖到这儿';
+      }, false);
+
+      oBox.addEventListener('drop', (ev)=>{
+        Array.from(ev.dataTransfer.files).forEach(file=>{
+          if(!file.type.startsWith('image/')){
+            return;
+          }
+
+          let reader=new FileReader();
+
+          reader.onload=function (){
+            let oLi=document.createElement('li');
+            oLi.file=file;
+            oLi.innerHTML='<img src="a.png" alt=""><a href="javascript:;" class="del_btn">删除</a>';
+
+            let oImg=oLi.children[0];
+            oImg.src=this.result;
+
+            let oBtnDel=oLi.children[1];
+            oBtnDel.onclick=function (){
+              oUl.removeChild(oLi);
+            };
+
+            oUl.appendChild(oLi);
+          };
+
+          reader.readAsDataURL(file);
+        });
+
+        ev.preventDefault();
+      }, false);
+
+      //真的上传
+      let oBtnUpload=document.querySelector('#btn_upload');
+      oBtnUpload.onclick=function (){
+        let data=new FormData();
+
+        Array.from(oUl.children).forEach(li=>{
+          data.append('f1', li.file);
+        });
+
+        //
+        let oAjax=new XMLHttpRequest();
+
+        //POST
+        oAjax.open('POST', `http://localhost:8080/api`, true);
+        oAjax.send(data);
+
+        oAjax.onreadystatechange=function (){
+          if(oAjax.readyState==4){
+            if(oAjax.status>=200 && oAjax.status<300 || oAjax.status==304){
+              alert('成功');
+            }else{
+              alert('失败');
+            }
+          }
+        };
+      };
+    };
+    </script>
+  </head>
+  <body>
+    <ul class="img_list">
+      <!--<li>
+        <img src="a.png" alt="">
+        <a href="javascript:;" class="del_btn">删除</a>
+      </li>
+      <li>
+        <img src="b.png" alt="">
+        <a href="javascript:;" class="del_btn">删除</a>
+      </li>-->
+    </ul>
+    <input type="button" name="" value="上传" id="btn_upload">
+    <div class="box">
+      请把文件拖到这儿
+    </div>
+  </body>
+</html>

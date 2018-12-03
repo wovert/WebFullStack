@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+    @keyframes aaa {
+      0%{transform:rotate(0)}
+      10%{transform:rotate(-20deg)}
+      20%{transform:rotate(20deg)}
+      30%{transform:rotate(0deg)}
+      70%{transform:rotate(360deg)}
+      80%{transform:rotate(340deg)}
+      90%{transform:rotate(380deg)}
+      100%{transform:rotate(360deg)}
+    }
+
+    .box {
+      width:200px; height:200px; background:#CCC; margin:100px auto 0;
+    }
+    .box:hover {
+      animation-name: aaa;
+      animation-duration: 1s;
+      animation-timing-function:ease;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      sdfasdf
+    </div>
+  </body>
+</html>

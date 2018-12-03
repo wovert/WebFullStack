@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+    .box {
+      width:200px; height:200px; background:#CCC; margin:100px auto 0;
+      transition: 1s all ease;
+      transform:perspective(10000px) rotateY(0);
+    }
+    .box:active {transform:perspective(10000px) rotateY(60deg);}
+    </style>
+  </head>
+  <body>
+    <div class="box">aaa</div>
+  </body>
+</html>

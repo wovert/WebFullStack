@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+    .parent {width:500px; height:20px; border:1px solid black;}
+    .child {width:0; height:100%; background:green;}
+    </style>
+    <script>
+    document.addEventListener('progress', function (){
+      console.log('a');
+    }, false);
+    </script>
+  </head>
+  <body>
+    <form id="form1" action="http://localhost:8080/api" method="post" enctype="multipart/form-data">
+      <input type="file" multiple>
+      <input type="submit" value="上传">
+    </form>
+  </body>
+</html>

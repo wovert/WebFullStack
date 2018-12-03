@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script>
+    let oW=new Worker('1.js');
+
+    oW.onmessage=function (ev){
+      alert(ev.data);
+    };
+
+    oW.postMessage(document);
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script>
+    window.onload=function (){
+      let oTxt=document.getElementById('txt1');
+      let oBtn=document.getElementById('btn1');
+
+      oTxt.value=localStorage.tmp_txt||'';
+
+      oTxt.oninput=function (){
+        localStorage.tmp_txt=oTxt.value;
+      };
+
+      oBtn.onclick=function (){
+        alert('发送完成');
+
+        delete localStorage.tmp_txt;
+      };
+    };
+    </script>
+  </head>
+  <body>
+    <textarea rows="28" cols="80" id="txt1"></textarea>
+    <input type="button" name="" value="发送" id="btn1">
+  </body>
+</html>

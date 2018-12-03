@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+    .parent {width:500px; height:20px; border:1px solid black;}
+    .child {width:0; height:100%; background:green;}
+    </style>
+    <script>
+    window.onload=function (){
+      let oF=document.getElementById('f1');
+      let oBtn=document.getElementById('btn1');
+
+      oBtn.onclick=function (){
+        let data=new FormData();
+
+        Array.from(oF.files).forEach(file=>{
+          data.append('f1', file);
+        });
+
+        //
+        let oAjax=new XMLHttpRequest();
+
+        //POST
+        oAjax.open('POST', `http://localhost:8080/api`, true);
+
+        oAjax.onprogress=function (ev){
+          console.log(ev);
+        };
+
+        oAjax.upload.addEventListener('progress', function (ev){
+          /*let oM=document.getElementById('m1');
+
+          oM.value=100*ev.loaded/ev.total;*/
+
+          let oChild=document.getElementsByClassName('child')[0];
+
+          oChild.style.width=100*ev.loaded/ev.total+'%';
+        }, false);
+
+        oAjax.send(data);
+
+        /*
+
+        oAjax.onreadystatechange=function (){
+          if(oAjax.readyState==4){
+            if(oAjax.status>=200 && oAjax.status<300 || oAjax.status==304){
+              alert('成功');
+            }else{
+              alert('失败');
+            }
+          }
+        };*/
+      };
+    };
+    </script>
+  </head>
+  <body>
+    <div class="parent">
+      <div class="child">
+
+      </div>
+    </div>
+    <input type="file" id="f1" multiple /><br>
+    <input type="button" value="提交" id="btn1">
+  </body>
+</html>

@@ -1,0 +1,97 @@
+今天在练习写原生socket的时候，没有找到从服务端往前端发送数据的方法，前段的onmessage方法没有触发。查了node net api，只有一个write方法。后台是通过socket.write进行发送吗？
+
+net             ->    http
+sock.write(xxx)       res.write(xxx)
+sock.end()            res.end()
+
+
+昨天存数据库,为什么要先把他存到数组,为什么是这样的思路
+let arr=[];
+req.files.forEach(file=>{
+　 arr.push(`('${file.originalname}', '${file.filename}', ${Math.floor(Date.now()/1000)})`);
+ });
+
+
+方法1：
+for(){
+  db.query();
+}
+
+方法2：
+let arr=[];
+for(){
+  arr.push(xxx);
+}
+
+db.query(xxx arr xxx);
+
+
+老师能不能说一下Blob对象和file对象啊
+Blob => Buffer      数据本身    大
+file                文件信息    很小
+
+二进制<=reader.readAsArrayBuffer(file)
+
+那个讲到跨域的时候那个文件域上传没问题，但是http:locolhost:8080/2018-2-6/2.html下，你演示的可以出来页面，我的出来2.html是200，服务器端也返回个值，那个表单完全不显示，我以前理解的是得有类似
+fs.readFile(`www${pathname}`, (err, data)=>{
+  if(err){
+    res.writeHeader(404);
+    res.write('Not Found');
+  }else{
+    res.write(data);
+  }
+  res.end();
+});
+这种的代码才能把2.html解析出来么。可是那个server.js里并没有这样的东西下面的网页也是这么写的 http://blog.csdn.net/u014420383/article/details/47945819
+
+
+老师为什么前台加了upload监听progress上传进度后，第一个请求会变成OPTIONS，接下来才是POST。
+上传进度
+OPTIONS => 配置
+POST    => 内容
+
+
+websocket这课中，判断不给自己发送消息的依据是　s != sock,这个有点不明白，内部原理是什么？
+wsServer.on('connection', function (sock){
+  for(int i=0;i<arr.lenght;i++){
+    arr[i]==sock
+  }
+});
+
+
+wsServer.on('connection', sock => { aSock.push(sock); sock.on('msg', str => { aSock.forEach((s, index) => { if(s != sock){ s.emit('msg', str) console.log(s) console.log(sock) } }) }) })
+
+
+老师我的意思是用户名密码的那个
+
+
+老师你上节课说的图片预览上传的第二种方式----选中就上传，此时删除的话就是向服务器请求删除，那怎么告知服务器我要删的是哪一张图片呢
+ID
+
+<script src="http://localhost:9080/socket.io/socket.io.js"></script>; 是如何获取到socket.io.js文件的？没有找到文件
+
+
+老师推荐一个图片上传的组件或库
+clip
+
+
+--------------------------------------------------------------------------------
+
+老师，开发完node相关的项目，发布到正式线上时，如何将node程序变成系统服务一直后台运行
+forever
+
+--------------------------------------------------------------------------------
+
+webgl
+
+--------------------------------------------------------------------------------
+
+那只要页面用chrome打开都获取不到地址吗？
+用geolocation——获取不到    ×
+用后台来匹配位置            √
+
+--------------------------------------------------------------------------------
+
+用canvas画一个中国地图的轮廓是不是要找一大堆点的坐标呀，感觉好麻烦
+
+Iscroll没人维护了，经常用better-scroll

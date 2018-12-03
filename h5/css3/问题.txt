@@ -1,0 +1,94 @@
+老师能不能说一下拓扑图 我们这个月要做 也是cavvas
+拓扑图
+
+//我：解决跨域server.use(express.static('./www/'));这个是干什么的，加或者不加我这边发现没什么影响，当时记得老师说的是为了解决跨域问题。
+二、form表单提交和formData提交有什么不一样的，获得的数据内容为什么会不一样呢？formData： { user: '撒地方', pwd: '撒地方' }[ { fieldname: 'f1',　 originalname: 'ATT00001.bin',　 encoding: '7bit',　 mimetype: 'application/octet-stream',　 destination: '/upload',　 filename: '5a62a744adb8fe501c1610c8b088131a',　 path: '\\upload\\5a62a744adb8fe501c1610c8b088131a',　 size: 3038 }, { fieldname: 'f1',　 originalname: 'desktop.ini',　 encoding: '7bit',　 mim
+
+//案例1
+let arr1=[1,2,3];let arr2=arr1;arr2.push(4);console.log(arr1); //arr1的值会随着arr2的值变化而变化console.log(arr2);
+
+// 案例2
+let arr1=[1,2,3];let arr2=arr1.concat([]);arr2.push(4);console.log(arr1); //arr1的值不会随着arr2的值变化而变化console.log(arr2);
+
+//问题一:我这么理解不知道对不对..所有引用的都属于浅拷贝,不用管被引用值的变化与否
+//问题二:深浅拷贝的运用场景是在哪里
+
+document.onclick = function() {
+　　 let arr = [1, 2, 3];
+　　 arr.a = () => {
+　　　 alert(this);
+　　 };
+　　 arr.a();
+　 }
+
+this指向document
+
+this
+document.onclick = ()=> {
+      this
+ 　　 let arr = [1, 2, 3];
+ 　　 arr.a = () => {
+ 　　　 alert(this);
+ 　　 };
+ 　　 arr.a();
+ 　 }
+
+
+ this指向window，为什么不是指向document
+
+
+ npm 安装中间件时如何判断用-D还是-S
+
+三、文件上传之后文件名是md5的形式，并且没有后缀，我们如何能在获取到这个文件之后能直接打开成它相应的样式呢？
+扩展名没用
+
+四.xhr.onprogress=function(e){　　　　　　　　　 console.log(e);　　　　　　　 }为什么没有任何反应，打印不出东西
+
+2018-2-8的拖拽上传，为什么用dragover来判断文件是否拖入document了？而为什么不用document不用绑定dragenter和dragleave呢？
+
+
+五、Navicat for Mysql是需要运行wamp的么？需要吧！
+六、建议老师把写的文件在取名字的时候有个顺序标识，这样方便后面去看的时候知道是先写的那个文件，这样看代码会更方便。
+
+七.要显示进度条，又要提交数据库，结果报错。
+OPTIONS http://localhost:8080/api 500 (Internal Server Error)TypeError: Cannot read property 'forEach' of undefinedat server.use (E:\wamp\www\2018-2-8\express_server2.js:27:15)nodeJS
+代码为：req.files.forEach();貌似req.files没有获取到。奇怪的是，我不加下面的代码就没有问题： xhr.upload.onprogress=function(e){　　　　　　　　　 let Meter=document.getElementById('Meter');　　　　　　　　　 Meter.style.width=100*e.loaded/e.total+"%";　　　　　　　 }这个时候应该怎么处理，我们例子中进度条可以是因为我们写的服务器没有用到req.files.
+
+io.connect('ws://localhost:8080/');为什么不写.connect也可以呢
+
+2018-2-8的拖拽上传，为什么用dragover来判断文件是否拖入document了？而为什么不用document不用绑定dragenter和dragleave呢？我为document绑定dragenter和dragleave事件，会有问题，当拖入的文件经过DIV的时候，DIV会消失
+
+----------------
+
+老师为啥我写文件上传到时候，oBox.addEventListener("drop", (ev) => {
+
+                Array.from(ev.dataTransfer.files).forEach(file => {
+
+                    let reader = new FileReader();
+
+                    console.log(file);
+
+                    reader.onload = function () {
+
+                        console.log(1);
+                        let oLi = document.createElement('li'),
+                            oImg = document.createElement('img'),
+                            src = reader.readAsDataURL(file);
+
+                        oImg.src = src;
+                        oLi.file = file;
+
+                        console.log(oImg.src);
+
+                        oLi.appendChild(oImg);
+                        oUl.appendChild(oLi);
+                    }
+                    reader.readAsxxx(file);
+                })
+
+                ev.preventDefault();
+
+            }, false);
+
+
+动画执行完了, 在让他执行一次 不用 js 能做到么 (比如更新一条数据 让页面闪烁, 每次更新都闪烁)

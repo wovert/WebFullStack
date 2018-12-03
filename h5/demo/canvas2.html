@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+    body {background: black; text-align:center;}
+    #c1 {background:#fff;}
+    </style>
+    <script>
+    window.onload=function (){
+      let oC=document.getElementById('c1');
+
+      //图形上下文——接口：所有绘图方法、属性
+      let gd=oC.getContext('2d');
+
+      //路径操作——类似PS的选区
+
+      //起点
+      gd.moveTo(470, 81);
+      gd.lineTo(778, 236);
+      gd.lineTo(532, 411);
+      gd.lineTo(312, 259);
+      //gd.lineTo(470, 81);     //?
+      gd.closePath();
+
+      gd.lineWidth=20;
+      gd.stroke();
+      //gd.fill();
+    };
+    </script>
+  </head>
+  <body>
+    <canvas id="c1" width="800" height="600"></canvas>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+    @keyframes aaa {
+      0%{width:200px;height:200px;font-size:14px;background:#CCC}
+      25%{width:400px; height:200px; font-size:14px; background:#CCC;}
+      50%{width:400px; height:400px; font-size:14px; background:#CCC;}
+      75%{width:400px; height:400px; font-size:30px; background:#CCC;}
+      100%{width:400px; height:400px; font-size:30px; background:red;}
+    }
+
+    .box {
+      width:200px; height:200px; background:#CCC; margin:100px auto 0;
+      animation-name: aaa;
+      animation-duration: 2s;
+      animation-timing-function:ease;
+
+      animation-fill-mode:forwards;
+
+      animation-iteration-count:infinite;
+      animation-direction:alternate;
+    }
+    .box:active {
+      animation-play-state:paused;
+      /*
+      animation-delay: 2s;
+
+
+
+      */
+    }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      sdfasdf
+    </div>
+  </body>
+</html>
