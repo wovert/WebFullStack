@@ -12,14 +12,13 @@
 - Linux
 - 版本
 - 英文文档
-- ...
 
-1. 基础知识：ES6/ES7、HTML5/CSS3、数据交互 ...
+1. 基础知识：ES6/ES7、HTML5/CSS3、数据交互
 2. 移动端：布局、touch、库
-3. 图形：canvas、SVG/VML、Raphael、d3、echarts、WebGL ...
+3. 图形：canvas、SVG/VML、Raphael、d3、echarts、WebGL
 4. 游戏
-5. 工具：版本控制、编译、打包、脚手架 ...
-6. 后台：Node、express、KOA、爬虫 ...
+5. 工具：版本控制(文件共享，版本管理，冲突)、编译、打包、脚手架
+6. 后台：Node、express、KOA、爬虫
 7. 混合开课
 8. 微信：公号、小程序
 9. 三大框架：angular、vue、react

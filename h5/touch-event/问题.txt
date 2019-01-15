@@ -1,0 +1,33 @@
+jquery的slideUp这样的效果，用CSS3能不能实现
+
+AJAX拼进去的页面，比访问一个新的页面高效么？
+并不
+
+那浏览器的后退键不就没用了吗，我们公司有个页面就全用ajax写的，浏览器后退键不能用，被我们全体员工吐槽惨了
+SPA——App
+
+老师 , 我不太懂 PWA
+
+淘宝怎么不用weex呢
+
+jquery 给元素添加事件，怎么覆盖原来加过得事件啊 例如给id=pid的p添加两个click事件，只要后面添加的那次事件
+绑定
+off
+
+--------------------------------------------------------------------------------
+
+HTML5标签：
+canvas、video、input、form
+没区别——语义化
+
+section、header、footer、nav、aside、figure、legend
+
+用合适的标签装合适的东西
+
+section
+
+strong
+h1
+
+div       无语义的
+section   段

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+    .box {
+      width:200px; height:200px; background: #CCC; border:1px solid black; margin:100px auto 0; transform:perspective(700px) rotateX(60deg) rotateZ(40deg);
+      /*给父级去掉限制*/
+      transform-style: preserve-3d;
+    }
+    .child {
+      width:100%; height:100%; background:yellow; transition:1s all ease;
+      transform: translateZ(0px);
+      transform-style: preserve-3d;
+    }
+    .child:active {transform: translateZ(100px)}
+
+    .child2 {
+      width:100%; height:50%; background:green; transition:1s all ease;
+      transform: translateZ(0);
+    }
+
+    .child2:active {transform: translateZ(50px);}
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="child">
+        <div class="child2">
+          文字
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

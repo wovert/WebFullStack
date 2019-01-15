@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+    .box {width:200px; height:200px; position: relative; margin:150px auto 0; transition:5s all ease; transform: perspective(700px) rotateX(0deg) rotateY(0deg); transform-style: preserve-3d;}
+    .box div {width:198px; height:198px; border:1px solid black; position:absolute; left:0; top:0; background:rgba(0,255,0,0.5)}
+
+    .box:active {transform: perspective(700px) rotateX(360deg) rotateY(180deg);}
+
+    .box div.front {transform: translateZ(100px);}
+    .box div.back {transform: translateZ(-100px);}
+    .box div.left {transform: rotateY(-90deg) translateZ(100px);}
+    .box div.right {transform: rotateY(90deg) translateZ(100px);}
+    .box div.top {transform: rotateX(90deg) translateZ(100px);}
+    .box div.down {transform: rotateX(-90deg) translateZ(100px);}
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="front">前</div>
+      <div class="back">后</div>
+      <div class="top">上</div>
+      <div class="down">下</div>
+      <div class="left">左</div>
+      <div class="right">右</div>
+    </div>
+  </body>
+</html>

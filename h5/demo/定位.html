@@ -9,10 +9,12 @@
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>
     <script>
     window.onload=function (){
-      var oBtn=document.getElementById('btn1');
+      var oBtn = document.getElementById('btn1');
 
-      oBtn.onclick=function (){
+      oBtn.onclick = function (){
         //getCurrentPosition(成功, 失败, 参数)
+        console.log('开始定位>>>>>>>>>>>>');
+
         navigator.geolocation.getCurrentPosition(function (res){
 
           console.log(res.coords);

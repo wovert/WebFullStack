@@ -328,3 +328,30 @@ runner(function *(){
 
 - [runner用法](./runner.html)
 - [async/wait用法](./async_await.html)
+
+## SPA 单页应用
+
+> 不刷新——用ajax之类的玩意加载
+
+## 移动端布局
+
+1. viewport
+2. flex
+3. rem
+4. 绝对不要用px
+
+- 设计图大——640px
+- 320px
+
+html的font-size => ?
+
+- 基准宽度：480px
+- 基准字体大小：10px -> ?
+- width:480px   ->    48rem
+- height:55px   ->    5.5rem
+
+- header {width:48rem; height:5.5rem}
+
+- 适配手机——JS：
+  - 480/10=clientWidth/真实fontsize
+  - 真实fontsize=clientWidth/48

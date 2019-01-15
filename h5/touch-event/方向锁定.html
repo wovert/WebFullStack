@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width">
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+    .box {width:200px; height:200px; background:#CCC; transform:translate(0px,0px);}
+    </style>
+    <script>
+    window.onload=function (){
+      let oBox=document.getElementsByClassName('box')[0];
+      let x=0,y=0;
+
+      oBox.addEventListener('touchstart', function (ev){
+        let dir='';
+
+        let disX=ev.targetTouches[0].clientX-x;
+        let disY=ev.targetTouches[0].clientY-y;
+
+        let startX=ev.targetTouches[0].clientX;
+        let startY=ev.targetTouches[0].clientY;
+
+        function fnMove(ev){
+          if(dir==''){
+            //等待方向确定——用户超出5px
+            if(Math.abs(ev.targetTouches[0].clientX-startX)>=5){
+              dir='x';
+            }else if(Math.abs(ev.targetTouches[0].clientY-startY)>=5){
+              dir='y';
+            }
+          }else{
+            if(dir=='x'){
+              x=ev.targetTouches[0].clientX-disX;
+            }else if(dir=='y'){
+              y=ev.targetTouches[0].clientY-disY;
+            }
+
+            oBox.style.transform=`translate(${x}px,${y}px)`;
+          }
+        }
+        function fnEnd(){
+          oBox.removeEventListener('touchmove', fnMove, false);
+          oBox.removeEventListener('touchend', fnEnd, false);
+        }
+
+        oBox.addEventListener('touchmove', fnMove, false);
+        oBox.addEventListener('touchend', fnEnd, false);
+      }, false);
+    };
+    </script>
+  </head>
+  <body>
+    <div class="box">
+
+    </div>
+  </body>
+</html>

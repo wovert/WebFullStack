@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+    .box {
+      width:200px; height:300px; border:1px solid black; margin:100px auto 0; position: relative;
+      transform-style: preserve-3d;
+      transition:1s all ease; transform:perspective(700px) rotateY(0);
+    }
+    .box:active {transform:perspective(700px) rotateY(180deg);}
+    .box div {position: absolute; left:0; top:0; width:100%; height:100%;}
+    .box div.front {background:yellow; transform:translateZ(1px);}
+    .box div.back {background:green; transform:translateZ(-1px) scaleX(-1);}
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="front">前</div>
+      <div class="back">后</div>
+    </div>
+  </body>
+</html>
