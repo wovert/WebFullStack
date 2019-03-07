@@ -124,18 +124,71 @@
 
 ### npm
 
-> 后台包管理器
+> 后台模块包管理器
 
 - node_moudles/下载的包
 
 `$ npm install -g cnpm --registry=https://registry.npm.taobao.org`
 
+```sh
+# npm i nrm -g
+# nrm ls 查看当前可用源
+# nrm use taobao 使用某个源
+```
+
+#### 解决安装版本的问题
+
+- 查看当前模块的历史版本信息
+- `npm view jquery`
+- `npm install jquery@1.12.4`
+
+### yarn
+
+初始化一个新项目
+`yarn init`
+
+```sh
+# npm install yarn -g
+```
+
+添加依赖包
+
+```sh
+yarn add [package]
+yarn add [package]@[version]
+yarn add [package]@[tag]
+```
+
+将依赖项添加到不同依赖项类别中 - 分别添加到 devDependencies、peerDependencies 和 optionalDependencies 类别中
+
+```sh
+yarn add [package] --dev
+yarn add [package] --peer
+yarn add [package] --optional
+```
+
+升级依赖包
+
+```sh
+yarn upgrade [package]
+yarn upgrade [package]@[version]
+yarn upgrade [package]@[tag]
+```
+
+移除依赖包
+
+```sh
+yarn remove [package]
+```
+
 ### bower
 
-> 前台包管理器
+> 前台模块包管理器
+
+- bower是从github下载安装
 
 ``` shell
-# cnpm i -g bower
+# npm i -g bower -g
 # bower i -g vue@2
 # bower i -g angular
   bower_components/angular(包名)
@@ -145,7 +198,7 @@
 ### phonegap
 
 ``` shell
-# cnpm i -g phonegap@6.5.2
+# npm i -g phonegap@6.5.2
 ```
 
 ## 模块化
@@ -522,7 +575,6 @@ this.onmessage = function(e) {
   - canvas 没有事件
 - gd.clearRect(0, 0, o.width, o.height); // 删除整个画布，删除一个像素与删除几万像素一样
 
-<<<<<<< HEAD
 - 修改-交互-事件
   - svg
   - 库
@@ -536,10 +588,6 @@ this.onmessage = function(e) {
 - 图片
 - 图形对象
 
-
-
-=======
->>>>>>> cc731d7669162449d9f5b4f634c6d0b6dc645abc
 ## 数据交互
 
 - [http 协议](https://tools.ietf.org/rfc/rfc2616.txt)
@@ -702,7 +750,7 @@ socketServer.on('connection', function(sock){
 
 ## 聊天室
 
-1. 用户注册、登录 
+1. 用户注册、登录
 2. 发言->其他人
 3. 离线消息
 
@@ -814,3 +862,26 @@ Failed to load http://localhost:8080/: No 'Access-Control-Allow-Origin' header i
 
 ### jsonp 跨域
 
+
+## 跨域
+
+### 同源策略
+
+- 同域：协议、域名、端口
+
+### 为什么浏览器不支持跨域
+
+- cookie LocalStorage
+- DOM 元素也有同源策略 iframe
+
+### 实现跨域
+
+- jsonp
+- cros(后端提供)
+- postMessage(两个页面通信)
+- document.domain(子域与父域通信)
+- window.name
+- location.hash
+- http-proxy
+- nginx
+- websocket
