@@ -63,6 +63,8 @@ babel==broswer.js
 
 ### 箭头函数
 
+[案例](./function/arrows_function.js)
+
 ``` js
 function(param1, param2) {
   ...
@@ -77,8 +79,6 @@ function(param1, param2) {
 
 let func = f => f*10
 func(10)
-
-
 ```
 
 - 只有一个函数参数可以省略()
@@ -101,18 +101,28 @@ function func(p1=1,p2=2,p3=3){}
 ### 函数参数
 
 - 参数扩展/展开，必须放在最后一个参数位置上
-  - 参数扩展：func(1,2,3);function func(..args){} 剩余参数数组
-  - 参数展开：let arr=[1,2,3];func(...arr);
+  - 参数扩展：`func(1,2,3);function func(..args){}` 剩余参数数组
+  - 参数展开：`let arr=[1,2,3];func(...arr);`
 - 默认参数
   - `function f(a=1,b=2,c=3){...}`
   - `$('#div').animate({width:'200px}, 1000)`
 
+- 展开操作符：
+  - `let arr = [...arr1, ...arr2]`
+  - `var arr = [].concat(arr1, arr2)`
+
+- 获取最大值
+  - `var max = Math.max.apply(Math, arr)`
+  - `let max = Math.max(...arr)`
+
+- [assign遍历对象合并](./array/assign.js)
+
 ## 数组
 
 - [map映射](./array/map.js)
-- reduce 汇总
+- [reduce 汇总](./array/reduce.js)
 - filter 过滤器
-- forEach 迭代
+- [forEach 迭代](./array/forEach.js)
 
 [- array示例](./array.html)
 
@@ -177,7 +187,9 @@ decodeURIComponent(JSON.parse('{"a":12,"b":5}')) // 字符串转换json对象
 - `boolean str.startsWith('string')`
 - `boolean str.endsWith('string')`
 - `boolean str.includes('string') === (str.indexOf('string') !== -1)`
-- `string 'a'.repeat(3) => aaa`
+- `str 'a'.repeat(3) => aaa`
+- `'abc'.padStart(5, '0') 00abc`
+- `'abc'.padEnd(5, '0') abc00`
 
 ### 模板字符串
 
