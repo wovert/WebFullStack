@@ -174,10 +174,10 @@ decodeURIComponent(JSON.parse('{"a":12,"b":5}')) // 字符串转换json对象
 
 ## 字符串
 
-- boolean str.startsWith('string')
-- boolean str.endsWith('string')
-- boolean str.includes('string') === (str.indexOf('string') !== -1)
-- string 'a'.repeat(3) => aaa
+- `boolean str.startsWith('string')`
+- `boolean str.endsWith('string')`
+- `boolean str.includes('string') === (str.indexOf('string') !== -1)`
+- `string 'a'.repeat(3) => aaa`
 
 ### 模板字符串
 
