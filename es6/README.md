@@ -29,6 +29,10 @@ babel==broswer.js
 
 ### var 定义变量
 
+- 可以重复声明
+- 不能定义常量 `var`
+- 不支持块级作用域 `if (true) { var a = 10;}`
+
 - 缺点
   - 重复定义变量
   - 不能限制修改
@@ -105,7 +109,7 @@ function func(p1=1,p2=2,p3=3){}
 
 ## 数组
 
-- map 映射
+- [map映射](./array/map.js)
 - reduce 汇总
 - filter 过滤器
 - forEach 迭代
@@ -170,10 +174,16 @@ decodeURIComponent(JSON.parse('{"a":12,"b":5}')) // 字符串转换json对象
 
 ## 字符串
 
-- `字符串模板${v}`
-  - 植入变量，任意折行
-- startsWith()
-- endsWith()
+- boolean str.startsWith('string')
+- boolean str.endsWith('string')
+- boolean str.includes('string') === (str.indexOf('string') !== -1)
+- string 'a'.repeat(3) => aaa
+
+### 模板字符串
+
+> 植入变量，任意折行
+
+- [字符串模板案例](./template_string/demo.js)
 
 ## 面向对象
 
