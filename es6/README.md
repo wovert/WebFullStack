@@ -84,6 +84,11 @@ func(10)
 - 只有一个函数参数可以省略()
 - 只有一个return语句可以省略{}
 
+### 怎么确定箭头函数this
+
+> 箭头函数this时定死的，指向外层的this
+> 箭头函数不能应用到所有情况
+
 ### 默认参数
 
 ``` js
@@ -119,12 +124,17 @@ function func(p1=1,p2=2,p3=3){}
 
 ## 数组
 
-- [map映射](./array/map.js)
+- [map 映射](./array/map.js)
 - [reduce 汇总](./array/reduce.js)
-- filter 过滤器
+- [reduceRight 汇总](./array/reduce.js)
+- [filter 过滤器](./array/filter.js)
+- [find 查找某个元素值，不存在返回undefined](./array/find.js)
+- [findIndex 查找某个元素值元素，不存在返回-1](./array/findIndex.js)
+- [some 有一个元素返回true，否则返回false](./array/some.js)
+- [every 每一个元素都要符合返回true，否则返回false](./array/every.js)
 - [forEach 迭代](./array/forEach.js)
 
-[- array示例](./array.html)
+[【array示例】](./array.html)
 
 ``` js
 // map
@@ -154,6 +164,10 @@ let avg = arr.reduce((tmp, item, index) => {
 })
 console.log(avg) // 54.6375
 ```
+
+## 对象
+
+- 对象的属性名和变量名一样可以省略属性名
 
 ## JSON
 
