@@ -52,27 +52,6 @@
 - APIClound Studio 2
 - MongoDB
 
-## markdown
-
-``` markdown
-# 一级标题
-## 二级标题
-- 列表1
-- 列表2
-
-1. 有序1
-2. 有序2
-
-> 引用
-
-**加粗**
-
-|name|age|gender|
-|---|---|--|
-|Alice|20|male|
-
-```
-
 ## 版本管理
 
 - svn：中心服务器
