@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+  <script>
+  
+
+  let p = new Promise(function(resolve, reject){
+    setTimeout(function() {
+      resolve(12);
+    }, 500)
+  })
+
+  p.then(function(num) {
+    console.log(num);
+  }, function(){
+    conosle.log('失败');
+  });  
+
+
+class Promise2{
+      constructor(fn){
+        const _this=this;
+        //重点
+        this.__queue=[];
+
+        this.__succ_res=null;
+        this.__erro_res=null;
+
+        this.status='';
+
+        fn(function (...arg){
+          _this.__succ_res=arg;
+
+          _this.status='succ';
+
+          _this.__queue.forEach(json=>{
+            json.fn1(...arg);
+          });
+        }, function (...arg){
+          _this.__erro_res=arg;
+
+          _this.status='error';
+
+          _this.__queue.forEach(json=>{
+            json.fn2(...arg);
+          });
+        });
+      }
+
+      then(fn1, fn2){
+        if(this.status=='succ'){
+          fn1(...this.__succ_res);
+        }else if(this.status=='error'){
+          fn2(...this.__erro_res);
+        }else{
+          this.__queue.push({fn1, fn2});
+        }
+      }
+    }
+
+    Promise2.all=function (arr){
+      let aResult=[];
+
+      return new Promise2(function (resolve, reject){
+        let i=0;
+
+        next();
+
+        function next(){
+          arr[i].then(function (res){
+            aResult.push(res);
+
+            i++;
+            if(i==arr.length){
+              resolve(aResult);
+            }else{
+              next();
+            }
+          }, reject);
+        }
+      });
+    };
+
+    Promise2.all([
+      $.ajax({url: './data/a.txt', dataType: 'json'}),
+      $.ajax({url: './data/b.txt', dataType: 'json'}),
+    ]).then(arr=>{
+      alert('成功');
+
+      console.log(arr);
+    }, err=>{
+      alert('失败了');
+    });
+
+  </script>
+</body>
+</html>

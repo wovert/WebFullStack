@@ -398,7 +398,7 @@ ES5文件: dist/1.js
 ``` js
 const $ = document.querySelectorAll.bind(document)
 window.onlaod = function() {
-  let f = $('#form')[0] 
+  let f = $('#form')[0]
 }
 
 // onreadystatechange => on ready state change 当通信状态变化

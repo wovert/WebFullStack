@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="jquery.js" charset="utf-8"></script>
+    <script>
+    (async ()=>{
+      let data1=await $.ajax({url: '1.txt', dataType: 'json'});
+
+      if(data1.a+data1.b<10){
+        let data2=await $.ajax({url: '2.txt', dataType: 'json'});
+
+        alert(data2[0]);
+      }else{
+        let data3=await $.ajax({url: '3.txt', dataType: 'json'});
+
+        alert(data3.name);
+      }
+    })();
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

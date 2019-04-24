@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    class Person {
+      constructor(name, age) {
+        this.name = name
+        this.age = age
+      }
+
+      getName() {
+        return this.name
+      }
+
+      getAge() {
+        return this.age
+      }
+    }
+
+    class Worker extends Person {
+      constructor(name, age, job) {
+        super(name, age)
+        this.job = job
+
+        class Inner {
+          constructor() {
+            console.log('Inner Class')
+          }
+        }
+        new Inner()
+      }
+      getJob() {
+        return this.job
+      }
+
+      getInfo() {
+        alert(this.name + this.age + this.job)
+      }
+    }
+
+    let w = new Worker('wovert', 18, 'SRE')
+    console.log(w.getJob())
+
+    // document.onclick = w.getInfo // NaN, getInfo方法里的this指向windows对象
+    // document.onclick = function(){
+    //   w.getInfo() // wovert18SRE
+    // }
+
+    // ES6写法, bind函数绑定指定对象作为this环境变量
+    document.onclick = w.getInfo.bind(w) // wovert18SRE
+
+    // 举例
+    function show() {
+      alert(`this is : ${this}`)
+    }
+    document.onclick = show.bind('abc') // this is : abc
+
+    // 箭头函数
+    var arr = [12,302,39,83,93]
+    arr.a = function(){
+      console.log(this) 
+    }
+    arr.a() // [12,302,39,83,93]
+
+    // document.onclick = () => {
+    //   console.log(this) // Windows Object
+    // }
+    arr.b = () => {
+      console.log(this)
+    }
+    arr.b()
+
+    document.onclick = function(){
+      arr.c = () => {
+        console.log(this) // this => document对象环境，即 HTMLDocument
+      }
+      arr.c()
+    }
+
+  </script>
+  <button>点击我</button>
+</body>
+</html>
