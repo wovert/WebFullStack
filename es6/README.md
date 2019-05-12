@@ -171,6 +171,8 @@ console.log(avg) // 54.6375
 
 - 对象的属性名和变量名一样可以省略属性名
 
+[prototype、__proto__与constructor](https://blog.csdn.net/cc18868876837/article/details/81211729)
+
 ## JSON
 
 ``` js
@@ -361,20 +363,21 @@ function *show() {
 
 ### runner
 
-``` sh
 安装runner模块
-# cnpm search yield-runner-blue
+
+``` sh
+# npm search yield-runner-blue
 # cd project_name
-# cnpm i yield-runner-blue
+# npm i yield-runner-blue
 ```
 
-官方版runner的 **async_await**, ES7版本中新增了 async 和 await
+官方版runner的 **async_await**, ES7版本中新增了 `async` 和 `await`
 
-- Promise 本质：等待异步操作结束
-- generator 本质：无感处理异步操作
-- async 本质：官网 runner
+- `Promise` 本质：等待异步操作结束
+- `generator` 本质：无感处理异步操作
+- `async` 本质：官网 runner
 
-``` javascript
+``` js
 runner(function *(){
   ...
   let res1 = yield 异步操作;
@@ -395,26 +398,26 @@ runner(function *(){
 
 ## SPA 单页应用
 
-> 不刷新——用ajax之类的玩意加载
+> 不刷新 —— 用ajax加载数据并渲染内容
 
 ## 移动端布局
 
-1. viewport
-2. flex
-3. rem
-4. 绝对不要用px
+1. `viewport`
+2. `flex`
+3. `rem`
+4. 绝对不要用`px`
 
-- 设计图大——640px
-- 320px
+- 设计图大——`640px`
+- `320px`
 
-html的font-size => ?
+`html`的`font-size` => ?
 
-- 基准宽度：480px
-- 基准字体大小：10px -> ?
-- width:480px   ->    48rem
-- height:55px   ->    5.5rem
+- 基准宽度：`480px`
+- 基准字体大小：`10px` -> ?
+- `width:480px` -> `48rem`
+- `height:55px` -> `5.5rem`
 
-- header {width:48rem; height:5.5rem}
+- `header {width:48rem; height:5.5rem}`
 
 - 适配手机——JS：
   - 480/10=clientWidth/真实fontsize

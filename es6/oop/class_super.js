@@ -125,6 +125,7 @@ function _inherits(subClass, superClass) {
       }
     }
   );
+  // 让子类的__proto__等于父类，为了子类继承父类的静态属性
   if (superClass) _setPrototypeOf(subClass, superClass); 
 }
 
