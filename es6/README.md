@@ -36,7 +36,7 @@ babel==broswer.js
 - 缺点
   - 重复定义变量
   - 不能限制修改
-  - 只有函数级作用于（没有块作用于）
+  - 只有**函数级**作用于（没有**块级**作用于）
 
 ### let/const
 
@@ -47,13 +47,14 @@ babel==broswer.js
   - 支持块级作用域
     - for(块级作用域)
     - {块作用域}
+      - 没有预解析
     - 全局作用域容易变量名冲突
     - 块级作用域容易控制变量的使用
 - const
   - 不能重复定义
   - 不能重复赋值
 
-[- 变量案例](./let_const.html)
+[let/const变量案例](./let_const/let_const.html)
 
 ## 解构赋值
 
@@ -209,7 +210,7 @@ decodeURIComponent(JSON.parse('{"a":12,"b":5}')) // 字符串转换json对象
 
 > 植入变量，任意折行
 
-- [字符串模板案例](./template_string/demo.js)
+[字符串模板案例](./template_string/demo.js)
 
 ## 面向对象
 
