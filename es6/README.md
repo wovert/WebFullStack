@@ -258,18 +258,25 @@ let fn = show.bind(document)
 fn()
 ```
 
-- 箭头优先级高于bind优先级
+**箭头优先级高于bind优先级**
 
 - [OOP对象示例](./oop.html)
 
 ## promise
 
-> 同步的方式编写异步
+> 一步操作的最终结果。通过函数传入的then方法从而获取的Promise最终的值或Promise最终拒绝的原因。同步的方式编写异步
+
+- 术语
+  - `promise`：兼容promise规范then方法的对象或函数
+  - `thenable`：then方法的对象或函数
+  - `value`：任何JavaScript值(undefined, thenable, promise等)
+  - `exception`：由`throw`表达式抛出来的值
+  - `reason`：用于描述Promise被拒绝原因的值
 
 - 三个状态
-  - pendding(准备：初始化成功，开始执行异步的任务)
-  - fulfilled(成功)
-  - rejected(失败)
+  - pendding(初始态：初始化成功，开始执行异步的任务)
+    - fulfilled(成功态)
+    - rejected(失败态) 有reason
 
 ```js
 // 创建Promise的一个实例，立即会把当前函数体中的异步操作执行
@@ -293,45 +300,45 @@ console.log(2); // second
 ```
 
 ``` js
-  let p = new Promise(function(resolve, reject){
-    $.ajax({
-      ur: 'arr.txt',
-      dataType: 'json',
-      success(arr) {
-        resolve(arr);
-      },
-      error(err) {
-        reject(err);
-      }
-    })
-  });
-
-  p.then(
-    function(arr){
-      console.log(arr)
+let p = new Promise(function(resolve, reject){
+  $.ajax({
+    ur: 'arr.txt',
+    dataType: 'json',
+    success(arr) {
+      resolve(arr);
     },
-    function(){
-      console.log('失败')
+    error(err) {
+      reject(err);
     }
-  );
-
-
-  // 多个异步加载， &关系
-  Promise.all([$.ajax({/*...*/}), $.ajax({/*...*/})]).then(arr=>{
-    // 对了
-    let [res1, res2] = ar
-  },
-  err => {
-    // 错了
   })
+});
 
-  // 竞速关系,谁先得到就直接返回
-  Promise.race([
-    $.ajax({url: 'http://doamin1.com/data/users'}),
-    $.ajax({url: 'http://doamin2.com/data/users'}),
-    $.ajax({url: 'http://doamin3.com/data/users'}),
-    $.ajax({url: 'http://doamin4.com/data/users'})
-  ]);
+p.then(
+  function(arr){
+    console.log(arr)
+  },
+  function(){
+    console.log('失败')
+  }
+);
+
+
+// 多个异步加载， &关系
+Promise.all([$.ajax({/*...*/}), $.ajax({/*...*/})]).then(arr=>{
+  // 对了
+  let [res1, res2] = ar
+},
+err => {
+  // 错了
+})
+
+// 竞速关系,谁先得到就直接返回
+Promise.race([
+  $.ajax({url: 'http://doamin1.com/data/users'}),
+  $.ajax({url: 'http://doamin2.com/data/users'}),
+  $.ajax({url: 'http://doamin3.com/data/users'}),
+  $.ajax({url: 'http://doamin4.com/data/users'})
+]);
 ```
 
 ## generator
