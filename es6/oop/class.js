@@ -1,7 +1,14 @@
 class Parent {
   constructor(name) {
-    this.name = name;
+    this.name = name; // 实例私有属性
   }
+
+  // 静态属性是类的属性
+  static hello () {
+    console.log('hello')
+  }
+
+  // 属于实例的公有属性，相当于原型上的属性
   getName() {
     return this.name;
   }
@@ -26,10 +33,15 @@ function _instanceof(left, right) {
     return left instanceof right;
   }
 }
-
+/**
+ * 类的调用检查
+ * @param {*} instance 类的实例 
+ * @param {*} Constructor 构造函数
+ */
 function _classCallCheck(instance, Constructor) {
-  // 不能把一个类当做普通函数来调用
+  // 这个实例不是这个构造函数的实例的花，就报错
   if (!_instanceof(instance, Constructor)) {
+    // 不能把一个类当做普通函数来调用
     throw new TypeError("Cannot call a class as a function");
   }
 }
@@ -41,12 +53,13 @@ function _classCallCheck(instance, Constructor) {
  */
 function _defineProperties(target, props) {
   for (var i = 0; i < props.length; i++) {
-    // 属性描述其
+    // 属性描述器
     var descriptor = props[i];
-    // 可枚举 for in 能循环出来
+
+    // 可枚举：for in 能循环出来
     descriptor.enumerable = descriptor.enumerable || false;
 
-    // 可配置：可通过 delete删除此属性
+    // 可配置：可通过 delete 删除此属性
     descriptor.configurable = true;
 
     // 可修改值
@@ -87,7 +100,12 @@ var Parent =
           return this.name;
         }
       }
-    ]);
+    ], [{
+      key: "hello",
+      value: function hello() {
+        console.log('hello');
+      }
+    }]);
 
     return Parent;
   })();
