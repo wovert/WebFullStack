@@ -18,3 +18,9 @@ let ul = `
   </ul>
 `
 console.log(ul)
+
+
+console.log('------start for of entries-----')
+for (let [index, item] of users.entries()) {
+  console.log('index=', index, ', item=', item)
+}

@@ -213,6 +213,23 @@ console.log(+0 === -0) // true
   - set.size
   - set.values()
 
+## Symbol
+
+> 新的基本数据类型
+
+- 通过函数执行得到
+- 不能使用 new 执行
+- 唯一值
+- 不能进行运算，因为不可以转数字，不可以进行字符串拼接，这些都会报错
+- 可以转为布尔值
+- 当做属性名的时候只能用`[""]`的形式
+- `Object.getOwnPropertySymbols()`
+- `Reflect.ownKeys` 方法可以返回所有类型的键名
+
+```js
+let sy1 = Symbol(111) // 只有唯一的值，与其他值肯定不同
+```
+
 ## 对象
 
 - 对象的属性名和变量名一样可以省略属性名
@@ -475,3 +492,9 @@ runner(function *(){
 - 适配手机——JS：
   - 480/10=clientWidth/真实fontsize
   - 真实fontsize=clientWidth/48
+
+## esmodule
+
+```html
+<script type="module" src="main.js"></script>
+```
