@@ -9,6 +9,27 @@
 7. generator
 8. 模块
 
+## 严格模式
+
+ES6 的模块自动采用严格模式
+
+- 严格模式限制
+  - 变量必须声明后再使用
+  - 函数的参数不能有同名属性，否则报错
+  - 不是使用 with 语句
+  - 不能对只读属性赋值，否则报错
+  - 不能使用前缀 0 表示八进制数，否则报错
+  - 不能删除不可删除的属性，，否则报错
+  - 不能删除变量 `delete prop`，会报错，智能删除属性 `delete global[prop]`
+  - `eval` 不会在它的外层作用域引入变量
+  - `eval` 和 `arguments` 不能被重新赋值
+  - `argumetns` 不会自动反映函数参数的变化
+  - 不能使用 `arguments.callee`
+  - 不能使用 `arguments.caller`
+  - 进制 this 指向全局对象
+  - 不能使用 `fn.caller` 和 `fn.arguments` 获取函数调用的堆栈
+  - 增加了保留字 (`projected, static, interface`)
+
 ## ES6兼容性和新特性
 
 ### ES6兼容性
@@ -127,16 +148,16 @@ function func(p1=1,p2=2,p3=3){}
 ## 数组
 
 - [map 映射](./array/map.js)
-- [reduce 汇总](./array/reduce.js)
-- [reduceRight 汇总](./array/reduce.js)
-- [filter 过滤器](./array/filter.js)
-- [find 查找某个元素值，不存在返回undefined](./array/find.js)
+- [filter 过滤器-返回新的数组，原数组不变](./array/filter.js)
+- [find 查找某个元素值，不存在返回 undefined](./array/find.js)
 - [findIndex 查找某个元素值元素，不存在返回-1](./array/findIndex.js)
 - [some 有一个元素返回true，否则返回false](./array/some.js)
 - [every 每一个元素都要符合返回true，否则返回false](./array/every.js)
 - [forEach 迭代](./array/forEach.js)
-
-[【array示例】](./array.html)
+- 上面的都可以修改 `this`
+- [reduce 汇总](./array/reduce.js)
+- [reduceRight 汇总](./array/reduce.js
+[array 示例](./array.html)
 
 ``` js
 // map
@@ -166,6 +187,31 @@ let avg = arr.reduce((tmp, item, index) => {
 })
 console.log(avg) // 54.6375
 ```
+
+## set
+
+> 去除重复的数组元素的类数组，只有 value 没有 key
+
+```js
+let set = new Set([1, 1, NaN, "aa", true, "aa", undefined])
+console.log(set)
+
+let arr = [NaN, NaN, 1,1,2,3,3,4]
+let arr2 = ([...new Set(arr)])
+console.log(arr2)
+
+console.log(Object.is(NaN, NaN)) // true
+console.log(Object.is(+0, -0)) // false
+console.log(+0 === -0) // true
+```
+
+- 方法
+  - set.add()
+  - set.clear()
+  - set.delete()
+  - set.has()
+  - set.size
+  - set.values()
 
 ## 对象
 
