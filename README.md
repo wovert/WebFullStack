@@ -70,6 +70,29 @@
   - 编译：babel, browserify (模块打包)
   - 同步：browser-sync
 
+## 响应式布局
+
+> 不同尺寸移动设备显示良好的现实页面效果(Responsive Layout)
+
+- 端口产品
+  - PC 端(全屏页面需要宽度自适应，但是一般都是固定宽度)
+  - PC + 移动端用一套项目（简单的页面，例如：产品介绍、公司展示类官网等）
+    - [摩拜](https://mobike.com/cn/)、[猎豹](https://www.cmcm.com/)
+  - 移动端（移动端设备尺寸差异较大，需要做响应式布局开发）
+    - 嵌入到 APP 中的 H5
+    - 微信中分享出来的 H5
+    - 微信公众号
+    - 小程序
+    - 浏览器访问的 H5
+  - RN(React Native), ionic / cordova ... JS开发的APP的框架，使用JS代码开发APP，最后框架会把代码转换为 android 和 ios 需要的代码
+
+### 如何实现响应式布局开发
+
+- **REM** 等比例缩放响应式布局
+  - meta 标签：`<meta name="viewport" content="width=device-width, initial-scale=1.0">`
+  - REM 是相对于html元素字体的单位，浏览器最小的字体是`12px`
+    - `html { font-size: 100 px}`
+
 ## http
 
 - GET 方式：有缓存
