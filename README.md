@@ -14,7 +14,7 @@
 - 英文文档
 
 1. 基础知识：ES6/ES7、HTML5/CSS3、数据交互
-2. 移动端：布局、touch、库
+2. 移动端：HTML5/CSS3、响应式布局、微信开发、Hybrid混合APP开发、移动端事件、移动端插件、类库、框架
 3. 图形：canvas、SVG/VML、Raphael、d3、echarts、WebGL
 4. 游戏
 5. 工具：版本控制(文件共享，版本管理，冲突)、编译、打包、脚手架
@@ -840,7 +840,6 @@ Failed to load http://localhost:8080/: No 'Access-Control-Allow-Origin' header i
 服务器返回Access-Control-Allow-Origin头信息就可以进行跨域
 
 ### jsonp 跨域
-
 
 ## 跨域
 

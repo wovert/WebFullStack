@@ -1,7 +1,9 @@
 # h5
 
-- geolocation——定位
-- video、audio
+- 语义化标签
+- 新增表单元素
+- geolocation
+- video/audio
 - localStorage
   - cookie：       小(4K)、浏览器和服务器共享
   - localStorage： 大(5M)、浏览器独享
@@ -13,7 +15,38 @@
 - manifest文件; 前台控制缓存
   - *本地应用
 
-## geolocation —— 定位
+## 语义化标签
+
+- header
+- footer
+- main 主体
+- section 区域
+- article 独立区域
+- aside 与内部无关的部分（广告）
+- nav
+- figure 配图区域
+  - figcaption 配图说明
+- mark 标记
+- time 事件标记
+- progress 进度条
+
+## 新增表单元素
+
+- 传统表单元素
+  - input
+  - type: {text/passwd/radio/checkbox/file/hidden/button/submit/reset}
+  - select
+  - textarea
+  - button
+  - form
+  - label
+- 新增表单元素
+  - input
+    - type:{search/email/tel/number/range/color/date/time/url...}
+
+**移动端沒有 key-down/key-up 事件，用input事件代替，表示正在操作当前表单元素（例如正在输入等）**
+
+## geolocation
 
 - 原理
   - PC端：通过IP地址定位；精度非常差
@@ -23,11 +56,23 @@
     - Chrome -> google.com    -> ?
     - IE     -> microsoft.com
 
-- getCurrentPosition      获取位置(1次)
-- watchPosition           不断获取位置
-- clearWatch
+- `watchPosition`           不断获取位置
+- `clearWatch`
+- `navigator.geolocation.getCurrentPosition` 获取地址位置（一次），调取手机内部的GPS定位系统获取当前手机所在的经纬度以及精准度等。
 
-## localStorage：5M/域名
+通过浏览器调取手机内部的软件或者硬件（缺点：性能和兼容性）
+
+- IP 库：通过网络IP地址获取地理位置定位
+- 基站
+- gps
+
+## video/audio
+
+> 告别 flash 时代
+
+## localStorage
+
+> 5M/域名
 
 - 域名、跨域
 - 极其方便
@@ -38,12 +83,12 @@
 - localStorage    永久存储
 - sessionStorage  会话期间存储——浏览器一关就没
 
-## WebWorker——Web多进程(没用过)
+## WebWorker
+
+> Web 多进程(没用过)
 
 - 主进程——UI进程
 - 子进程——工作进程
-
-### WebWorker
 
 1. 不能控制UI的东西；数据交互OK
 2. 子进程不能再创建子进程
@@ -62,15 +107,17 @@
 
 ## canvas
 
-- 路径操作：
-  - 相当于选区——没有效果，还需后续操作
-  - 闭合——一定要用closePath
-- 边线：stroke()
-- 填充：fill()
+> 图形绘制
 
-- 线宽：lineWidth
-- 线色：strokeStyle
-- 填充颜色：fillStyle
+- 路径操作
+  - 相当于选区——没有效果，还需后续操作
+  - 闭合 —— 一定要用 `closePath`
+- 边线：`stroke()`
+- 填充：`fill()`
+
+- 线宽：`lineWidth`
+- 线色：`strokeStyle`
+- 填充颜色：`fillStyle`
 
 ``` js
 Uncaught DOMException: Failed to execute 'postMessage' on 'Worker': HTMLDocument object could not be cloned.
