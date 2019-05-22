@@ -36,7 +36,7 @@ babel==broswer.js
 - 缺点
   - 重复定义变量
   - 不能限制修改
-  - 只有函数级作用于（没有块作用于）
+  - 只有**函数级**作用于（没有**块级**作用于）
 
 ### let/const
 
@@ -47,13 +47,14 @@ babel==broswer.js
   - 支持块级作用域
     - for(块级作用域)
     - {块作用域}
+      - 没有预解析
     - 全局作用域容易变量名冲突
     - 块级作用域容易控制变量的使用
 - const
   - 不能重复定义
   - 不能重复赋值
 
-[- 变量案例](./let_const.html)
+[let/const变量案例](./let_const/let_const.html)
 
 ## 解构赋值
 
@@ -86,8 +87,9 @@ func(10)
 
 ### 怎么确定箭头函数this
 
-> 箭头函数this时定死的，指向外层的this
-> 箭头函数不能应用到所有情况
+> 箭头函数没有自己的this且定死指向外层的this。this由**定义位置**决定执行环境
+
+箭头函数this不能用于随着调用者不同this环境变量变化
 
 ### 默认参数
 
@@ -169,6 +171,8 @@ console.log(avg) // 54.6375
 
 - 对象的属性名和变量名一样可以省略属性名
 
+[prototype、__proto__与constructor](https://blog.csdn.net/cc18868876837/article/details/81211729)
+
 ## JSON
 
 ``` js
@@ -209,7 +213,7 @@ decodeURIComponent(JSON.parse('{"a":12,"b":5}')) // 字符串转换json对象
 
 > 植入变量，任意折行
 
-- [字符串模板案例](./template_string/demo.js)
+[字符串模板案例](./template_string/demo.js)
 
 ## 面向对象
 
@@ -254,18 +258,25 @@ let fn = show.bind(document)
 fn()
 ```
 
-- 箭头优先级高于bind优先级
+**箭头优先级高于bind优先级**
 
 - [OOP对象示例](./oop.html)
 
 ## promise
 
-> 同步的方式编写异步
+> 一步操作的最终结果。通过函数传入的then方法从而获取的Promise最终的值或Promise最终拒绝的原因。同步的方式编写异步
+
+- 术语
+  - `promise`：兼容promise规范then方法的对象或函数
+  - `thenable`：then方法的对象或函数
+  - `value`：任何JavaScript值(undefined, thenable, promise等)
+  - `exception`：由`throw`表达式抛出来的值
+  - `reason`：用于描述Promise被拒绝原因的值
 
 - 三个状态
-  - pendding(准备：初始化成功，开始执行异步的任务)
-  - fulfilled(成功)
-  - rejected(失败)
+  - pendding(初始态：初始化成功，开始执行异步的任务)
+    - fulfilled(成功态)
+    - rejected(失败态) 有reason
 
 ```js
 // 创建Promise的一个实例，立即会把当前函数体中的异步操作执行
@@ -289,45 +300,45 @@ console.log(2); // second
 ```
 
 ``` js
-  let p = new Promise(function(resolve, reject){
-    $.ajax({
-      ur: 'arr.txt',
-      dataType: 'json',
-      success(arr) {
-        resolve(arr);
-      },
-      error(err) {
-        reject(err);
-      }
-    })
-  });
-
-  p.then(
-    function(arr){
-      console.log(arr)
+let p = new Promise(function(resolve, reject){
+  $.ajax({
+    ur: 'arr.txt',
+    dataType: 'json',
+    success(arr) {
+      resolve(arr);
     },
-    function(){
-      console.log('失败')
+    error(err) {
+      reject(err);
     }
-  );
-
-
-  // 多个异步加载， &关系
-  Promise.all([$.ajax({/*...*/}), $.ajax({/*...*/})]).then(arr=>{
-    // 对了
-    let [res1, res2] = ar
-  },
-  err => {
-    // 错了
   })
+});
 
-  // 竞速关系,谁先得到就直接返回
-  Promise.race([
-    $.ajax({url: 'http://doamin1.com/data/users'}),
-    $.ajax({url: 'http://doamin2.com/data/users'}),
-    $.ajax({url: 'http://doamin3.com/data/users'}),
-    $.ajax({url: 'http://doamin4.com/data/users'})
-  ]);
+p.then(
+  function(arr){
+    console.log(arr)
+  },
+  function(){
+    console.log('失败')
+  }
+);
+
+
+// 多个异步加载， &关系
+Promise.all([$.ajax({/*...*/}), $.ajax({/*...*/})]).then(arr=>{
+  // 对了
+  let [res1, res2] = ar
+},
+err => {
+  // 错了
+})
+
+// 竞速关系,谁先得到就直接返回
+Promise.race([
+  $.ajax({url: 'http://doamin1.com/data/users'}),
+  $.ajax({url: 'http://doamin2.com/data/users'}),
+  $.ajax({url: 'http://doamin3.com/data/users'}),
+  $.ajax({url: 'http://doamin4.com/data/users'})
+]);
 ```
 
 ## generator
@@ -359,20 +370,21 @@ function *show() {
 
 ### runner
 
-``` sh
 安装runner模块
-# cnpm search yield-runner-blue
+
+``` sh
+# npm search yield-runner-blue
 # cd project_name
-# cnpm i yield-runner-blue
+# npm i yield-runner-blue
 ```
 
-官方版runner的 **async_await**, ES7版本中新增了 async 和 await
+官方版runner的 **async_await**, ES7版本中新增了 `async` 和 `await`
 
-- Promise 本质：等待异步操作结束
-- generator 本质：无感处理异步操作
-- async 本质：官网 runner
+- `Promise` 本质：等待异步操作结束
+- `generator` 本质：无感处理异步操作
+- `async` 本质：官网 runner
 
-``` javascript
+``` js
 runner(function *(){
   ...
   let res1 = yield 异步操作;
@@ -393,26 +405,26 @@ runner(function *(){
 
 ## SPA 单页应用
 
-> 不刷新——用ajax之类的玩意加载
+> 不刷新 —— 用ajax加载数据并渲染内容
 
 ## 移动端布局
 
-1. viewport
-2. flex
-3. rem
-4. 绝对不要用px
+1. `viewport`
+2. `flex`
+3. `rem`
+4. 绝对不要用`px`
 
-- 设计图大——640px
-- 320px
+- 设计图大——`640px`
+- `320px`
 
-html的font-size => ?
+`html`的`font-size` => ?
 
-- 基准宽度：480px
-- 基准字体大小：10px -> ?
-- width:480px   ->    48rem
-- height:55px   ->    5.5rem
+- 基准宽度：`480px`
+- 基准字体大小：`10px` -> ?
+- `width:480px` -> `48rem`
+- `height:55px` -> `5.5rem`
 
-- header {width:48rem; height:5.5rem}
+- `header {width:48rem; height:5.5rem}`
 
 - 适配手机——JS：
   - 480/10=clientWidth/真实fontsize

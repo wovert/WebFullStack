@@ -1,7 +1,7 @@
 let arr = [1,2,3]
 let result = arr.some((item)=>{
-  // return item === 2 // true
-  return item === '2' // false
+  return item === 2 // true
+  // return item === '2' // false
 })
 console.log(result)
 

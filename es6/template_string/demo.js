@@ -1,3 +1,12 @@
+// 模版语言原理
+let template = "${name} this year ${age} old"
+function replace(template) {
+  return template.replace(/\$\{([^}]+)\}/g, function(matched, key) {
+    return eval(key)
+  })
+}
+console.log(replace(template))
+
 // function desc(strings, name, age) {
 //   console.log(strings)
 //   console.log(name)
@@ -19,7 +28,7 @@ function desc(strings, ...rest) {
 }
 // 带标签的模板字符串就像一个函数调用，参数
 // 1 参数是文本数组
-// 2 - n 是参数
+// 2 - n 是变量参数
 let name = 'Wovert'
 let age = 1
 let str = desc`信息：${name} 今年 ${age} 岁了`
