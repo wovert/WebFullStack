@@ -230,6 +230,29 @@ console.log(+0 === -0) // true
 let sy1 = Symbol(111) // 只有唯一的值，与其他值肯定不同
 ```
 
+## iterator
+
+- 调用 Iterator 接口的场景
+  - 结构赋值
+  - 扩展运算符
+  - Set Map
+  - for...of
+  - Array.from()
+  - Promise.all()
+  - Promise.race()
+- 具备 Iterator 接口的数据结构
+  - Array
+  - Map
+  - Set
+  - String
+  - TypedArray
+  - 函数的 arguments 对象
+  - NodeList 对象
+
+```js
+
+```
+
 ## 对象
 
 - 对象的属性名和变量名一样可以省略属性名
