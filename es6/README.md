@@ -42,7 +42,17 @@
 - [ES6兼容性](http://kangax.github.io/compat-table/es6/)
 
 - ES6(ES2015) - IE10+ | Chrome | Firefox | 移动端 | NodeJS
-- ES10(最新2019)
+- ES7(ECMA 2016)(http://www.ecma-international.org/ecma-262/7.0/)
+  - 12**5
+  - Array.includes()
+- ES8(ECMA 2017)](http://www.ecma-international.org/ecma-262/8.0/)
+  - await/async
+- ES9(ECMA 2018)(http://www.ecma-international.org/ecma-262/9.0/)
+  - rest/spread (替代wait/async)
+  - 循环异步迭代
+  - Promise.finally()
+  - 增加正则
+- ES10(ECMA 2019)
 
 ### 编译、转换
 
@@ -171,7 +181,7 @@ function func(p1=1,p2=2,p3=3){}
 - 上面的都可以修改 `this`
 - [reduce 汇总](./array/reduce.js)
 - [reduceRight 汇总](./array/reduce.js
-[array 示例](./array.html)
+- [array 示例](./array.html)
 
 ``` js
 // map
@@ -422,7 +432,6 @@ p.then(
   }
 );
 
-
 // 多个异步加载， &关系
 Promise.all([$.ajax({/*...*/}), $.ajax({/*...*/})]).then(arr=>{
   // 对了
@@ -438,7 +447,7 @@ Promise.race([
   $.ajax({url: 'http://doamin2.com/data/users'}),
   $.ajax({url: 'http://doamin3.com/data/users'}),
   $.ajax({url: 'http://doamin4.com/data/users'})
-]);
+])
 ```
 
 ## generator
@@ -534,4 +543,30 @@ runner(function *(){
 
 ```html
 <script type="module" src="main.js"></script>
+```
+
+## babel
+
+### babel编译方式
+
+1. 在线编译
+2. 工具编译
+
+[在编编译babel](./babel/在线编译/index.html)
+
+- 工具编译
+
+```sh
+mkdir app && cd app && npm init --y
+
+# 安装babel工具，babel预设
+npm i @babel/core @babel/cli @babel/preset-env -D
+vim package.json
+  "build": "babel src -d dest"
+vim .babelrc
+  {
+    "presets": ["@babel/preset-env"]
+  }
+
+npm run build
 ```
