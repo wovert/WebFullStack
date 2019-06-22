@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script>
+    window.onload=function (){
+      var aBtn=document.getElementsByTagName('input');
+
+      for(var i=0;i<aBtn.length;i++){
+        aBtn[i].onclick=function (){
+          alert(i);
+        };
+      }
+    };
+    </script>
+  </head>
+  <body>
+    <input type="button" value="aaa">
+    <input type="button" value="bbb">
+    <input type="button" value="ccc">
+    <input type="button" value="ddd">
+  </body>
+</html>
