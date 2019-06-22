@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1],[,function(n,o,e){"use strict";e.r(o),e.d(o,"value",function(){return t});let t="mod2"}]]);

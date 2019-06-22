@@ -327,6 +327,14 @@ decodeURIComponent(JSON.parse('{"a":12,"b":5}')) // 字符串转换json对象
 
 ## 面向对象
 
+机器语言 -> 汇编 -> 低级语言(面向过程) -> 高级语言(面向对象) -> 模块 -> 框架 -> API
+
+### 面向对象特性
+
+1.封装性
+2.继承性
+3.多态性
+
 ``` js
 class Animal {
   constructor(name,age) {
@@ -344,7 +352,6 @@ class Person extends Animal {
   }
 }
 let p = new Persion('Alice',20);
-
 ```
 
 面向对象实例
@@ -371,6 +378,13 @@ fn()
 **箭头优先级高于bind优先级**
 
 - [OOP对象示例](./oop.html)
+
+## 闭包
+
+垃圾回收机制：GC
+
+1. 闭包底层：栈
+2. 闭包高层：函数当作对象处理
 
 ## promise
 
@@ -569,4 +583,39 @@ vim .babelrc
   }
 
 npm run build
+```
+
+## 模块化
+
+### 模块化历史
+
+- CMD(SeaJS, 同步加载)
+- AMD(RequireJS, 异步加载)
+- ES6 语言提供的模块化支持
+
+**因为ES6 的模块化浏览器不支持，所以使用 webpack 编译成 es3**
+
+```sh
+npm i webpack-cli webpack -g
+npm i @babel/core @babel/cli @babel/preset-env -D
+vim package.json
+  "build": "babel src -d dest"
+vim .babelrc
+  {
+    "presets": ["@babel/preset-env"]
+  }
+vim webpack.config.js
+  const path = require('path')
+
+  module.exports = {
+    mode: 'production',
+    entry: './index.js',
+    output: {
+      path: path.resolve(__dirname, 'build'),
+      filename: 'bundle.js',
+      publicPath: '/build/' // 打包异步加载模块的路径
+    }
+  }
+webpack
+live-server
 ```
