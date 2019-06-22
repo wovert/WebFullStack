@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    nav {
+      height: 200px;
+      background-color: red;
+      display: block; /*低版本浏览器中将元素转换为块级元素*/
+    }
+  </style>
+</head>
+<body>
+  <nav>低版本浏览器中H5语义化标签解释为行内的自定义标签</nav>
+  <script>
+    // 第一种解决方案
+    document.createElement('nav')
+  </script>
+  <!-- 第二种解决方案: 通过js插件(cc:ie) -->
+  <!--[if lte IE 8]>
+    <script src="https://cdn.bootcss.com/html5shiv/r29/html5.min.js"></script>
+    <script>
+      console.log('loading in lte IE 8')
+    </script>
+  <![endif]-->
+</body>
+</html>
