@@ -1,12 +1,27 @@
 # Node
 
-## NodeJS和其他后台语言不同
+## [About Node](https://nodejs.org/en/about/)
+
+> As an **asynchronous event driven** JavaScript runtime, Node is designed to build **scalable network applications**. In the following "hello world" example, many connections can be handled concurrently. Upon each connection the callback is fired, but if there is no work to be done, Node will sleep.Node 是基于异步事件驱动的 JavaScript 运行，Node 设计了构建可伸缩的网络应用。在下面的 "hello world" 实例中，很多连接可能会产生并发处理。在每个连接上回调会被触发，但如果没有工作要做，Node 会进入睡眠状态。
+
+This is in contrast to today's more common concurrency model where OS threads are employed. Thread-based networking is relatively inefficient and very difficult to use. Furthermore, users of Node are free from worries of dead-locking the process, since there are no locks. Almost no function in Node directly performs I/O, so the process never blocks. Because nothing blocks, scalable systems are very reasonable to develop in Node. 这与当今更常见的并发在操作系统线程使用上进行对比。基于线程网络是相对低效和使用起来非常困难。而且，node的用户不同担心死锁的线程，因为 node 没有阻塞。几乎在node中没有函数直接运行 I/O，所以进程永远不会阻塞。因为没有阻塞，可伸缩系统非常非常容易在node中发挥。
+
+If some of this language is unfamiliar, there is a full article on [Blocking vs Non-Blocking](https://nodejs.org/en/docs/guides/blocking-vs-non-blocking/). 如果有些语言不熟悉，这里有一个关于阻塞与非阻塞的全文。
+
+Node is similar in design to, and influenced by, systems like Ruby's Event Machine or Python's Twisted. Node takes the event model a bit further. It presents an event loop as a runtime construct instead of as a library. In other systems there is always a blocking call to start the event-loop. Typically behavior is defined through callbacks at the beginning of a script and at the end starts a server through a blocking call like EventMachine::run(). In Node there is no such start-the-event-loop call. Node simply enters the event loop after executing the input script. Node exits the event loop when there are no more callbacks to perform. This behavior is like browser JavaScript — the event loop is hidden from the user. Node 设计上类似于，像Ruby的 Event Machine 或 Python's Twisted 的系统受影响。Node 进一步尝试了事件模型。它将一个事件循环作为一个运行时结构，而不是作为一个库。在其他的系统中总是有一个阻塞调用开始的事件循环。典型的行为是通过脚本开头的回调来定义的，并且在结束时通过像EventMachine：：run（）的阻塞调用启动服务器。在 Node 中没有想这样开始事件循环调用。Node 在执行输入之后简单的进入事件循环。当没有更多的回调函数时，node会退出事件循环。这个行为像浏览器的 javaScript - 事件循环从用户中隐藏。
+
+HTTP is a first class citizen in Node, designed with streaming and low latency in mind. This makes Node well suited for the foundation of a web library or framework. 在Node 中 HTTP 是一等公民，设计时考虑到流媒体和低延迟。这是的node非常适用于一个 web 库或框架。
+
+Just because Node is designed without threads, doesn't mean you cannot take advantage of multiple cores in your environment. Child processes can be spawned by using our child_process.fork() API, and are designed to be easy to communicate with. Built upon that same interface is the cluster module, which allows you to share sockets between processes to enable load balancing over your cores. 仅仅是因为 Node 没有线程，这并不意味着在你的环境中不能使用多核。子进程可以通过 child_process.for() 接口来使用，并且被设计易于与之通信。在相同的接口上构建的是集群模块，它允许您在进程之间共享套接字，以便在核心上实现负载平衡。
+
+
+https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/
 
 ### 优点
 
-1. nodejs的对象、语法跟JavaScript一模一样；利于前端人员用
-2. 性能比其他语言更好；比如比PHP块80多倍
-3. 前后台配合方便
+- 利于前端人员用: nodejs的对象、语法跟JavaScript一模一样；
+- 性能比其他语言更好: 比如比 PHP 块80多倍
+- 前后台配合方便
 
 ### 缺点
 
@@ -14,51 +29,52 @@
 
 ## NodeJS用处
 
-1. 服务器——小型后台系统、中间层
-2. 工具-测试、构建(grunt、gulp、WebPack...)、抓取
-3. Nodejs搭建，Web服务器：http
+- 中间层: 传统前端直接可以直接请求后台java或者php的接口，它还要用node作为中间层，这样的好处是什么？
+  - 安全性
+  - 性能
+  - 前后台交互
+  - 降低主服务器复杂度
+- 小型服务
+- 工具
+  - 测试
+  - 构建(grunt、gulp、WebPack、gulp)
+  - 抓取
 
-## 运行NodeJS程序：
+中间层 VS 中间件
 
-1. 盘符        d:
-2. 进入目录    cd 目录
-3. 运行        node xxx.js
+## Node 环境安装
 
-## Node特性
+### Windows 下安装 Node 环境
 
-1. nodejs和JavaScript差不多
-2. 模块
-3. http模块
+1. 下载 [nvm](https://github.com/coreybutler/nvm-windows/releases) 并配置环境变量
 
-``` js
-let server=http.createServer(()=>{
-  //有浏览器请求时执行的回调函数
-});
-server.listen(666);
+2. 配置 node 和 npm 镜像源
+
+``` shell
+nvm node_mirror https://npm.taobao.org/mirrors/node/
+nvm npm_mirror https://npm.taobao.org/mirrors/npm/
 ```
 
-`/favicon.ico`
+3. 安装 node
 
-1. 系统模块
-2. 服务器完成——http、fs、流操作
-3. WebSocket——socket.io
-4. formData——ajax2.0、文件上传、进度
-5. cors跨域
+``` shell
+# nvm install [VERSION]
+# nvm list 查看已安装的 node 版本列表
+# nvm use [VERSION] 使用指定 node 版本
+# node -v 查看使用 Node 版本
+```
 
-nodeJS作为中间层服务器，我想问为啥传统前端直接可以直接请求后台java或者php的接口，它还要用node作为中间层，这样的好处是什么？安全性、性能、前台交互
+4. 安装npm 配置镜像源
 
-能否 简单说说 “爬虫”——抓取别人网站的数据
+```sh
+npm i nrm -g
+nrm use taobao
+```
 
-负载均衡是啥——架构师
+### 卸载Node
 
-`process.env.NODE_ENV` 老师有空可以讲讲这个吗
-
-怎么代理跨域啊——反向代理
-
-Node 只能用单cpu 是不是也是缺点——多进程
-
-- 浅拷贝-复制一层
-- 深拷贝-复制所有层
+- 且在 Node本身
+- 用户目录下的 `node_modules`
 
 ## Node模块
 
@@ -99,9 +115,9 @@ Node 只能用单cpu 是不是也是缺点——多进程
 2. 设计模式
 3. 架构
 
-### 页面被运营商劫持，有什么办法可以解决么? HTTPS
+页面被运营商劫持，有什么办法可以解决么? **HTTPS**
 
-### 进程之间怎么通信：
+### 进程之间怎么通信
 
 1. 管道
 2. 共享内存
@@ -152,7 +168,7 @@ ctrl+c退出是不是会被监测到，上次在生产环境用了，被批评�
 
 ### 前端容灾 都包括啥: 磁盘镜像(增量)
 
-## node有缓存的概念吗？
+## node有缓存的概念
 
 ### node的垃圾回收、JavaScript的gc、Java的gc
 
@@ -287,9 +303,9 @@ p2=Null;  //还剩0个
 
 ## Node 中使用数据库
 
-``` sh
-$ cnpm search mysql
-$ cnpm install mysql
+```sh
+npm search mysql
+npm install mysql
 ```
 
 ``` js
@@ -301,8 +317,4 @@ let db = mysql.createPool({host, port, user, password, database, maxConnection: 
 
 // 查询
 db.query(sql, (err, data)=>{})
-
-
-
-
 ```
