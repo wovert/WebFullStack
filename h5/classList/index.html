@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .title {
+      background: red;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>classList</h1>
+  <div>
+    <button class="add">add</button>
+    <button class="remove">remove</button>
+    <button class="contains">contains</button>
+    <button class="toggle">toggle</button>
+  </div>
+  <script>
+    let titleObj = document.querySelector('h1')
+    let addObj = document.querySelector('.add')
+    let removeObj = document.querySelector('.remove')
+    let containsObj = document.querySelector('.contains')
+    let toggleObj = document.querySelector('.toggle')
+
+    addObj.onclick = function() {
+      titleObj.classList.add('title')
+    }
+    removeObj.onclick = function() {
+      titleObj.classList.remove('title')
+    }
+    containsObj.onclick = function() {
+      alert(titleObj.classList.contains('title'))
+    }
+    toggleObj.onclick = function() {
+      titleObj.classList.toggle('title')
+    }
+  </script>
+</body>
+</html>

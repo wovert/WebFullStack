@@ -111,6 +111,43 @@
   2. 通过setCustomValidity方法设置修改内容
 ```
 
+## querySelectorAll VS getElementsBy
+
+1. W3C 标准querySelectorAll 属于 W3C 中的 Selectors API 规范 [1]。而 getElementsBy 系列则属于 W3C 的 DOM 规范 [2]。
+
+2. 浏览器兼容querySelectorAll 已被 IE 8+、FF 3.5+、Safari 3.1+、Chrome 和 Opera 10+ 良好支持 。getElementsBy 系列，以最迟添加到规范中的 getElementsByClassName 为例，IE 9+、FF 3 +、Safari 3.1+、Chrome 和 Opera 9+ 都已经支持该方法了。
+
+3. 接收参数querySelectorAll 方法接收的参数是一个 CSS 选择符。而 getElementsBy 系列接收的参数只能是单一的className、tagName 和 name。代码如下 [3]：
+
+```js
+var c1 = document.querySelectorAll('.b1 .c');
+var c2 = document.getElementsByClassName('c');
+var c3 = document.getElementsByClassName('b2')[0].getElementsByClassName('c');
+```
+
+需要注意的是，querySelectorAll 所接收的参数是必须严格符合 CSS 选择符规范的
+
+[Selectors API Level 2](https://www.w3.org/TR/selectors-api2/)
+
+[Document Object Model Core](https://www.w3.org/TR/DOM-Level-3-Core/core.html)
+
+[http://jsbin.com/cuduyigi/1/edit?html,js,console](http://jsbin.com/cuduyigi/1/edit?html,js,console)
+
+[http://jsbin.com/mabefihi/1/watch?html,js,console](http://jsbin.com/mabefihi/1/watch?html,js,console)
+
+[Demo 1: http://jsbin.com/daduziba/1/watch?html,js,outputDemo](http://jsbin.com/daduziba/1/watch?html,js,outputDemo)
+
+[http://jsbin.com/xuvodipo/1/watch?html,js,output](http://jsbin.com/xuvodipo/1/watch?html,js,output)
+
+[Document Object Model HTML](https://www.w3.org/TR/DOM-Level-2-HTML/html.html#ID-75708506)
+
+## classList
+
+- DOM.classList.add('类名')
+- DOM.classList.remove('类名')
+- DOM.classList.contains('类名')
+- DOM.classList.toggle('类名')
+
 ## geolocation
 
 - 原理
