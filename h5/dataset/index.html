@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .title {
+      background: red;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1 data-title="标题" data-id="10">classList</h1>
+  <div>
+    <button class="get">get dataset</button>
+    <button class="set">set dataset</button>
+  </div>
+  <script>
+    let titleObj = document.querySelector('h1')
+    let getObj = document.querySelector('.get')
+    let setObj = document.querySelector('.set')
+
+
+    getObj.onclick = function() {
+      alert(titleObj.dataset.title + ',' + titleObj.dataset['id'])
+    }
+    setObj.onclick = function() {
+      titleObj.dataset.title = '新的标题'
+      titleObj.dataset['id'] = 100
+    }
+  </script>
+</body>
+</html>
