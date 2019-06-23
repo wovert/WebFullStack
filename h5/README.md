@@ -148,6 +148,18 @@ var c3 = document.getElementsByClassName('b2')[0].getElementsByClassName('c');
 - DOM.classList.contains('类名')
 - DOM.classList.toggle('类名')
 
+[classList案例](./classList/index.html)
+
+## 自定义属性
+
+- data-自定义属性名
+- 获取自定义属性名: DOM.dataset() 返回一个对象
+  - DOM.dataset.属性名 || DOM.dataset[属性名]
+- 设置自定义属性
+  - DOM.dataset.自定义属性名=值 || DOM.dataset[自定义属性名] = 值
+
+[dataset案例](./dataset/index.html)
+
 ## geolocation
 
 - 原理
