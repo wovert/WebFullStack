@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <form action="">
+    <input type="file" name="" />
+  </form>
+  <script>
+    let input = document.querySelector('input');
+    input.onchange = function() {
+      // for (let key in this) {
+        // console.log(key, this[key])
+      // }
+      let file = this.files[0] // 获取上传文件对象
+
+      let reader = new FileReader() // 创建读取器
+      // console.log(reader)
+      
+      reader.readAsText(file) // 已文本方式读取文件内容
+
+      reader.onload = function() { // 文件读取完成事件
+        console.log(reader.result) // 输出读取文件的结果
+      }
+    }
+  </script>
+</body>
+</html>

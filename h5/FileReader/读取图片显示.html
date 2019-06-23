@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>显示图片</title>
+</head>
+<body>
+	<input type="file">
+	<script type="text/javascript">
+		var file_btn = document.querySelector("input");
+		file_btn.onchange = function() {
+			var file = this.files[0];
+			// 判断后缀名是否合法
+			var filename = file.name.substring(file.name.lastIndexOf("."));
+			var imgs = [".png",".jpg","gif",".ico"];
+			var flag = false;
+
+			for (var i = 0; i < imgs.length; i++) {
+				if(imgs[i] == filename) {
+					flag = true;
+					break;
+				}
+			}
+			if (flag) {
+				var reader = new FileReader();
+				reader.readAsDataURL(file);
+				reader.onload = function() {
+					var img = document.createElement("img");
+					img.src=reader.result;
+					document.body.appendChild(img);
+					}
+			} else {
+				alert("文件类型不正确，请重新选择");
+			}
+		}
+	</script>
+</body>
+</html>

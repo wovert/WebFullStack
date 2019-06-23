@@ -33,6 +33,8 @@
 
 ## 语义化标签
 
+### 布局结构标签及兼容处理
+
 - header 头部区域
 - footer 尾部区域
 - main 主体区域
@@ -49,6 +51,30 @@
 `cc:ie`
 
 [语义化标签兼容低版本浏览器案例](./语义化标签兼容低版本浏览器/index.html)
+
+### 多媒体标签及属性介绍 - video/audio
+
+[多媒体标签案例](./多媒体标签/index.html)
+
+```html
+<video></video> 视频
+  属性：controls 显示控制栏
+  属性：autoplay 自动播放
+  属性：loop  设置循环播放
+
+<audio></audio>  音频
+  属性：controls 显示控制栏
+  属性：autoplay 自动播放
+  属性：loop  设置循环播放
+  video标签支持的格式 http://www.w3school.com.cn/html5/html_5_video.asp
+  多媒体标签在网页中的兼容效果方式
+
+<video>
+  <source src="trailer.mp4">
+  <source src="trailer.ogg">
+  <source src="trailer.WebM">
+</video>
+```
 
 ## 新增表单元素
 
@@ -111,7 +137,9 @@
   2. 通过setCustomValidity方法设置修改内容
 ```
 
-## querySelectorAll VS getElementsBy
+## HTML5 API
+
+### querySelectorAll VS getElementsBy
 
 1. W3C 标准querySelectorAll 属于 W3C 中的 Selectors API 规范 [1]。而 getElementsBy 系列则属于 W3C 的 DOM 规范 [2]。
 
@@ -141,7 +169,7 @@ var c3 = document.getElementsByClassName('b2')[0].getElementsByClassName('c');
 
 [Document Object Model HTML](https://www.w3.org/TR/DOM-Level-2-HTML/html.html#ID-75708506)
 
-## classList
+### classList
 
 - DOM.classList.add('类名')
 - DOM.classList.remove('类名')
@@ -150,7 +178,7 @@ var c3 = document.getElementsByClassName('b2')[0].getElementsByClassName('c');
 
 [classList案例](./classList/index.html)
 
-## 自定义属性
+### 自定义属性
 
 - data-自定义属性名
 - 获取自定义属性名: DOM.dataset() 返回一个对象
@@ -160,7 +188,30 @@ var c3 = document.getElementsByClassName('b2')[0].getElementsByClassName('c');
 
 [dataset案例](./dataset/index.html)
 
-## geolocation
+### 文件读取
+
+读取大文件按照流读取文件内容
+
+- FileReader方法: 接口有3个用来读取文件方法返回结果在`result`中
+  - readAsBinaryString 将文件都读取为**二进制编码**
+  - readAsText 将文件读取为**文本**
+  - readAsDataURL 将文件读取为**DataURL**
+
+- FileReader 事件模型
+  - onabort 中断时触发
+  - onerror 出错时触发
+  - onload 文件读取成功完成时触发
+  - onloaded 读取完成触发，无论成功或失败
+  - onloadstart 读取开始时触发
+  - onprogress 读取中
+
+[FileReader案例](./FileReader/index.html)
+
+### 获取网络状态
+
+### 获取地理定位
+
+> geolocation
 
 - 原理
   - PC端：通过IP地址定位；精度非常差
@@ -180,31 +231,7 @@ var c3 = document.getElementsByClassName('b2')[0].getElementsByClassName('c');
 - 基站
 - gps
 
-## 多媒体标签及属性介绍 - video/audio
-
-[多媒体标签案例](./多媒体标签/index.html)
-
-```html
-<video></video> 视频
-  属性：controls 显示控制栏
-  属性：autoplay 自动播放
-  属性：loop  设置循环播放
-
-<audio></audio>  音频
-  属性：controls 显示控制栏
-  属性：autoplay 自动播放
-  属性：loop  设置循环播放
-  video标签支持的格式 http://www.w3school.com.cn/html5/html_5_video.asp
-  多媒体标签在网页中的兼容效果方式
-
-<video>
-  <source src="trailer.mp4">
-  <source src="trailer.ogg">
-  <source src="trailer.WebM">
-</video>
-```
-
-## localStorage
+### localStorage
 
 > 5M/域名
 
@@ -216,7 +243,9 @@ var c3 = document.getElementsByClassName('b2')[0].getElementsByClassName('c');
 - localStorage    永久存储
 - sessionStorage  会话期间存储——浏览器一关就没
 
-## WebWorker
+### 操作多媒体
+
+### WebWorker
 
 > Web 多进程(没用过)
 
