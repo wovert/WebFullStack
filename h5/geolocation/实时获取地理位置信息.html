@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	 <script type="text/javascript">
+	 	 window.navigator.geolocation.watchPosition(success, error);
+	 	 function success (position) {
+			 console.log('position:', position);
+			 alert(position.coords.latitude, position.coords.longitude)
+		}
+	 	 function error (msg) {
+	 		console.log(msg);
+	 	 }
+	 </script>
+</body>
+</html>

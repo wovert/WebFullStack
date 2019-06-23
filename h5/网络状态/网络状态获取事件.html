@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// // 当联网的时候触发该事件
+		// window.ononline = function () {
+		// 	alert("在线");
+		// }
+
+		// // 当断网的时候触发该事件
+		// window.onoffline = function() {
+		// 	alert("断网");
+		// }
+
+		// 启动这个页面是不会触发ononline和onoffline事件的，得网络状态发生变化才触发。如果想要在页面打开的时候就判断现在是在线状态还是离线状态，可以使用一个只读属性：navigator.onLine
+		var el = document.body;  
+		if (el.addEventListener) {  
+			window.addEventListener("online", function () {  
+				alert("online");
+			}, true);  
+			window.addEventListener("offline", function () {  
+				alert("offline");
+			}, true);  
+		}  
+		else if (el.attachEvent) {  
+			window.attachEvent("ononline", function () {  
+				alert("online");
+			});  
+			window.attachEvent("onoffline", function () {  
+				alert("offline");
+			});  
+		}  
+		else {  
+			window.ononline = function () {  
+				alert("online");
+			};  
+			window.onoffline = function () {  
+				alert("offline");
+			};  
+		}		
+	 </script>
+</body>
+</html>

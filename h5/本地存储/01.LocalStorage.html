@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>LocalStorgae</title>
+</head>
+<body>
+	
+	<input type="button" name="" class="bt1" value="添加">
+	<input type="button" name="" class="bt2" value="删除">
+	<input type="button" name="" class="bt3" value="获取">
+	<input type="button" name="" class="bt4" value="清空">
+	<input type="button" name="" class="bt5" value="索引获取">
+
+	<script type="text/javascript">
+		
+		var bt1=document.querySelector(".bt1");
+
+			bt1.onclick=function() {
+				window.localStorage.setItem("name","zs");
+			}
+
+		var bt2=document.querySelector(".bt2");
+			bt2.onclick=function() {
+				window.localStorage.removeItem("name");
+			}
+
+		var bt3=document.querySelector(".bt3");
+
+			bt3.onclick=function(){
+
+			    console.log(window.localStorage.getItem("name"));	
+			}
+
+		var bt4=document.querySelector(".bt4");
+
+			bt4.onclick=function(){
+				window.localStorage.clear();
+			}
+
+		// var bt5=document.querySelector(".bt5");
+
+		// 	bt5.onclick=function(){
+		// 		console.log( window.localStorage.key(1) );
+		// 	}
+	</script>
+
+</body>
+</html>

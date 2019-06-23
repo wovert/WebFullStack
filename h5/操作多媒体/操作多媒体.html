@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>多媒体操作</title>
+</head>
+<body>
+	
+	<video src="../多媒体标签/trailer.mp4"></video>
+	<br>
+	<input type="button" name="" value="播放" class="bt1">
+	<input type="button" name="" value="暂停" class="bt2">
+	<input type="button" name="" value="快进" class="bt3">
+	<input type="button" name="" value="停止" class="bt4">
+	<script type="text/javascript">
+		
+		var video=document.querySelector("video");
+		var bt1=document.querySelector(".bt1");
+		var bt2=document.querySelector(".bt2");
+		var bt3=document.querySelector(".bt3");
+		var bt4=document.querySelector(".bt4");
+
+		video.addEventListener("canplay",function(){
+			// 点击播放
+			bt1.onclick=function(){
+				video.play();
+			}
+			// 点击暂停
+			bt2.onclick=function(){
+				video.pause();
+			}
+			// 点击快进
+			bt3.onclick=function(){
+
+				video.playbackRate=2;
+			}
+			// 停止
+			bt4.onclick=function(){
+				video.load();
+			}
+		})
+
+	</script>
+</body>
+</html>
