@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script>
+    window.onload = function () {
+      let oBtn = document.getElementById('btn1')
+
+      oBtn.onclick = function () {
+        let ajax = new XMLHttpRequest()
+
+        ajax.open('GET', 'http://localhost:8080/a', true)
+        ajax.send()
+
+        ajax.onreadystatechange = function () {
+          if (ajax.readyState === 4) {
+            if (ajax.status>=200 && ajax.status<300 || ajax.status==304){
+              alert('成功')
+              let json=JSON.parse(ajax.responseText)
+              console.log(json);
+            } else {
+              alert('失败')
+            }
+          }
+        }
+      }
+    }
+    </script>
+  </head>
+  <body>
+    <input type="button" value="请求" id="btn1">
+  </body>
+</html>
