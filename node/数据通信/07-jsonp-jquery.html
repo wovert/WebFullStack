@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="./js/jquery.js" charset="utf-8"></script>
+    <script>
+    $(function () {
+      $('#txt1').on('input', function () {
+        $.ajax({
+          url: 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',
+          data: {wd: $(this).val()},
+          dataType: 'jsonp',
+          jsonp: 'cb' // 回调函数本身
+        }).then(({s}) => {
+          console.log(s)
+        }, res=>{
+          alert('失败')
+        })
+      })
+    })
+    </script>
+  </head>
+  <body>
+    <input type="text" id="txt1">
+  </body>
+</html>

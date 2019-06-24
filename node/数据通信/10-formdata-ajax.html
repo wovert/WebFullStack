@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div id="div1">
+      ???<input type="text" id="user" /><br>
+      ???<input type="password" id="pass" /><br>
+      ???<input type="file" id="f1" /><br>
+      <input id="btn1" type="button" value="??">
+    </div>
+  </body>
+  <script>
+  let oBtn=document.querySelector('#btn1');
+  oBtn.onclick=function (){
+    let formdata=new FormData();
+
+    formdata.append('username', document.querySelector('#user').value);
+    formdata.append('password', document.querySelector('#pass').value);
+    formdata.append('f1', document.querySelector('#f1').files[0]);
+
+    //
+    let xhr=new XMLHttpRequest();
+
+    xhr.open('post', 'http://localhost:8080/', true);
+    xhr.send(formdata);
+
+    xhr.onreadystatechange=function (){
+      if(xhr.readyState==4){
+        if(xhr.status==200){
+          alert('??');
+        }else{
+          alert('??');
+        }
+      }
+    };
+  };
+  </script>
+</html>

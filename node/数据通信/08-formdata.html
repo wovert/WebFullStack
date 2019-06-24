@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>FormDATA</title>
+  </head>
+  <body>
+    <form id="form1" action="http://localhost:8080/" method="post" enctype="multipart/form-data">
+      用户：<input type="text" name="user" /><br>
+      密码：<input type="password" name="pass" /><br>
+      文件：<input type="file" name="f1" /><br>
+      <input type="submit" value="提交">
+    </form>
+  </body>
+  <script>
+  let oForm = document.querySelector('#form1')
+  oForm.onsubmit = function () {
+    let formdata = new FormData(oForm)
+    let xhr = new XMLHttpRequest()
+    xhr.open(oForm.method, oForm.action, true)
+
+    xhr.send(formdata)
+
+    xhr.onreadystatechange = function () {
+      if(xhr.readyState == 4) {
+        if(xhr.status == 200) {
+          alert('success')
+        } else {
+          alert('fail')
+        }
+      }
+    }
+    return false
+  }
+  </script>
+</html>

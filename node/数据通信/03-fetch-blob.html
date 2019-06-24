@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script>
+    window.onload = function () {
+      let oImg = document.getElementById('img1')
+      let oBtn = document.getElementById('btn1')
+      oBtn.onclick = async function (){
+        // 1.请求
+        let res = await fetch('./data/logo.png')
+        // 2.解析
+        let data = await res.blob()
+        let url = URL.createObjectURL(data)
+        oImg.src = url
+      };
+    };
+    </script>
+  </head>
+  <body>
+    <input type="button" value="读取" id="btn1">
+    <img id="img1" />
+  </body>
+</html>
