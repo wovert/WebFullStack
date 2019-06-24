@@ -14,7 +14,6 @@ HTTP is a first class citizen in Node, designed with streaming and low latency i
 
 Just because Node is designed without threads, doesn't mean you cannot take advantage of multiple cores in your environment. Child processes can be spawned by using our child_process.fork() API, and are designed to be easy to communicate with. Built upon that same interface is the cluster module, which allows you to share sockets between processes to enable load balancing over your cores. 仅仅是因为 Node 没有线程，这并不意味着在你的环境中不能使用多核。子进程可以通过 child_process.for() 接口来使用，并且被设计易于与之通信。在相同的接口上构建的是集群模块，它允许您在进程之间共享套接字，以便在核心上实现负载平衡。
 
-
 https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/
 
 ### 优点
@@ -70,6 +69,13 @@ nvm npm_mirror https://npm.taobao.org/mirrors/npm/
 npm i nrm -g
 nrm use taobao
 ```
+
+### node模块包版本
+
+- ^major.x.x major最新版本
+- ~major.minor.x major.minor最新版本
+- latest 最新版
+- x.x.x 固定版本
 
 ### 卸载Node
 
@@ -168,6 +174,59 @@ console.log('a')
     - 容量大
   - PUT 更新数据
   - DELETE 删除数据
+
+- 数据通信
+  - GET
+  - POST
+    - 普通数据-querystring
+    - 文件数据-?
+
+```js
+'content-type': 'multipart/form-data; boundary=----WebKitFormBoundaryM6LAl36zbCckMuAg',
+
+------WebKitFormBoundarybn84x6qDrrd3GKXj\r\n
+Content-Disposition: form-data; name="username"\r\n
+\r\n
+user\r\n
+------WebKitFormBoundarybn84x6qDrrd3GKXj\r\n
+Content-Disposition: form-data; name="password"\r\n
+\r\n
+password\r\n
+------WebKitFormBoundarybn84x6qDrrd3GKXj\r\n
+Content-Disposition: form-data; name="f1"; filename="upload.txt"\r\n
+Content-Type: text/plain\r\n
+\r\n
+admin\r\n
+123456\r\n
+------WebKitFormBoundarybn84x6qDrrd3GKXj--\r\n
+\r\n
+```
+
+```
+<分隔符>\r\n字段信息\r\n\r\n内容\r\n<分隔符>\r\n字段头\r\n\r\n内容\r\n<分隔符>\r\n字段头\r\n\r\n内容\r\n<分隔符>--
+
+1.用<分隔符>切分
+[
+  null,
+  "\r\n字段信息\r\n\r\n内容\r\n",
+  "\r\n字段信息\r\n\r\n内容\r\n",
+  "\r\n字段信息\r\n\r\n内容\r\n",
+  '--'
+]
+
+2.第0个和最后1个，扔掉
+[
+  "\r\n字段信息\r\n\r\n内容\r\n",
+  "\r\n字段信息\r\n\r\n内容\r\n",
+  "\r\n字段信息\r\n\r\n内容\r\n",
+]
+
+3.每一项
+"\r\n字段信息\r\n\r\n内容\r\n"
+
+"字段信息\r\n\r\n内容"
+"字段信息", "内容"
+```
 
 ### 前端把加密数据传到后台，后台怎么进行校验的
 

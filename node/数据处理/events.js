@@ -1,4 +1,4 @@
-const Event=require('events').EventEmitter;
+const Event = require('events').EventEmitter
 
 /*
 let ev=new Event();
