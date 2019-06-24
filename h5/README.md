@@ -405,55 +405,52 @@ ctx.fillstyle="值"; 设置填充颜色
 
 ### 非零环绕原则
 
-```
- ☞ 绘制一个如下图形
-```
+绘制一个如下图形
 
 ![52647078286](assets/1526470782861.png)
 
 ``` text
- ☞ 非零环绕原则：
-	  1. 任意找一点，越简单越好
-	  2. 以点为圆心，绘制一条射线，越简单越好（相交的边越少越好）
-	  3. 以射线为半径顺时针旋转，相交的边同向记为+1，反方向记为-1，如果相加的区域等于0，则不填充。
-	  4. 非零区域填充
-	  
- ☞ 非零环绕原则案例：
+☞ 非零环绕原则：
+  1. 任意找一点，越简单越好
+  2. 以点为圆心，绘制一条射线，越简单越好（相交的边越少越好）
+  3. 以射线为半径顺时针旋转，相交的边同向记为+1，反方向记为-1，如果相加的区域等于0，则不填充。
+  4. 非零区域填充
+
+☞ 非零环绕原则案例：
 ```
 
 ### 绘制虚线
 
-```js
-	原理：
-     设置虚线其实就是设置实线与空白部分直接的距离,利用数组描述其中的关系
+```text
+原理：
+  设置虚线其实就是设置实线与空白部分直接的距离,利用数组描述其中的关系
 
-     例如： [10,10]  实线部分10px 空白部分10px
+  例如： [10,10]  实线部分10px 空白部分10px
 
-     例如： [10,5]  实线部分10px 空白部分5px
+  例如： [10,5]  实线部分10px 空白部分5px
 
-     例如： [10,5,20]  实线部分10px  空白5px  实线20px  空白部分10px 实线5px 空白20px....
+  例如： [10,5,20]  实线部分10px  空白5px  实线20px  空白部分10px 实线5px 空白20px....
 
-    绘制：
-     ctx.setLineDash(数组);
-     ctx.stroke();
-     
-     例如：
-     	 ctx.moveTo(100, 100);
-	 	 ctx.lineTo(300, 100);
-	 	 ctx.setLineDash([2,4]);
-	 	 ctx.stroke();
+绘制：
+  ctx.setLineDash(数组);
+  ctx.stroke();
 
-    注意：
-        如果要将虚线改为实线，只要将数组改为空数组即可。
+  例如：
+    ctx.moveTo(100, 100);
+    ctx.lineTo(300, 100);
+    ctx.setLineDash([2,4]);
+    ctx.stroke();
+
+  注意：
+      如果要将虚线改为实线，只要将数组改为空数组即可。
 ```
 
 ### 绘制动画效果
 
-```
+``` text
   ☞ 绘制一个描边矩形： content.strokeRect(x,y,width,height) 
   ☞ 绘制一个填充矩形： content.fillRect(x,y,width,height)  
-  ☞ 清除：		   content.clearRect(x,y,width,height)  
-
+  ☞ 清除： content.clearRect(x,y,width,height)  
 
   ☞ 实现动画效果：
     1. 先清屏
@@ -490,77 +487,75 @@ ctx.fillstyle="值"; 设置填充颜色
 ### 绘制图片
 
 ```text
-  ☞
-    //将图片绘制到画布的指定位置
-    content.drawImage(图片对象,x,y);
+☞
+  //将图片绘制到画布的指定位置
+  content.drawImage(图片对象,x,y);
 
-  ☞
-    //将图片绘制到指定区域大小的位置  x,y指的是矩形区域的位置，width和height指的是矩形区域的大小
-    content.drawImage(图片对象,x,y,width,height);
+☞
+  //将图片绘制到指定区域大小的位置  x,y指的是矩形区域的位置，width和height指的是矩形区域的大小
+  content.drawImage(图片对象,x,y,width,height);
 
-  ☞
-    //将图片的指定区域绘制到指定矩形区域内
-    content.drawImage(图片对象,sx,sy,swidth,sheight,dx,dy,dwidth,dheight);
+☞
+  //将图片的指定区域绘制到指定矩形区域内
+  content.drawImage(图片对象,sx,sy,swidth,sheight,dx,dy,dwidth,dheight);
 
-     sx,sy 指的是要从图片哪块区域开始绘制，swidth，sheight 是值 截取图片区域的大小
-     dx,dy 是指矩形区域的位置，dwidth,dheight是值矩形区域的大小
+  sx,sy 指的是要从图片哪块区域开始绘制，swidth，sheight 是值 截取图片区域的大小
+  dx,dy 是指矩形区域的位置，dwidth,dheight是值矩形区域的大小
 
 
-   ☞ 
-   	  解决图片绘制到某一个区域的按原比例缩放绘制：
-        绘制宽：绘制高==原始宽：原始高
+  解决图片绘制到某一个区域的按原比例缩放绘制：
+    绘制宽：绘制高==原始宽：原始高
 ```
 
 ### 绘制圆弧
 
 ```text
-   ☞
-   	 content.arc(x,y,radius,startradian,endradian[,direct]);
-   	 
-   	   		x,y    圆心的坐标
+☞
+  content.arc(x,y,radius,startradian,endradian[,direct]);
+    x,y    圆心的坐标
 
-             radius 半径
+        radius 半径
 
-             startradian   开始弧度
+        startradian   开始弧度
 
-             endradian     结束弧度
+        endradian     结束弧度
 
-             direct        方向（默认顺时针 false）   true 代表逆时针
+        direct        方向（默认顺时针 false）   true 代表逆时针
 
-   ☞ 0度角在哪？
-		  以圆心为中心向右为0角 顺时针为正，逆时针为负
+☞ 0度角在哪？
+  以圆心为中心向右为0角 顺时针为正，逆时针为负
 
-   ☞ 备注：
-   	    角度 和 弧度的关系： 角度:弧度= 180:pi
+☞ 备注：
+    角度 和 弧度的关系： 角度:弧度= 180:pi
 
-   	     特殊值
+      特殊值
 
-           0度 = 0弧度
+        0度 = 0弧度
 
-           30度 = π/6   (180度的六分之一)
+        30度 = π/6   (180度的六分之一)
 
-           45度 = π/4
+        45度 = π/4
 
-           60度 = π/3
+        60度 = π/3
 
-           90度 = π/2
+        90度 = π/2
 
-           180度 = π
+        180度 = π
 
-           360度 = 2π
+        360度 = 2π
 
-    ☞ 绘制圆上任意点：
-    	公式：
-           x=ox+r*cos( 弧度 )
+☞ 绘制圆上任意点：
+  公式：
+        x=ox+r*cos( 弧度 )
 
-           y=oy+r*sin( 弧度 )
+        y=oy+r*sin( 弧度 )
 
 
-         ox: 圆心的横坐标
+      ox: 圆心的横坐标
 
-         oy: 圆心的纵坐标
+      oy: 圆心的纵坐标
 
-         r： 圆的半径
+      r： 圆的半径
 ```
 
 ### 平移【坐标系圆点的平移】

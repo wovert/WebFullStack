@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="jquery.js" charset="utf-8"></script>
+    <script>
+    $(function (){
+      $('#btn1').click(()=>{
+        $.ajax({
+          url: '/reg',
+          data: {
+            username: $('#user').val(),
+            password: $('#pass').val()
+          },
+          dataType: 'json'
+        }).then(json=>{
+          if(json.error) {
+            alert(json.msg)
+          } else {
+            alert('注册成功')
+          }
+        }, err => {
+          alert('注册失败，请刷新重试')
+        })
+      })
+
+      $('#btn2').click(()=>{
+        $.ajax({
+          url: '/login',
+          data: {
+            username: $('#user').val(),
+            password: $('#pass').val()
+          },
+          dataType: 'json'
+        }).then(json => {
+          if (json.error) {
+            alert(json.msg)
+          } else {
+            alert('登录成功')
+          }
+        }, err => {
+          alert('登录失败，请刷新重试')
+        });
+      });
+    });
+    </script>
+  </head>
+  <body>
+    <h1><img src="logo.png"  alt="logo"></h1>
+    <form action="http://localhost:8080/login" method="get">
+      用户：<input type="text" id="user" /><br>
+      密码：<input type="password" id="pass" /><br>
+      <input type="button" value="注册" id="btn1">
+      <input type="button" value="登录" id="btn2">
+    </form>
+  </body>
+</html>

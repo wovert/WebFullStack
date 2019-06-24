@@ -128,19 +128,46 @@ nrm use taobao
 - 阻塞IO：导致整个程序卡住不同
 
 ``` js
-FILE *fp=fopen("a.txt", "r");
-size = fread(buffer, sizeof(buffer), fp);   <-等待20s
-fclose(fp);
+FILE *fp = fopen("a.txt", "r")
+size = fread(buffer, sizeof(buffer), fp)   // 等待20s
+fclose(fp)
 ```
 
 - 非阻塞IO：继续往下执行，不卡
 
 ``` js
-fs.readFile('a.txt', (err, data)=>{       <-等待0s
-  console.log(data);
-});
-console.log('a');
+fs.readFile('a.txt', (err, data)=>{       // 等待0s
+  console.log(data)
+})
+console.log('a')
 ```
+
+## HTTP协议
+
+- HTTP 1.0 RFC-1945
+- HTTP 1.1 RFC-2616 持久链接
+- HTTPS RFC-2818 安全协议
+- HTTP 2.0 RFC-7540 加密、头部压缩、服务器推送、管线操作
+
+- HTTP报文结构
+  - header <= 32K
+  - body <= 2G
+
+- 状态码
+  - 1xx 信息
+  - 2xx 成功
+  - 3xx 重定向
+  - 4xx 请求错误
+  - 5xx 服务器错误
+
+- 请求方法
+  - GET 读取数据
+    - 数据在URL参数里
+    - 容量小 <= 32K
+  - POST 写数据
+    - 容量大
+  - PUT 更新数据
+  - DELETE 删除数据
 
 ### 前端把加密数据传到后台，后台怎么进行校验的
 
