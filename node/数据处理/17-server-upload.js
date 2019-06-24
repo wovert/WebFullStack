@@ -13,7 +13,7 @@ http.createServer((req, res) => {
 
   req.on('end', () => {
     let buffer = Buffer.concat(arr)
-    // ??????
+    // 加载数据完成事件
     let res = utils.bufferSplit(buffer, delimiter)
     res.pop()
     res.shift()
