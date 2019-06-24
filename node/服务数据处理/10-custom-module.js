@@ -1,6 +1,6 @@
 const mod = require('mod')
 
-//mod1();
+//mod();
 
 let p = new mod(99)
 
