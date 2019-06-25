@@ -1,12 +1,16 @@
 {
-  "name": "demo04",
+  "name": "websocket",
   "version": "1.0.0",
   "description": "",
-  "main": "mysql.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
+  "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "socket.io": "^2.2.0"
+  }
 }

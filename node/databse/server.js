@@ -5,27 +5,27 @@ const url = require('url')
 const zlib = require('zlib')
 const crypto = require('crypto')
 
-const _key='sadfslekrtuew5iutoselgdtjiypoydse4ufhs.edtyo;s8te4arfeliawkfhtsie5tlfia;sefdshroiupeoutwyeli5gurse;ihf'
+const _key = 'sadfslekrtuew5iutoselgdtjiypoydse4ufhs.edtyo;s8te4arfeliawkfhtsie5tlfia;sefdshroiupeoutwyeli5gurse;ihf'
 
-function md5(str){
+function md5(str) {
   let obj = crypto.createHash('md5')
   obj.update(str)
   return obj.digest('hex')
 }
 
-function md5_2(str){
+function md5_2(str) {
   return md5(md5(str)+_key)
 }
 
-const dbConfig = {host: 'localhost', port: 3306, user: 'root', password: '', database: 'test'}
+const dbConfig = {host: 'localhost', port: 3306, user: 'root', password: 'root', database: 'test'}
 
 let db = mysql.createPool(dbConfig)
 
 let server = http.createServer((req, res) => {
-  let {pathname, query} = url.parse(req.url, true)
-  let {user, pass} = query
-
-  switch(pathname) {
+  let { pathname, query } = url.parse(req.url, true)
+  let { user, pass } = query
+  console.log(query)
+  switch (pathname) {
 
     // 接口
     case '/reg':
@@ -35,13 +35,13 @@ let server = http.createServer((req, res) => {
         res.end()
       } else if (!pass) {
         res.write('{"err": 1, "msg": "password can\'t be null"}')
-        res.end();
+        res.end()
       } else if (!/^\w{4,16}$/.test(user)) {
         res.write('{"err": 1, "msg": "username is invaild"}')
         res.end()
       } else if (/['|"]/.test(pass)) {
         res.write('{"err": 1, "msg": "password is invaild"}')
-        res.end();
+        res.end()
       } else {
         db.query(`SELECT * FROM user WHERE username='${user}'`, (err, data) => {
           if (err) {
@@ -59,11 +59,11 @@ let server = http.createServer((req, res) => {
                 res.write('{"err": 0, "msg": "success"}')
                 res.end()
               }
-            });
+            })
           }
-        });
+        })
       }
-      break;
+      break
 
     case '/login':
       //校验
@@ -78,7 +78,7 @@ let server = http.createServer((req, res) => {
         res.end()
       } else if (/['|"]/.test(pass)) {
         res.write('{"err": 1, "msg": "password is invaild"}')
-        res.end();
+        res.end()
       } else {
         db.query(`SELECT * FROM user WHERE username='${user}'`, (err, data) => {
           if (err) {
@@ -92,15 +92,15 @@ let server = http.createServer((req, res) => {
             res.end()
           } else {
             res.write('{"err": 0, "msg": "success"}')
-            res.end();
+            res.end()
           }
-        });
+        })
       }
-      break;
+      break
 
     default:
-      //缓存      TODO
-      //静态文件
+      // 缓存      TODO
+      // 静态文件
       let rs = fs.createReadStream(`www${pathname}`)
       let gz = zlib.createGzip()
 
@@ -111,7 +111,7 @@ let server = http.createServer((req, res) => {
         res.writeHeader(404)
         res.write('Not Found')
         res.end()
-      });
+      })
   }
 })
 

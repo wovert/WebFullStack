@@ -419,6 +419,32 @@ p2=Null;  //还剩0个
 1. 为什么要判断-没必要
 2. 简单版：扩展名；较真版：分析文件结构
 
+## websocket
+
+- 性能高(二进制)
+- 双向数据通信
+
+### socket.io
+
+- 简单方便
+- 兼容IE5
+- 自动数据解析
+
+```js
+if (req, url === '/socket.io/socket.io.js') {
+  fs.readFile('node_modules/socket.io/node...')
+}
+```
+
+### 原生socket.io
+
+```http
+Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+Sec-WebSocket-Key: HlnvJUWMQqnxjCYuRey/AA== 校验的Key
+Sec-WebSocket-Version: 13 版本
+Upgrade: websocket 使用websocket
+```
+
 ## 缓存
 
 - 节省带宽费
@@ -430,7 +456,7 @@ p2=Null;  //还剩0个
   - no-cacahe： 服务器告诉浏览器不要缓存此页面
 - expires： 缓存可以，但缓存时效是多长时间
 
-### 第二重要、缓存实现过程：
+### 第二重要、缓存实现过程
 
 1. 第一次S->C："Last-Modified: Sat, 02 Dec 2017 04:03:14 GMT"
 2. 第二次C->S："If-Modified-Since: Sat, 02 Dec 2017 04:03:14 GMT"
@@ -459,14 +485,19 @@ p2=Null;  //还剩0个
 
 ## Node 中使用数据库
 
+- 文件型：简单-access/sqlite
+- 关系型：MySQL、Oracle
+- 分布式：MongoDB
+- NoSQL: Redis, Memcache
+
 ```sh
 npm search mysql
 npm install mysql
 ```
 
 ``` js
-// 连接
-let db=mysql.createConnection({host, port, user, password, database})
+// 连接数据库
+let db = mysql.createConnection({host, port, user, password, database})
 
 // 或者连接池 默认开启10个pool maxConnection: 10 最大连接池
 let db = mysql.createPool({host, port, user, password, database, maxConnection: 10)
