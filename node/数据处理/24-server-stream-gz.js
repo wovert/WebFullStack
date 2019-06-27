@@ -1,22 +1,25 @@
 const http = require('http')
-const fs = require('fs')
 const zlib = require('zlib')
+const url = require('url')
+const fs = require('fs')
 
-let server = http.createServer((req, res) => {
-  let rs = fs.createReadStream(`www${req.url}`)
+http.createServer((req, res) =>{
+  let {pathname} = url.parse(req.url, true)
+  let filepath = 'www'+pathname
 
-  //rs.pipe(res);
-
-  res.setHeader('content-encoding', 'gzip')
-
-  let gz = zlib.createGzip()
-  rs.pipe(gz).pipe(res)
-
-  rs.on('error', err => {
-    res.writeHeader(404)
-    res.write('Not Found')
-
-    res.end()
+  fs.stat(filepath, (err, stat) =>{
+    console.log(err)
+    if (err) {
+      //res.setHeader('content-encoding', 'deflate')
+      res.writeHeader(404)
+      res.write('not found')
+      res.end()
+    } else {
+      let rs = fs.createReadStream(filepath)
+      rs.on('error', err =>{})
+      res.setHeader('content-encoding', 'gzip')
+      let gz = zlib.createGzip()
+      rs.pipe(gz).pipe(res)
+    }
   })
-})
-server.listen(8080)
+}).listen(8080)

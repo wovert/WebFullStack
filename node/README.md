@@ -265,6 +265,20 @@ admin\r\n
 2.写入流     fs.createWriteStream、res
 3.读写流     压缩、加密
 
+启动器
+forever
+
+npm i forever -g
+
+forever start server.js
+forever list
+forever restart server.js
+forever stop serer.js
+forever stopall
+forever start server.js -l c:/a.log -e c:/err.log -a
+  -l: log
+  -e: error
+  -a: append
 --------------------------------------------------------------------------------
 
 1.POST的File数据
@@ -504,4 +518,12 @@ let db = mysql.createPool({host, port, user, password, database, maxConnection: 
 
 // 查询
 db.query(sql, (err, data)=>{})
+
+db.query('start transaction(); ')
+db.query('SELECT (); UPDATE();')
+db.query('commit();')
 ```
+
+- co-mysql
+- multiparty
+- mysql
