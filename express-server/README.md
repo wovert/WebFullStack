@@ -37,12 +37,13 @@
   - 父域名不能访问子域名cookie
 - path：cookie识别位置
 
-- 签名：
-  - s:99.8.Tal7fIJ2XOtDac3lVhJNEONm3De97RXTHjrEeci7TvQ
-  - s:值.签名
+- cookie 安全
+  - 签名：
+    - s:99.8.Tal7fIJ2XOtDac3lVhJNEONm3De97RXTHjrEeci7TvQ
+    - s:值.签名
 
-- 99.8
-  - s:99.8.Tal7fIJ2XOtDac3lVhJNEONm3De97RXTHjrEeci7TvQ
+  - 99.8
+    - s:99.8.Tal7fIJ2XOtDac3lVhJNEONm3De97RXTHjrEeci7TvQ
 
 - session
 - cookie-session
