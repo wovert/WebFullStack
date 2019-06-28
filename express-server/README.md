@@ -56,3 +56,7 @@
   - get(fn) 所有get请求
   - post(fn) 所有post请求
   - use(fn) 所有请求
+
+- session存储位置
+  - `%TEMP%`
+- mysql 存储session: `express-mysql-session`
