@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //数据类型：数字、字符串、布尔值。。。
+
+    //a变量没有声明过——>如果获取变量的值，是会产生语法错误的
+    //console.log(a);//undefined：错误
+
+    //1、一个变量声明了，但是没有赋值，值默认为undefined
+    var b;
+    console.log(b);//b就是一个undefined类型的值
+
+    //2、一个变量声明了，并且赋值了一个undefined的值
+    var c=undefined;
+    console.log(c);//c也是一个undefined类型的值
+
+    //3、一个对象中，获取某个不存在的属性，值也是undefined
+    var d={};
+    console.log(d.age);//由于d对象没有age属性，值：undefined
+
+</script>
+</html>

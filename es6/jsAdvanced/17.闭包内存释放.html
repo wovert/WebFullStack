@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function f1(){
+        var a=5;
+        return function(){
+            a++;
+            console.log(a);
+        }
+    }
+    var q1=f1();
+    
+    //要想释放q1里面保存的a，只能通过释放q1
+    q1=null;    //q1=undefined
+</script>
+</html>

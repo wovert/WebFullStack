@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function fn(){
+        var a=5;
+        return function(){
+            a++;
+            console.log(a);     //a变量肯定是可以访问的
+        }
+    }
+    var f1=fn();        //f1指向匿名函数
+    f1();       //6
+    f1();       //7
+    f1();       //8
+
+
+    //代码执行到20行fn函数执行完毕，返回匿名函数
+    //      -->一般认为函数执行完毕，变量就会释放，但是此时由于js引擎发现匿名函数要使用a变量，所以a变量并不能得到释放，而是把a变量放在匿名函数可以访问到的地方去了
+    //      -->a变量存在于f1函数可以访问到的地方，当然此时a变量只能被f1函数访问
+</script>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function Cat(name){
+        this.name=name;
+    }
+    var tom=new Cat("汤姆");
+    //目的：把say方法放在tom的原型对象中(Cat.prototype)
+    Cat.prototype.say=function(){}
+
+    //问题：
+    Cat.prototype.s1=function(){}
+    Cat.prototype.s2=function(){}
+    Cat.prototype.s3=function(){}
+    Cat.prototype.s4=function(){}
+    Cat.prototype.s5=function(){}
+    //通过上面的方式，给tom的原型对象添加了好多方法，也就是让tom拥有了好多方法，但是代码产生了不少的冗余(重复)
+
+    //-->为了减少这种重复，改良版：
+    Cat.prototype = {
+        a1:function(){},
+        a2:function(){},
+        a3:function(){},
+        a4:function(){},
+        a5:function(){}
+    }
+    console.log(tom.s1);    //可以访问
+    console.log(tom.a1);    //undefined
+    //原因：tom对象在创建的时候已经有了一个确定的原型对象，就是旧的Cat.prototype
+    //由于Cat.prototype后面被重新赋值，但是tom对象的原型对象却没有改变，所以tom对象并不能访问到新原型对象中的a1-a5方法
+
+    //如何解决这个问题？
+    //-->先改变原型、再创建对象
+
+
+
+
+
+
+    
+    //继承的第一种实现方式：原型链继承
+</script>
+</html>

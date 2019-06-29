@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //方法调用方式
+    function Person(){
+        this.age=20;
+    }
+    Person.prototype.run=function(){
+        console.log(this.age);
+    }
+    
+    var p1=new Person();
+    p1.run();       //打印结果：20
+
+    var p2={
+        height:180,
+        travel:function(){
+            console.log(this.height);
+        }
+    }
+    p2.travel()     //打印结果：180
+
+    //
+    var clear=function(){
+        console.log(this.length);
+    }
+    
+    var length=50;
+    var tom={ c:clear,length:100 };
+    tom.c();        //这里是方法调用的方式        
+    //打印this.length 是50 还是100?
+    //-->相当于：this是指向window还是指向tom呢？ 
+    //  -->结果为：100  
+    //      -->this:tom
+
+    //结论：由于clear函数被当成tom.c()这种方法的形式来进行调用，所以函数内部的this指向调用该方法的对象：tom 
+
+    var tony={ d:clear,length:30 };
+    tony.d();       
+    //方法调用的方式，所以clear函数内部的this指向tony的，
+
+</script>
+</html>

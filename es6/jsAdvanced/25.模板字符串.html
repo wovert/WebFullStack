@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //模板字符串就是一种字符串的新的表现形式
+
+    //a、基本用法
+    var s1 = ` hello `
+    var s2 = ' hello '
+
+    //b、模板字符串解决了一些痛点
+    //+字符串和变量拼接
+    var s3 =" a " + s1 + " b " + s2;
+    var s4 = ` a ${s1} b ${s2}`;        //减少了错误几率
+
+    //+字符串换行
+    var s5 =`<div>
+                <p>
+                    <span>123</span>
+                </p>
+                <p>${s2}</p>
+                <p>${s3}</p>
+                <p>${s1}</p>
+            </div>`;
+    console.log(s5);
+</script>
+</html>

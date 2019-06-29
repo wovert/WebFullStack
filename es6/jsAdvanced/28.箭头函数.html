@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //无参的匿名函数
+    div.onclick=function(){
+
+    }
+    //相当于：
+    div.onclick=()=>{
+
+    }
+
+    //有一个参数的匿名函数
+    // var fn=function(name){
+    //     console.log(name);
+    // }
+    //等价于：
+    var fn=name=>{
+        console.log(name);
+    }
+    //也等价于：
+    // var fn=(name)=>{
+    //     console.log(name);
+    // }
+
+
+    //有2个或以上的参数的匿名函数
+    // var q=function(name,age){
+
+    // }
+    //等价于
+    var q=(name,age)=>{
+        //切记：()不能省略
+    }
+
+
+
+    //有了匿名函数之后，我们的代码清晰了很多：
+    var students=[1,3,5];
+    students.forEach(function(value,index){
+        
+    })
+    students.forEach((value,index)=>{
+
+    })
+    //只需要一个参数
+    students.forEach(value=>{
+        
+    })
+
+
+
+
+
+</script>
+</html>

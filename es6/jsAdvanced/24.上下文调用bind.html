@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var obj = {
+        age:18,
+        run : function(){
+            console.log(this);  //this:obj
+            
+            var _that=this;
+
+            setTimeout(function(){
+                //this指向window
+                console.log(this.age); 
+                console.log(_that.age); 
+                //18？是错误的
+                //undefined是正确的
+            },50);
+        }
+    }
+
+    obj.run();
+
+    //bind是es5中才有的(IE9+)
+
+    var obj5 = {
+        age:18,
+        run : function(){
+            console.log(this);  //this:obj5
+
+            setTimeout((function(){
+                console.log(this.age); 
+            }).bind(this),50);  //this:obj5
+            //通过执行了bind方法，匿名函数本身并没有执行，只是改变了该函数内部的this的值，指向obj5
+        }
+    }
+    obj5.run();
+
+    
+    //bind基本用法
+    function speed(){
+        console.log(this.seconds);
+    }
+    //执行了bind方法之后，产生了一个新函数，这个新函数里面的逻辑和原来还是一样的，唯一的不同是this指向{ seconds:100 }
+    var speedBind = speed.bind({ seconds:100 });
+    speedBind();    //100
+
+    (function eat(){
+        console.log(this.seconds);
+    }).bind({ seconds:360 })()  //360
+
+
+    var obj={
+        name:"西瓜",
+        drink:(function(){
+            //this指向了：{ name:"橙汁" }
+            console.log(this.name);
+        }).bind({ name:"橙汁" })
+    }
+    obj.drink();    //"橙汁"
+
+    var p10={
+        height:88,
+        run:function(){
+            //this
+            setInterval((function(){
+                console.log(this.height);   //88
+            }).bind(this),100)  
+        }
+    }
+    p10.run();
+</script>
+</html>

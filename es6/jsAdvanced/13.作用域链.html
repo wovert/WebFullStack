@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function fn(callback){
+        
+        var age=18;
+        callback()
+    }
+    
+    fn(function(){
+        console.log(this);
+        console.log(age);
+        //分析：age变量：
+        //1、查找当前作用域：并没有
+        //2、查找上一级作用域：全局作用域
+        //-->难点：看上一级作用域，不是看函数在哪里调用，而是看函数在哪里编写
+        //-->因为这种特别，我们通常会把作用域说成是：词法作用域
+    })
+</script>
+</html>
