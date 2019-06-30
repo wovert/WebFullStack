@@ -325,6 +325,17 @@ decodeURIComponent(JSON.parse('{"a":12,"b":5}')) // 字符串转换json对象
 
 [字符串模板案例](./template_string/demo.js)
 
+## 对象的扩展
+
+- Object.assign：实现拷贝继承
+- 对象扩展运算符
+
+```js
+var obj1 = { age:5,gender:"男" }
+var obj2 = { ...obj1 }
+var obj3 = { ...obj1 , age:10 }
+```
+
 ## 面向对象
 
 机器语言 -> 汇编 -> 低级语言(面向过程) -> 高级语言(面向对象) -> 模块 -> 框架 -> API
@@ -389,6 +400,124 @@ fn()
 ## promise
 
 > 一步操作的最终结果。通过函数传入的then方法从而获取的Promise最终的值或Promise最终拒绝的原因。同步的方式编写异步
+
+### 为什么要有promise
+
+> 解决（回调地狱）的问题
+
+### 回调地狱
+
+```js
+  // 跟以前的if条件地狱很像
+  // if(){
+  //     if(){
+  //         if(){
+  //         }
+  //     }
+  // }
+
+  $.get("/getUser",function(res){
+    $.get("/getUserDetail",function(){
+      $.get("/getCart",function(){
+        $.get("/getBooks",function(){
+          //...
+        })
+      })
+    })
+  })
+
+  // node开发：读取文件；开个服务器、接收一个请求、请求路径、访问数据库
+```
+
+### Promise函数基本用法
+
+```js
+    var promise=new Promise((resolve,reject)=>{
+        //b 把需要执行的异步操作放在这里
+        $.get("/getUser",res=>{
+            //获取数据的异步操作已经执行完毕了，等待下一步的执行，通过执行resolve函数，告诉外界你可以执行下一步操作了
+            //c、
+            resolve(res)
+            //而执行的下一步操作，其实就是写在then的回调函数中的
+        })
+    })
+    //a、
+    promise.then(res=>{
+        //d、执行后续的操作
+        console.log(res);
+    })
+```
+
+### Promise函数实现多层回调
+
+```js
+    new Promise((resolve,reject)=>{
+        $.get("/getUser",res=>{
+            resolve(res)
+        })
+    }).then(res=>{
+        //用户基本信息
+        return new Promise(resolve=>{
+            $.get("/getUserDetail",res=>{
+                resolve(res)
+            })
+        })
+    }).then(res=>{
+        //用户详情
+        return new Promise(resolve=>{
+            $.get("/getCart",res=>{
+                resolve(res)
+            })
+        })
+    }).then(res=>{
+        //购物车信息
+    })
+```
+
+### Promise函数错误处理
+
+第一种方式
+
+```js
+    new Promise((resolve,reject)=>{
+        $.ajax({
+            url:"/getUser",
+            type:"GET",
+            success:res=>{
+                resolve(res);
+            },
+            error:res=>{
+                reject(res)
+            }
+        })
+    }).then(resSuccess=>{
+        //成功的返回值
+    },resError=>{
+        //失败的返回值
+    })
+```
+
+第二种方式
+
+```js
+    new Promise((resolve,reject)=>{
+        $.ajax({
+            url:"/getUser",
+            type:"GET",
+            success:res=>{
+                resolve(res);
+            },
+            error:res=>{
+                reject(res)
+            }
+        })
+    }).then(resSuccess=>{
+        //成功的返回值
+    }).catch(resError=>{
+        //失败的返回值
+    })
+
+```
 
 - 术语
   - `promise`：兼容promise规范then方法的对象或函数
@@ -491,7 +620,7 @@ function *show() {
 }
 ```
 
-### runner
+### async/await
 
 安装runner模块
 
@@ -525,6 +654,30 @@ runner(function *(){
 
 - [runner用法](./runner.html)
 - [async/wait用法](./async_await.html)
+
+### async
+
+> async其实是一个promise的语法糖
+
+```js
+    async function get(){
+        console.log('开始执行');
+        var res = await timer()
+        console.log('执行结束：',res);
+    }
+    function timer(){
+        return new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                resolve("你好");
+            },1000)
+        })
+    }
+    get()
+```
+
+- await可以执行异步操作，但是await必须在async函数内执行
+- await操作可以有返回值，这个返回值表示promise操作成功的返回值
+- 如果await里面执行的异步操作发生了reject，或者发生了错误，那么只能使用try...catch语法来进行错误处理
 
 ## SPA 单页应用
 
