@@ -1,6 +1,6 @@
-const crypto=require('crypto')
+const crypto = require('crypto')
 
-let obj=crypto.createHash('md5')
+let obj = crypto.createHash('md5')
 obj.update('123456')
 
 console.log(obj.digest('hex'))

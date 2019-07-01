@@ -1,7 +1,7 @@
-## 服务端渲染
+# 服务端渲染
 
 ```js
-// admin/
+// admin
 router.get('')
 
 // 所有
@@ -27,6 +27,8 @@ router.get('*')
 /admin/login      '/admin'+'/login'
 /news             '/'+'/news'
 ```
+
+浏览器警用缓存（第二次访问时附带参数）
 
 ```html
 <meta http-equiv="pragram" content="no-cache">
