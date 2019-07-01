@@ -36,13 +36,6 @@
 				}
 				this.length = elements.length
 				// 对象结构：{ 0:div,1:div,2:div,length:3 }
-			},
-			// 此时的css方法还是雏形，后续完善
-			css(name, value) {
-				for(let i = 0; i<this.length; i++){
-					let element = this[i]
-					element.style[name] = value
-				}
 			}
 		}
 
@@ -76,17 +69,178 @@
 				target = this
 			}
 			
-			// 实现拷贝部分的逻辑：
-			source.forEach(function(item,index) {
-				// item：就是每一个数据源对象（提供数据的对象）
-				// 取出item对象中的每一个属性：for...in
-				Object.keys(item).forEach((key)=>{
-					//key就是对象中每一个属性名
-					target[key] = item[key]
-				})
-			})
-			return target
+			// // 实现拷贝部分的逻辑：
+			// source.forEach(function(item,index) {
+			// 	// item：就是每一个数据源对象（提供数据的对象）
+				
+			// 	// 取出item对象中的每一个属性：for...in
+			// 	Object.keys(item).forEach((key)=>{
+			// 			//key就是对象中每一个属性名
+			// 			target[key]=item[key];
+			// 	})
+
+			// 	// target如果本身就是一个对象字面量
+			// 	// target={ ...target,...item };
+
+			// 	// 考虑的完美一些：如果target本身并不是一个对象字面量，上述的方式就修改了target数据类型
+			// 	Object.assign(target,item)
+			// })
+
+			// a、Object.assign其实是支持多参数
+			// b、优化的思路：Object.assign(target,source[0],source[1],source[2]。。。)
+			Object.assign(target,...source)
+
+			return target;
 		}
+
+		// 添加一些工具类方法：$.xxx()
+		// $.ajax  $.post $.get  $.type $.each
+		// 拷贝继承
+		jQuery.extend({
+			// 可以遍历数组和对象
+			each(obj, callback) {
+				//有2种情况，数组使用for循环，对象使用for...in循环
+				
+				//不仅仅可以遍历数组，也可以遍历伪数组
+				//{ length:0 }
+				//{ 0:100,length:1 }
+				//{ 0:"a",1:"b",2:"c",length:3 }
+				//在这里，由于存在数组、伪数组2种情况，只能使用一种约定俗成的方式来通过他们的特征来进行判断：length属性，并且值>=0
+				if( (length in obj) && obj.length>=0 ){
+					for(let i =0;i<obj.length;i++){
+						callback.call(obj[i],i,obj[i])
+						//callback.apply(obj[i],[i,obj[i]])
+						//没有必要使用bind，bind的实现相对繁琐
+						// callback.bind(obj[i])(i,obj[i])
+					}
+				} else {
+					for(let i in obj){
+						callback.call(obj[i],i,obj[i])
+					}
+				}
+			},
+			type(data){
+				//判断data的数据类型
+				//-->Object.prototype.toString.call(1)
+				//  -->"[object Number]"
+
+				var type=Object.prototype.toString.call(data);
+				return type
+								.replace("[object ","")
+								.replace("]","")
+								.toLowerCase();
+			},
+			ajax() {
+				console.log('ajax方法');
+			}
+		})
+
+
+		//添加dom方法
+		jQuery.fn.extend({
+			each(callback){
+				//this：jquery对象
+				jQuery.each(this,callback)
+			},
+
+			//1、获取样式不能使用 xxx.style.color 因为只能获取行内样式
+			//2、获取样式的正确方式：
+			//      现代浏览器：window.getComputedStyle(dom,null)
+			//      IE6-8：dom.currentStyle
+			//1、获取样式$("div").css("color")  只能获取到第一个div的颜色
+			//2、设置样式
+			//      $("div").css("color","red") 设置每一个div的字体颜色
+			//      $("div").css({ color:"red","backgroundColor","blue" })
+			css(...args) {
+				var arg1 = args[0],
+						arg2 = args[1]
+				//参数个数：1
+				if(args.length === 1) {
+					if(jQuery.type(arg1) === 'string') {
+						//a、获取样式:只能获取第一个元素的样式
+						let firstDom = this[0]
+
+						//错误写法
+						// return firstDom.style[arg1]; //只能获取行内样式
+
+						//正确的写法
+						let domStyleObj = window.getComputedStyle(firstDom,null)
+						return domStyleObj[arg1];
+					} else {
+						//b、设置多个样式  
+						//arg1:{ color:"red",fontSize:"20px" }
+						var _that = this
+						//遍历出所有要添加的样式
+						jQuery.each(arg1,function(key,value){
+							//遍历每一个DOM元素，添加指定的样式
+							_that.css(key,value)
+						})
+						return _that
+					}
+				} else {
+					//参数个数：2  设置单个样式
+					
+					//第一步：遍历每一个DOM
+					//第二步：给DOM添加样式
+
+					//this：表示一个jquery对象
+					// this.each(function(index,dom){
+					//     //this：表示一个DOM元素  ===   dom
+					//     this.style[arg1] = arg2;
+					// });
+					// return this;
+
+					//等价于：
+					//$("div").css()        
+					//this->$("div")
+					//this: { 0:div,1:div,2:div,length:3 }
+					return this.each(function(index,dom){
+						//this：表示一个DOM元素  ===   dom
+						this.style[arg1] = arg2;
+					});
+				}
+			},
+			show() {
+				//不会涉及动画
+				//功能：让所有的元素显示出来
+				
+				this.css("display","block");
+				return this;
+			},
+			hide() {
+				this.css("display","none");
+				return this;
+			},
+			toggle() {
+				//判断每一个元素，如果隐藏就显示，如果显示就隐藏
+				this.each(function(){
+					//问题：jquery(this)都会产生一个新的jquery对象
+					//而每一次产生一个新的jquery对象都会开辟一块新的内存，
+					//而这里的dom元素是唯一的，所以导致了一些不必要的内存浪费
+
+					// jQuery(this).css("display")==="none"?
+					//     jQuery(this).show():
+					//     jQuery(this).hide()
+
+					//解决方案：
+					// let $this=jQuery(this);
+					// $this.css("display")==="none"?
+					//     $this.show():
+					//     $this.hide();
+
+					//解决方案2：
+					let $this=jQuery(this);
+					$this[$this.css("display")==="none"?"show":"hide"]();
+				})
+			},
+			attr() {
+				console.log('attr方法');
+			},
+			on() {
+				console.log('on方法');
+			}
+		})
+
 		global.$ = global.jQuery = jQuery
 	})(window)
 
@@ -102,5 +256,44 @@
 		getDate(){
 		}
 	})
+	$.each([1,3,5],function(index,value) {
+		console.log(index,value)
+		console.log(this) // window
+	})
+
+	$.each({ 0:100,1:200,2:300,length:3 }, function(index,value) {
+		console.log(index,value)
+	})
+
+	$.each( { name:"张三",length:-1 }, function(i,v) {
+		console.log(i,v)
+	})
+
+	$.each( [{name:""}, {age:""}, {length:""}], function() {
+		console.log(this)
+	})
+
+	$("div").each(function(index,element){
+		element.style.color="blue";
+	})
+
+	console.log($.type(1)); //"number"
+	console.log($.type("abc")); //"string"
+	console.log($.type([1,3,5]));   //"array"
+	console.log($.type(function(){}));  //"function"
+	console.log($.type(Number));    //"function"
+
+
+	$("div").css("backgroundColor","pink");
+	$("span").css("fontSize","30px")
+
+	$("div").css({
+			border:"1px solid blue",
+			fontWeight:"bold",
+			fontSize:"50px"
+	})
+
+	$("div").attr()
+	$("div").on()
 </script>
 </html>
