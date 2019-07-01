@@ -310,8 +310,6 @@ forever start server.js -l c:/a.log -e c:/err.log -a
 
 ### FormData
 
-
-
 ### 前端把加密数据传到后台，后台怎么进行校验的
 
 > 签名
