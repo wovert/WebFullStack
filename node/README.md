@@ -525,3 +525,15 @@ db.query('commit();')
 - co-mysql
 - multiparty
 - mysql
+
+## 自定义模块
+
+- 第三方框架
+  - `commander` 命令行开发工具
+  - `chalk` 命令行样式风格控制器
+  - `inquirer` 交互式命令行工具
+
+```sh
+npm i commander -S
+```
+
