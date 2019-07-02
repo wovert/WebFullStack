@@ -2,16 +2,16 @@ const Koa = require('koa')
 const Router = require('koa-router')
 const static = require('./routers/static')
 const body = require('koa-better-body')
-const convert = require('koa-convert'); //转换旧的中间件，其实就是将generator函数转换为Promise对象
+const convert = require('koa-convert') //转换旧的中间件，其实就是将generator函数转换为Promise对象
 const path = require('path')
 const session = require('koa-session')
 const fs = require('fs')
 const ejs = require('koa-ejs')
-const config=require('./config');
+const config=require('./config')
 
 let server = new Koa()
 server.listen(config.PORT);
-console.log(`server running at ${config.PORT}`);
+console.log(`server running at ${config.PORT}`)
 
 // 中间件
 server.use(convert(body({
