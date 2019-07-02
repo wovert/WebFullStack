@@ -35,3 +35,12 @@ router.get('*')
 <meta http-equiv="cache-control" content="no-cache, must-revalidate">
 <meta http-equiv="expires" content="0">
 ```
+
+## fetch 
+
+```js
+let res = await fetch('xxx');
+let data = await res.json();
+
+let data = await (await fetch('xxx')).json();
+```
