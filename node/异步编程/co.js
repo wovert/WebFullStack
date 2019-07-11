@@ -10,7 +10,9 @@ function readFile(filename) {
   })
 }
 function *read() {
+  console.log(2)
   let template = yield readFile('./template.txt')
+  console.log(3)
   let data = yield readFile('./data.txt')
   return template + '+' + data
 }
@@ -24,10 +26,13 @@ function co(gen) {
   let it = gen()
   return new Promise(function (resolve, reject) {
     !function next(lastVal) {
+      console.log(1)
       let {value, done} = it.next(lastVal)
       if (done) {
+        console.log(5)
         resolve(value)
       } else {
+        console.log(4)
         value.then(next, reason => reject(reason))
       }
     }()
