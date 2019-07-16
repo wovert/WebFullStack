@@ -44,6 +44,35 @@ function read(filename) {
 
 console.log(2);
 
+/*******************************************/
+
+function a(times, callback) {
+  //可以缓存函数，当达到条件时执行
+  let time = times;
+  let arr = [];
+  return function(data) {
+    arr.push(data);
+    if (--time === 0) {
+      callback(arr);
+    }
+  };
+}
+let out = a(4, function(arr) {
+  console.log(arr);
+});
+fs.readFile("./2.promise/1.txt", "utf8", function(err, data) {
+  out(data);
+});
+fs.readFile("./2.promise/2.txt", "utf8", function(err, data) {
+  out(data);
+});
+fs.readFile("./2.promise/1.txt", "utf8", function(err, data) {
+  out(data);
+});
+fs.readFile("./2.promise/2.txt", "utf8", function(err, data) {
+  out(data);
+});
+
 /******************************************/
 
 /**
