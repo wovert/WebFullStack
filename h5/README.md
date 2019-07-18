@@ -2,30 +2,30 @@
 
 ## 了解 HTML5
 
-> HTML5属于上一代HTML的新迭代语言，设计HTML5最主要的目的是为了在移动设备上支持多媒体！！！例如： `video` 标签和 `audio` 及 `canvas` 标记
+> HTML5 属于上一代 HTML 的新迭代语言，设计 HTML5 最主要的目的是为了在移动设备上支持多媒体！！！例如： `video` 标签和 `audio` 及 `canvas` 标记
 
 ## HTML5 新特性
 
-- 取消了过时的显示效果标记  `<font></font>` 和 `<center></center>` ...
+- 取消了过时的显示效果标记 `<font></font>` 和 `<center></center>` ...
 - 新表单元素引入
-- 新语义标签的引入  
+- 新语义标签的引入
 - `canvas`标签（图形设计）
   - `SVG/VML`
 - 本地数据库（本地存储）
 - `geolocation`
 - `video/audio`
 - `localStorage`
-  - `cookie`：       小(4K)、浏览器和服务器共享
+  - `cookie`： 小(4K)、浏览器和服务器共享
   - `localStorage`： 大(5M)、浏览器独享
 - `*WebWorker`; 多进程
-- `WebSQL、IndexedDB`——安全隐患; *W3C删掉了
+- `WebSQL、IndexedDB`——安全隐患; \*W3C 删掉了
 - 文件操作、文件拖拽
-- manifest文件; 前台控制缓存
-  - *本地应用
+- manifest 文件; 前台控制缓存
+  - \*本地应用
 
 ### HTML5 跨平台
 
-> 比如你开发了一款HTML5的游戏，你可以很轻易地移植到 UC 的开放平台、Opera 的游戏中心、Facebook 应用平台，甚至可以通过封装的技术发放到App Store或Google Play上，所以它的跨平台性非常强大，这也是大多数人对HTML5有兴趣的主要原因。
+> 比如你开发了一款 HTML5 的游戏，你可以很轻易地移植到 UC 的开放平台、Opera 的游戏中心、Facebook 应用平台，甚至可以通过封装的技术发放到 App Store 或 Google Play 上，所以它的跨平台性非常强大，这也是大多数人对 HTML5 有兴趣的主要原因。
 
 ### HTML5 缺点
 
@@ -57,22 +57,18 @@
 [多媒体标签案例](./多媒体标签/index.html)
 
 ```html
-<video></video> 视频
-  属性：controls 显示控制栏
-  属性：autoplay 自动播放
-  属性：loop  设置循环播放
+<video></video> 视频 属性：controls 显示控制栏 属性：autoplay 自动播放
+属性：loop 设置循环播放
 
-<audio></audio>  音频
-  属性：controls 显示控制栏
-  属性：autoplay 自动播放
-  属性：loop  设置循环播放
-  video标签支持的格式 http://www.w3school.com.cn/html5/html_5_video.asp
-  多媒体标签在网页中的兼容效果方式
+<audio></audio> 音频 属性：controls 显示控制栏 属性：autoplay 自动播放
+属性：loop 设置循环播放 video标签支持的格式
+http://www.w3school.com.cn/html5/html_5_video.asp
+多媒体标签在网页中的兼容效果方式
 
 <video>
-  <source src="trailer.mp4">
-  <source src="trailer.ogg">
-  <source src="trailer.WebM">
+  <source src="trailer.mp4" />
+  <source src="trailer.ogg" />
+  <source src="trailer.WebM" />
 </video>
 ```
 
@@ -87,54 +83,34 @@
   - form
   - label
 
-**移动端沒有 key-down/key-up 事件，用input事件代替，表示正在操作当前表单元素（例如正在输入等）**
+**移动端沒有 key-down/key-up 事件，用 input 事件代替，表示正在操作当前表单元素（例如正在输入等）**
 
 ### 智能表单控件
 
 ```html
-<input  type="email">
- email: 输入合法的邮箱地址
- url：  输入合法的网址
- number： 只能输入数字
- range： 滑块
- color： 拾色器
- date： 显示日期
- month： 显示月份
- week ： 显示第几周
- time：  显示时间
- search: 显示搜索
- tel: 手机号
+<input type="email" /> email: 输入合法的邮箱地址 url： 输入合法的网址 number：
+只能输入数字 range： 滑块 color： 拾色器 date： 显示日期 month： 显示月份 week
+： 显示第几周 time： 显示时间 search: 显示搜索 tel: 手机号
 ```
 
 ### 表单属性
 
 ```html
-  form属性
-    autocomplete=on | off          自动完成
-    novalidate=true | false        是否关闭校验
+form属性 autocomplete=on | off 自动完成 novalidate=true | false 是否关闭校验
+input属性： *autofocus：自动获取焦点(一般用户搜索页面自动获取输入框表单)
+*placeholder: 占位符（提示信息） *required: 必填项 multiple: 实现多选效果 form:
+form标签的id属性值 list:
+<input type="text" list="abc" />
+<datalist id="abc">
+  <option value="123">12312</option>
+  <option value="123">12312</option>
+  <option value="123">12312</option>
+  <option value="123">12312</option>
+</datalist>
 
-  input属性：
-    *autofocus：自动获取焦点(一般用户搜索页面自动获取输入框表单)
-    *placeholder: 占位符（提示信息）
-    *required: 必填项
-    multiple: 实现多选效果
-    form: form标签的id属性值
-    list:
-      <input type="text" list="abc"/>
-      <datalist id="abc">
-        <option value="123">12312</option>
-        <option value="123">12312</option>
-        <option value="123">12312</option>
-        <option value="123">12312</option>
-      </datalist>
-
-作业：
-  - 自己解决required自定义提示信息
-  - 预习和复习
-
-留下的疑问：如何修改表单控件中的默认提示信息
-  1. 表单验证触发oninvalid事件
-  2. 通过setCustomValidity方法设置修改内容
+作业： - 自己解决required自定义提示信息 - 预习和复习
+留下的疑问：如何修改表单控件中的默认提示信息 1. 表单验证触发oninvalid事件 2.
+通过setCustomValidity方法设置修改内容
 ```
 
 ## HTML5 API
@@ -144,16 +120,16 @@
 
 ### querySelectorAll VS getElementsBy
 
-1. W3C 标准querySelectorAll 属于 W3C 中的 Selectors API 规范 [1]。而 getElementsBy 系列则属于 W3C 的 DOM 规范 [2]。
+1. W3C 标准 querySelectorAll 属于 W3C 中的 Selectors API 规范 [1]。而 getElementsBy 系列则属于 W3C 的 DOM 规范 [2]。
 
-2. 浏览器兼容querySelectorAll 已被 IE 8+、FF 3.5+、Safari 3.1+、Chrome 和 Opera 10+ 良好支持 。getElementsBy 系列，以最迟添加到规范中的 getElementsByClassName 为例，IE 9+、FF 3 +、Safari 3.1+、Chrome 和 Opera 9+ 都已经支持该方法了。
+2. 浏览器兼容 querySelectorAll 已被 IE 8+、FF 3.5+、Safari 3.1+、Chrome 和 Opera 10+ 良好支持 。getElementsBy 系列，以最迟添加到规范中的 getElementsByClassName 为例，IE 9+、FF 3 +、Safari 3.1+、Chrome 和 Opera 9+ 都已经支持该方法了。
 
-3. 接收参数querySelectorAll 方法接收的参数是一个 CSS 选择符。而 getElementsBy 系列接收的参数只能是单一的className、tagName 和 name。代码如下 [3]：
+3. 接收参数 querySelectorAll 方法接收的参数是一个 CSS 选择符。而 getElementsBy 系列接收的参数只能是单一的 className、tagName 和 name。代码如下 [3]：
 
 ```js
-var c1 = document.querySelectorAll('.b1 .c');
-var c2 = document.getElementsByClassName('c');
-var c3 = document.getElementsByClassName('b2')[0].getElementsByClassName('c');
+var c1 = document.querySelectorAll(".b1 .c");
+var c2 = document.getElementsByClassName("c");
+var c3 = document.getElementsByClassName("b2")[0].getElementsByClassName("c");
 ```
 
 需要注意的是，querySelectorAll 所接收的参数是必须严格符合 CSS 选择符规范的
@@ -179,7 +155,7 @@ var c3 = document.getElementsByClassName('b2')[0].getElementsByClassName('c');
 - DOM.classList.contains('类名')
 - DOM.classList.toggle('类名')
 
-[classList案例](./classList/index.html)
+[classList 案例](./classList/index.html)
 
 ### 自定义属性
 
@@ -189,13 +165,14 @@ var c3 = document.getElementsByClassName('b2')[0].getElementsByClassName('c');
 - 设置自定义属性
   - DOM.dataset.自定义属性名=值 || DOM.dataset[自定义属性名] = 值
 
-[dataset案例](./dataset/index.html)
+[dataset 案例](./dataset/index.html)
 
 ### 文件读取
 
 读取大文件按照流读取文件内容
 
-- FileReader方法: 接口有3个用来读取文件方法返回结果在`result`中
+- FileReader 方法: 接口有 3 个用来读取文件方法返回结果在`result`中
+
   - readAsBinaryString 将文件都读取为**二进制编码**
   - readAsText 将文件读取为**文本**
   - readAsDataURL 将文件读取为**DataURL**
@@ -208,18 +185,19 @@ var c3 = document.getElementsByClassName('b2')[0].getElementsByClassName('c');
   - onloadstart 读取开始时触发
   - onprogress 读取中
 
-[FileReader案例](./FileReader/index.html)
+[FileReader 案例](./FileReader/index.html)
 
 ### 获取网络状态
 
 - 获取当前网络状态：`window.navigator.onLine` 返回一个布尔值
-- 网络状态事件：启动这个页面是不会触发ononline和onoffline事件的，得网络状态发生变化才触发
+- 网络状态事件：启动这个页面是不会触发 ononline 和 onoffline 事件的，得网络状态发生变化才触发
   - `window.ononline`
   - `window.onoffline`
 
 ### 获取地理定位
 
 - 获取一次当前位置: `window.navigator.geolocation.getCurrentPosition(success, error)`
+
   - `coords.latitude` 维度
   - `coords.longitude` 经度
 
@@ -230,15 +208,15 @@ var c3 = document.getElementsByClassName('b2')[0].getElementsByClassName('c');
   - 移动：通过 GPS 定位；精度很高
 - PC 端
   - IP 库
-    - Chrome -> google.com    -> ?
-    - IE     -> microsoft.com
-- `watchPosition`           不断获取位置
+    - Chrome -> google.com -> ?
+    - IE -> microsoft.com
+- `watchPosition` 不断获取位置
 - `clearWatch`
-- `navigator.geolocation.getCurrentPosition` 获取地址位置（一次），调取手机内部的GPS定位系统获取当前手机所在的经纬度以及精准度等。
+- `navigator.geolocation.getCurrentPosition` 获取地址位置（一次），调取手机内部的 GPS 定位系统获取当前手机所在的经纬度以及精准度等。
 
 通过浏览器调取手机内部的软件或者硬件（缺点：性能和兼容性）
 
-- IP 库：通过网络IP地址获取地理位置定位
+- IP 库：通过网络 IP 地址获取地理位置定位
 - 基站
 - gps
 
@@ -248,10 +226,12 @@ var c3 = document.getElementsByClassName('b2')[0].getElementsByClassName('c');
 - 域名、跨域
 - 极其方便
 - 用途
+
   - 记录用户名
   - 保存草稿
 
 - localStorage
+
   - 永久存储
   - 多窗口共享
   - 容量大约为**20M**
@@ -274,23 +254,23 @@ var c3 = document.getElementsByClassName('b2')[0].getElementsByClassName('c');
 
 > Web 多进程(没用过)
 
-- 主进程——UI进程
+- 主进程——UI 进程
 - 子进程——工作进程
 
-1. 不能控制UI的东西；数据交互OK
+1. 不能控制 UI 的东西；数据交互 OK
 2. 子进程不能再创建子进程
 3. 跨域
 
-- 多进程——更充分发挥计算机资源（内存×、IO×、网络×、CPU√）
+- 多进程——更充分发挥计算机资源（内存 ×、IO×、网络 ×、CPU√）
 - 基本没用
 
-- WebSQL    ×
+- WebSQL ×
 - IndexedDB ×
 
 - 画图：
-  - canvas      位图——放大失真      HTML5标准
-  - SVG         矢量图——无限缩放    不是HTML5的东西，是一个独立标准
-  - VML         矢量图             IE的矢量图
+  - canvas 位图——放大失真 HTML5 标准
+  - SVG 矢量图——无限缩放 不是 HTML5 的东西，是一个独立标准
+  - VML 矢量图 IE 的矢量图
 
 ## canvas
 
@@ -306,24 +286,24 @@ var c3 = document.getElementsByClassName('b2')[0].getElementsByClassName('c');
 - 线色：`strokeStyle`
 - 填充颜色：`fillStyle`
 
-``` js
+```js
 Uncaught DOMException: Failed to execute 'postMessage' on 'Worker': HTMLDocument object could not be cloned.
 ```
 
 - 多线程：共享存储空间——多个进程之间传引用
 - 多进程：各自独享存储空间——复制一份给子线程
 
-### canvas用途
+### canvas 用途
 
 1. 图表 —— `echarts.js`
 2. 游戏
 3. 滤镜
 
-- CSS3新样式——动画、3D、transform
-- canvas路径问题、像素操作、SVG、VML、图表库、d3
-- 移动端布局、移动端touch
+- CSS3 新样式——动画、3D、transform
+- canvas 路径问题、像素操作、SVG、VML、图表库、d3
+- 移动端布局、移动端 touch
 - 相关库——iscroll、hammer
-- canvas高级应用
+- canvas 高级应用
   - 游戏
   - WebGL
 
@@ -351,7 +331,7 @@ ctx.beginPath()；   开启新的图层
 
 线连接方式：   lineJoin: round | bevel | miter (默认)
 
-线帽（线两端的结束方式）：  lineCap: butt(默认值) | round | square 
+线帽（线两端的结束方式）：  lineCap: butt(默认值) | round | square
 
 闭合路径： ctx.closePath()
 
@@ -398,9 +378,11 @@ ctx.beginPath()；   开启新的图层
 
 ### 填充效果
 
-``` js
-ctx.fill();      设置填充效果
-ctx.fillstyle="值"; 设置填充颜色
+```js
+ctx.fill();
+设置填充效果;
+ctx.fillstyle = "值";
+设置填充颜色;
 ```
 
 ### 非零环绕原则
@@ -409,7 +391,7 @@ ctx.fillstyle="值"; 设置填充颜色
 
 ![52647078286](assets/1526470782861.png)
 
-``` text
+```text
 ☞ 非零环绕原则：
   1. 任意找一点，越简单越好
   2. 以点为圆心，绘制一条射线，越简单越好（相交的边越少越好）
@@ -447,10 +429,10 @@ ctx.fillstyle="值"; 设置填充颜色
 
 ### 绘制动画效果
 
-``` text
-  ☞ 绘制一个描边矩形： content.strokeRect(x,y,width,height) 
-  ☞ 绘制一个填充矩形： content.fillRect(x,y,width,height)  
-  ☞ 清除： content.clearRect(x,y,width,height)  
+```text
+  ☞ 绘制一个描边矩形： content.strokeRect(x,y,width,height)
+  ☞ 绘制一个填充矩形： content.fillRect(x,y,width,height)
+  ☞ 清除： content.clearRect(x,y,width,height)
 
   ☞ 实现动画效果：
     1. 先清屏
@@ -460,10 +442,10 @@ ctx.fillstyle="值"; 设置填充颜色
 
 ### 绘制文本
 
-``` text
+```text
   ☞ 绘制填充文本
     content.fillText(文本的内容,x,y)
-  
+
   ☞ 绘制镂空文本
     content.strokeText();
 
@@ -473,10 +455,10 @@ ctx.fillstyle="值"; 设置填充颜色
 
   ☞ 文字水平对齐方式【文字在圆心点位置的对齐方式】
     content.textalign="left | right | center"
-  
+
   ☞文字垂直对齐方式
     content.textBaseline="top | middle | bottom | alphabetic(默认)"
-  
+
   ☞文字阴影效果
     ctx.shadowColor="red";  设置文字阴影的颜色
     ctx.ShadowOffsetX=值;   设置文字阴影的水平偏移量
@@ -579,7 +561,7 @@ ctx.translate(x,y);
 ### 旋转【坐标系旋转】
 
 ```js
-ctx.rotate(弧度)
+ctx.rotate(弧度);
 ```
 
 ### 伸缩
@@ -590,4 +572,3 @@ ctx.rotate(弧度)
       沿着x轴和y轴缩放
       x,y 为倍数  例如： 0.5  1
 ```
-
