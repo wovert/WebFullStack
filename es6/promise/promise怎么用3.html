@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title></title>
     <script src="jquery.js" charset="utf-8"></script>
     <script>
-    $.ajax({
-      url: '1.txt',
-      dataType: 'json'
-    }).then(json=>{
-      alert('成了');
-    }, err=>{
-      alert('错了');
-    });
+      $.ajax({
+        url: "1.txt",
+        dataType: "json"
+      }).then(
+        json => {
+          alert("成了");
+        },
+        err => {
+          alert("错了");
+        }
+      );
 
-    /*
+      /*
     Promise.all([p, p2, p3]).then(arr=>{
       let [j1, a, j2]=arr;
 
@@ -26,7 +29,5 @@
     */
     </script>
   </head>
-  <body>
-
-  </body>
+  <body></body>
 </html>
