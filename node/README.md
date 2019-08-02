@@ -16,18 +16,20 @@ Just because Node is designed without threads, doesn't mean you cannot take adva
 
 https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/
 
-### 优点
+### Node Features
 
-- 利于前端人员用: nodejs 的对象、语法跟 JavaScript 一模一样；
-- 性能比其他语言更好: 比如比 PHP 块 80 多倍
-- 前后台配合方便
+- 非阻塞：I/O是函数立即返回，进程不等待I/O完成
+  - 阻塞：I/O时进程休眠等待I/O完成后进行下一步
+- 事件驱动
+  - I/O等异步操作结束后的通知
+  - 观察者模式
+- 处理高并发、I/O密集场景性能优势明显
+  - CPU密集：压缩、解压、加密、解密
+  - I/O密集：文件操作、网络操作、数据库操作
 
-### 缺点
+## Node 使用场景
 
-1. Java 极其丰富库支持
-
-## NodeJS 用处
-
+- Web Server
 - 中间层: 传统前端直接可以直接请求后台 java 或者 php 的接口，它还要用 node 作为中间层，这样的好处是什么？
   - 安全性
   - 性能
@@ -36,10 +38,21 @@ https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/
 - 小型服务
 - 工具
   - 测试
-  - 构建(grunt、gulp、WebPack、gulp)
+  - 本地代码构建(grunt、gulp、WebPack、gulp)
   - 抓取
 
 中间层 VS 中间件
+
+### Web 常见场景
+
+- 静态资源读取
+- 数据库操作
+- 渲染页面
+
+### 高并发解决方案
+
+- 增加机器数
+- 增加每台机器的CPU数 —— 多核
 
 ## Node 环境安装
 

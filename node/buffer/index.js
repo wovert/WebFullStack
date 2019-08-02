@@ -27,3 +27,4 @@ arr[1] = 6000;
 console.log(buf);
 console.log(arr);
 // 打印: <Buffer 88 13 70 17>
+

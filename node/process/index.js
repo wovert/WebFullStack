@@ -21,3 +21,18 @@ process.stdin.on('data', function(e){
   fs.mkdirSync(e.toString().replace('\r\n', ''))
   process.stdout.write('项目创建成功')
 })
+
+setImmediate(() => {
+  console.log('setImmediate')
+})
+
+setTimeout(() => {
+  console.log('settimeout')
+}, 0)
+
+process.nextTick(() => {
+  console.log('nextTick');
+  process.nextTick(() => {
+    console.log('nextTick')
+  })
+})
