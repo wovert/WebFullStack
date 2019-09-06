@@ -1,9 +1,22 @@
-var express = require('express');
-var router = express.Router();
+let express = require('express');
+let router = express.Router();
+// const User = require('../models/user')
+const UserService = require('../services/user')
 
-/* GET users listing. */
+
+/* GET home page. */
 router.get('/', (req, res, next) => {
-  res.send('respond with a resource');
-});
+  // const user = new User(req.query.firstName, req.query.lastName, req.query.age)
+  // res.locals.user = user
+  const users = UserService.getAllUers()
+  res.locals.users = users
+  res.render('user')
+})
 
-module.exports = router;
+router.post('/', (req, res) => {
+  const { firstName, lastName, age } = req.body
+  const u = UserService.addNewUser(firstName, lastName, age)
+  res.json(u)
+})
+
+module.exports = router
