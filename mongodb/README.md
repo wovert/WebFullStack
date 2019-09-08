@@ -1,13 +1,15 @@
-# CentOS 源码安装 MongoDB
+# MongoDB
 
-## 环境准备
+## CentOS 源码安装 MongoDB
+
+### 环境准备
 
 ```sh
 程序存放目录，数据存放目录，日志存放目录，配置文件目录
 # mkdir -pv /usr/local/mongodb/{data,log,etc}
 ```
 
-## 下载MongoDB程序源码
+### 下载MongoDB程序源码
 
 ```sh
 # cd /usr/local/src
@@ -17,7 +19,7 @@
 # cp -r * /usr/local/mongodb
 ```
 
-## 配置环境变量
+### 配置环境变量
 
 ```sh
 # vim /etc/profile.d/mongodb.sh
@@ -25,7 +27,7 @@
 # source /etc/profile
 ```
 
-## 创建配置文件
+### 创建配置文件
 
 ```sh
 # vim /usr/local/mongodb/etc/mongodb.conf
@@ -40,13 +42,13 @@ fork = true
 #nohttpinterface = true
 bind_ip=127.0.0.1
 ```
-## 启动服务
+### 启动服务
 
 ```sh
-# mongod --config /usr/local/mongodb/etc/mongodb.conf --dbpath=/usr/local/mongodb/data --logpath=/usr/local/mongodb//log/mongodb.log --logappend --fork
+# mongod --config /usr/local/mongodb/etc/mongodb.conf --dbpath=/usr/local/mongodb/data --logpath=/usr/local/mongodb/log/mongodb.log --logappend --fork
 ```
 
-## 消除警告
+### 消除警告
 
 ```sh
 # vim /etc/rc.local
@@ -69,14 +71,14 @@ Tip:
 # chmod +x /etc/rc.local
 ```
 
-## 停止mongodb
+### 停止mongodb
 
 ```sh
 # ps -ef | grep mongo
 # kill -2 PID
 ```
 
-## 文件限制数调整
+### 文件限制数调整
 
 ```sh
 # vim /etc/security/limits.conf
@@ -86,7 +88,7 @@ Tip:
 * hard nproc 32000
 ```
 
-## 服务化
+### 服务化
 
 ```sh
 # useradd -r mongodb
@@ -112,7 +114,7 @@ WantedBy=multi-user.target
 authorization: enabled   # 添加权限设置
 ```
 
-## 创建授权用户
+### 创建授权用户
 
 ```sh
 use admin
@@ -130,7 +132,7 @@ switched to db admin
 > db.auth('ljaiadmin','123456') (注：切换到admin用户进行授权验证)
 ```
 
-## 创建普通用户
+### 创建普通用户
 
 用可以对test123数据库读写的rwtest123用户为例
 
@@ -168,4 +170,27 @@ switched to db test100
 > db.test100.find()
 Error: error: { "$err" : "not authorized for query on test100.test100", "code" : 13 }
 >
+```
+
+## command
+
+```
+> show dbs
+> use test
+switched to db test
+> db.createUser(
+...    {
+...      user: "test",
+...      pwd: "test",
+...     roles: [ { role: "readWrite", db: "test" } ]
+...   }
+... )
+
+> db.users.insert({name:"zhangsan", age: 101})
+> show collections
+> db.users.find()
+> db.users.update({name: "zhangsan"}, {age: 102})
+> db.users.stats()
+> db.usrs.remove()
+
 ```
