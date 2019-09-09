@@ -221,6 +221,7 @@ switched to db test
 > user.find({hobbies.0.name: "hiking"})
 > user.find({name: {$regex: "xiao"}})
 > user.find({hobbies: {$size: 2}})
+> user.update({name: "wovert", {$set: {age: 10}}})
 ```
 
 ## Data Type
