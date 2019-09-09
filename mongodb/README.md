@@ -193,4 +193,35 @@ switched to db test
 > db.users.stats()
 > db.usrs.remove()
 
+> var id = ObjectId()
+> id
+> id.getTimestamp()
+> new Date(id.getTimestamp())
+
 ```
+
+- ObjectId=机器名称做编码+正在运行的进程号+当前的时间戳+自增数字
+
+```
+> var user = db.users
+> user.find()
+
+> user.find({age: { $gt: 1 }})
+> user.find({age: { $gte: 1 }})
+> user.find({age: { $lte: 1 }})
+> user.find({age: 20})
+
+# and
+> user.find({age: { $lte: 30, $gte: 12 }})
+
+# or
+> user.find({age: { $or: [{}, {}] }})
+> user.find({age: {$exists: true}})
+> user.find({hobbies.hiking.desc: "grea love"})
+> user.find({hobbies.0.name: "hiking"})
+> user.find({name: {$regex: "xiao"}})
+> user.find({hobbies: {$size: 2}})
+```
+
+## Data Type
+
