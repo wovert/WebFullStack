@@ -224,5 +224,14 @@ switched to db test
 > user.update({name: "wovert", {$set: {age: 10}}})
 ```
 
-## Data Type
+## mongoose
 
+```
+$ npm i mongoose --save
+```
+
+```
+mongo
+db.auth('test','test')
+show databases
+```

@@ -88,7 +88,18 @@ nrm use taobao
 - ^major.x.x major 最新版本
 - ~major.minor.revision major.minor 最新版本
 - latest 最新版
-- x.x.x 固定版本
+- x.y.z 固定版本
+  - x: 架构版本（不向后兼容）
+  - y: 功能版本
+  - z: 修复BUG
+
+- `package.json`
+  - 安装最新版
+    - `"express": "latest"` 
+    - `“express”: "*"`
+- `package-lock.json`
+  - 锁定安装时的包的版本号，并且需要上传到git，以保证其他人在npm install时大家的依赖能保证一致
+
 
 ### 卸载 Node
 
