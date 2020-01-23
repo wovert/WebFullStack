@@ -134,3 +134,9 @@ views/
 models/
 services/
 utils/
+
+
+
+```
+$ node bin/www
+```
